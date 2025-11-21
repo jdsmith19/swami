@@ -1,0 +1,332 @@
+import numpy as np
+import pandas as pd
+import random
+import time
+import sqlite3
+import traceback
+import requests
+from io import StringIO
+from utils import lookup
+from utils.logger import log
+from langchain.agents import AgentState
+import os
+
+this_filename = os.path.basename(__file__).replace(".py","")
+
+class ProFootballReference:
+	def __init__(self, state: AgentState):
+		self.teams = [
+			'crd', 'atl', 'rav', 'buf', 'car', 'chi', 'cin', 'cle', 'dal', 'den', 'det', 'gnb', 'htx', 'clt', 'jax', 'kan',
+			'sdg', 'ram', 'rai', 'mia', 'min', 'nwe', 'nor', 'nyg', 'nyj', 'phi', 'pit', 'sea', 'sfo', 'tam', 'oti', 'was'
+		]
+		self.debug = False
+		self.state = state
+
+	def get_data(self, seasons):
+		start_time = time.time()
+		event_columns = ['event_id', 'season', 'season_week_number', 'date', 'day_of_week', 'home_team', 'away_team', 'overtime', 'is_playoffs', 'is_neutral', 'is_complete']
+		event_df = pd.DataFrame()
+		up_event_df = pd.DataFrame()
+		
+		game_data_columns = [
+			'event_id',
+			'team',
+			'date',
+			'opponent',
+			'is_home',
+			'win',
+			'points_scored',
+			'pass_completions',
+			'pass_attempts',
+			'pass_completion_percentage',
+			'pass_yds',
+			'pass_tds',
+			'pass_yards_per_attempt',
+			'pass_adjusted_yards_per_attempt',
+			'pass_rating',
+			'sacks_allowed',
+			'sack_yards_lost',
+			'rushing_attempts',
+			'rushing_yards',
+			'rushing_tds',
+			'rushing_yards_per_attempt',
+			'offensive_plays',
+			'total_yards',
+			'yards_per_play',
+			'field_goal_attempts',
+			'field_goals_made',
+			'extra_point_attempts',
+			'extra_points_made',
+			'punts',
+			'punt_yards',
+			'passing_first_downs',
+			'rushing_first_downs',
+			'penalty_first_downs',
+			'first_downs',
+			'third_down_conversions',
+			'third_down_attempts',
+			'fourth_down_conversions',
+			'fourth_down_attempts',
+			'penalties',
+			'penalty_yards',
+			'fumbles_lost',
+			'interceptions_thrown',
+			'turnovers',
+			'time_of_possession'
+		]
+		game_data_df = pd.DataFrame()
+		
+		col_rename_dict = {
+			'Gtm': 'team_game_number',
+			'Week': 'season_week_number',
+			'Date': 'date',
+			'Day': 'day_of_week',
+			'Unnamed: 5': 'is_home',
+			'Opp': 'opponent',
+			'Rslt': 'win',
+			'Pts': 'points_scored',
+			'PtsO': 'points_allowed',
+			'OT': 'overtime',
+			'Cmp': 'pass_completions',
+			'Att': 'pass_attempts',
+			'Cmp%': 'pass_completion_percentage',
+			'Yds': 'pass_yds',
+			'TD': 'pass_tds',
+			'Y/A': 'pass_yards_per_attempt',
+			'AY/A': 'pass_adjusted_yards_per_attempt',
+			'Rate': 'pass_rating',
+			'Sk': 'sacks_allowed',
+			'Yds.1': 'sack_yards_lost',
+			'Att.1': 'rushing_attempts',
+			'Yds.2': 'rushing_yards',
+			'TD.1': 'rushing_tds',
+			'Y/A.1': 'rushing_yards_per_attempt',
+			'Ply': 'offensive_plays',
+			'Tot': 'total_yards',
+			'Y/P': 'yards_per_play',
+			'FGA': 'field_goal_attempts',
+			'FGM': 'field_goals_made',
+			'XPA': 'extra_point_attempts',
+			'XPM': 'extra_points_made',
+			'Pnt': 'punts',
+			'Yds.3': 'punt_yards',
+			'Pass': 'passing_first_downs',
+			'Rsh': 'rushing_first_downs',
+			'Pen': 'penalty_first_downs',
+			'1stD': 'first_downs',
+			'3DConv': 'third_down_conversions',
+			'3DAtt': 'third_down_attempts',
+			'4DConv': 'fourth_down_conversions',
+			'4DAtt': 'fourth_down_attempts',
+			'Pen.1': 'penalties',
+			'Yds.4': 'penalty_yards',
+			'FL': 'fumbles_lost',
+			'Int': 'interceptions_thrown',
+			'TO': 'turnovers',
+			'ToP': 'time_of_possession'
+		}
+		opp_to_pfr_code = {
+			'ARI': 'crd',
+			'ATL': 'atl',
+			'BAL': 'rav',
+			'BUF': 'buf',
+			'CAR': 'car',
+			'CHI': 'chi',
+			'CIN': 'cin',
+			'CLE': 'cle',
+			'DAL': 'dal',
+			'DEN': 'den',
+			'DET': 'det',
+			'GNB': 'gnb',
+			'HOU': 'htx',
+			'IND': 'clt',
+			'JAX': 'jax',
+			'JAC': 'jax',  # Sometimes Jacksonville
+			'KAN': 'kan',
+			'KC': 'kan',   # Sometimes Kansas City
+			'LVR': 'rai',  # Las Vegas Raiders
+			'LV': 'rai',   # Also Las Vegas
+			'OAK': 'rai',  # Oakland Raiders (historical)
+			'LAC': 'sdg',  # LA Chargers
+			'SD': 'sdg',
+			'SDG': 'sdg',   # San Diego Chargers (historical)
+			'LAR': 'ram',  # LA Rams
+			'LA': 'ram',   # Could be Rams
+			'STL': 'ram',  # St. Louis Rams (historical)
+			'MIA': 'mia',
+			'MIN': 'min',
+			'NE': 'nwe',
+			'NWE': 'nwe',
+			'NO': 'nor',
+			'NOR': 'nor',
+			'NYG': 'nyg',
+			'NYJ': 'nyj',
+			'PHI': 'phi',
+			'PIT': 'pit',
+			'SF': 'sfo',
+			'SFO': 'sfo',
+			'SEA': 'sea',
+			'TB': 'tam',
+			'TAM': 'tam',
+			'TEN': 'oti',
+			'WAS': 'was',
+			'WSH': 'was',
+		}
+		for season in self.state["seasons"]:
+			for team in self.teams:
+				pretty_team = lookup.pfr_team_to_odds_api_team(team)
+				log(self.state["log_path"], f"Getting data for { pretty_team } in { season }", self.state['log_type'], this_filename)
+				game_data_url = f'https://www.pro-football-reference.com/teams/{team}/{str(season)}/gamelog/'
+				# Fetch HTML Once
+				response = requests.get(game_data_url)
+				html_content = response.text
+				for table_id in ['table_pfr_team-year_game-logs_team-year-regular-season-game-log',
+					'table_pfr_team-year_game-logs_team-year-playoffs-game-log']:
+					try:
+						tm_df = pd.read_html(StringIO(html_content), header=1, attrs={'id': table_id})[0]
+						tm_df = tm_df.drop(columns=['Rk'], axis=1)
+						tm_df = tm_df.rename(col_rename_dict, axis=1)
+						tm_df = tm_df.dropna(subset=['season_week_number'])
+						tm_df['season'] = season
+						if(table_id == 'table_pfr_team-year_game-logs_team-year-playoffs-game-log'):
+							tm_df['is_playoffs'] = 1
+						else:
+							tm_df['is_playoffs'] = 0
+						tm_df['team'] = team
+						tm_df['season_week_number'] = tm_df['season_week_number'].astype(int)
+						tm_df['is_neutral'] = np.where(tm_df['is_home'] == 'N', 1, 0)
+						tm_df['is_home'] = np.where(tm_df['is_home'] == '@', 0, 1)
+						tm_df['opponent_raw'] = tm_df['opponent']
+						tm_df['opponent'] = tm_df['opponent'].map(opp_to_pfr_code)
+						tm_df['home_team'] = np.where(tm_df['is_home'] == 1, team, tm_df['opponent'])
+						tm_df['away_team'] = np.where(tm_df['is_home'] == 1, tm_df['opponent'], team)
+						# DON'T THINK I NEED THIS ANYMORE, BUT KEEPING JUST IN CASE
+						# unmapped = tm_df[tm_df['opponent'].isna()]
+						# if len(unmapped) > 0:
+						# 	print(f"WARNING: Found {len(unmapped)} unmapped opponents:")
+						# 	print(unmapped[['season', 'team', 'opponent_raw', 'opponent']].drop_duplicates('opponent_raw'))
+						# 	print("\nUnique unmapped values:", unmapped['Opp'].unique())
+						# Little trick here, if it's a neutral site have to make sure the event_id is created consistently so order alphabetically
+						tm_df['event_id'] = np.where(
+							tm_df['is_neutral'] == 1,
+							tm_df['season'].astype(str) + '_' + tm_df['season_week_number'].astype(str) + '_' + np.minimum(tm_df['team'], tm_df['opponent']) + '_' + np.maximum(tm_df['team'], tm_df['opponent']),
+							(tm_df['season'].astype(str) + '_' + tm_df['season_week_number'].astype(str) + '_' + tm_df['home_team'] + '_' + tm_df['away_team'])
+						)
+						
+						up_df = tm_df[tm_df['team_game_number'].isna()].copy()
+						up_df['event_id'] = np.where(
+							up_df['is_neutral'] == 1,
+							up_df['season'].astype(str) + '_' + up_df['season_week_number'].astype(str) + '_' + np.minimum(up_df['team'], up_df['opponent']) + '_' + np.maximum(up_df['team'], up_df['opponent']),
+							(up_df['season'].astype(str) + '_' + up_df['season_week_number'].astype(str) + '_' + up_df['home_team'] + '_' + up_df['away_team'])
+						)
+						up_df['is_complete'] = 0
+						tm_df['is_complete'] = 1
+						tm_df = tm_df.dropna(subset=['team_game_number', 'win'])
+						tm_df['team_game_number'] = tm_df['team_game_number'].astype(int)
+						tm_df['win'] = np.where(tm_df['win'] == 'W', 1, 0)
+						tm_df['overtime'] = np.where(tm_df['overtime'] == 'OT', 1, 0)
+
+						event_df = pd.concat([event_df, tm_df[event_columns].copy()], ignore_index=True)
+						up_event_df = pd.concat([up_event_df, up_df[event_columns].copy()], ignore_index = True)
+						game_data_df = pd.concat([game_data_df, tm_df[game_data_columns].copy()], ignore_index = True)
+						
+					# except(ValueError, IndexError):
+					# 	print(f"No playoff data found for {team} in {season}")
+					except (ValueError, IndexError):
+						pass
+						if self.debug:
+							#print(f"No playoff data found for {team} in {season}")
+							continue
+					except Exception as e:
+						print(f"Unexpected error for {team} in {season}: {e}")
+						print(traceback.format_exc())
+					
+					time.sleep(random.randint(4,5))
+			
+			# Data Cleanup
+			
+			event_df = event_df.drop_duplicates(subset=['event_id'], keep='first')
+			up_event_df = up_event_df.drop_duplicates(subset=['event_id'], keep='first')
+
+		end_time = time.time()
+		log(self.state["log_path"], f"Loaded Pro Football Reference data in {end_time - start_time:1f} seconds", self.state["log_type"], this_filename)
+	
+		return { 'events': event_df, 'game_data': game_data_df, 'upcoming_events': up_event_df }
+	
+	def load_game_data_from_db(self, is_complete = 1):
+		conn=sqlite3.connect('db/historical_data.db')
+		query_game_data = f"""
+		SELECT
+		
+			e.event_id,
+			e.season,
+			e.season_week_number,
+			e.date,
+			e.home_team,
+			e.away_team,
+			--e.is_neutral,
+			e.is_complete,
+			
+			-- TEAM A STATS
+			team_a.team as team_a,
+			team_a.is_home as team_a_is_home,
+			team_a.points_scored as team_a_points_scored,
+			team_a.win as team_a_win,
+			
+			--TEAM B STATS
+			team_b.team as team_b,
+			team_b.is_home as team_b_is_home,
+			team_b.points_scored as team_b_points_scored,
+			team_b.win as team_b_win
+		
+		FROM
+		
+			event e
+			join team_result team_a on e.event_id = team_a.event_id AND e.home_team = team_a.team
+			join team_result team_b on e.event_id = team_b.event_id AND e.away_team = team_b.team
+		
+		WHERE
+			e.is_complete = { is_complete }
+
+		ORDER BY
+		
+			e.season, 
+			e.season_week_number
+		"""
+		game_data = pd.read_sql(query_game_data, conn)
+		conn.close()
+		return game_data
+	
+	def get_upcoming_games(self):
+		conn=sqlite3.connect('db/historical_data.db')
+		query_upcoming = """
+		SELECT
+			*
+		FROM
+			event e
+		WHERE
+			e.is_complete = 0 and
+			season = (select min(season) from event where is_complete = 0) AND
+			season_week_number = (select min(season_week_number) from event where is_complete = 0 and season = e.season)
+		"""
+		upcoming_games = pd.read_sql(query_upcoming, conn)
+		conn.close()
+		return upcoming_games
+
+	def load_team_performance_from_db(self):
+		conn=sqlite3.connect('db/historical_data.db')
+		query_team_performance = """
+		
+		SELECT
+			team_result.*,
+			e.season,
+			e.season_week_number
+		FROM
+			team_result
+			join event e on e.event_id = team_result.event_id
+		
+		"""
+
+		team_performance = pd.read_sql(query_team_performance, conn)
+		conn.close()
+		return team_performance
