@@ -57,7 +57,7 @@ def get_column_strings(key_col: str, all_cols: list, table: str):
     
     Takes a list of primary keys, a list of all columns, and the name of the table.
     """
-    update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ col } = { table }.{ col })" for col in all_cols if col not in [key_col])
+    update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ key_col } = { table }.{ key_col })" for col in all_cols if col not in [key_col])
     where_string = "\n".join(f"WHERE { key_col } IN (SELECT { key_col } FROM tmp_{ table })" for key_col in [key_col])
     return { 
         "update_cols_string": update_cols_string,
@@ -91,7 +91,8 @@ def create_insert_or_update_table(
         conn, 
         table: str, 
         df: pd.DataFrame, 
-        key_col: str
+        key_col: str,
+        state: ScrapeState
     ):
     """
     Will CREATE, INSERT INTO, and/or UPDATE a table.
@@ -111,15 +112,18 @@ def create_insert_or_update_table(
         df.to_sql(table, conn, index=False)
     else:
         # Create a temp table with the existing rows
-        existing_rows.to_sql(f"tmp_{ table }", conn, index = False)
+        count = existing_rows.to_sql(f"tmp_{ table }", conn, index = False)
+        log(log_path,f"{count} rows inserted in { table }", log_type, this_filename)
         
         # Update existing rows from the temp table
         col_strings = get_column_strings(key_col, list(existing_rows.columns), table)
         update_query = get_update_query(table, col_strings)
         cur.execute(update_query)
+        log(log_path, f"{ cur.rowcount } rows updated in { table }", log_type, this_filename)
         
         # Then insert the new rows
-        new_rows.to_sql(table, conn, if_exists = "append", index = False)
+        count = new_rows.to_sql(table, conn, if_exists = "append", index = False)
+        log(log_path,f"{count} rows inserted in { table }", log_type, this_filename)
         cur.close()
                                
 def load_history_from_pfr(state: ScrapeState) -> ScrapeState:
@@ -140,7 +144,6 @@ def load_history_from_pfr(state: ScrapeState) -> ScrapeState:
 
     # Get the data in the database
     create_insert_or_update_table(conn, "event", data["events"], "event_id")
-    create_insert_or_update_table(conn, "event", data["upcoming_events"], "event_id")
     create_insert_or_update_table(conn, "team_result", data["game_data"], "event_id")
     
     # Create primary keys if they don't exist
