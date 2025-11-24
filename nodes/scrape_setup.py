@@ -42,7 +42,7 @@ def scrape_setup_node(state: ScrapeState) -> ScrapeState:
     now = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     script = sys.argv[0].replace(".py", "")
     state["agent_id"] = uuid.uuid4()
-    state["log_path"] = f"logs/{ script }/{ now }_{ state["agent_id"] }.txt"
+    state["log_path"] = f"logs/{ script }/{ now }_{ state['agent_id'] }.txt"
 
     log(state["log_path"], "Setting up...\n", state["log_type"], this_filename)
 
