@@ -123,6 +123,10 @@ def optimize_setup_node(state: OptimizeState) -> OptimizeState:
     state["data_aggregates"] = DataAggregate(state)
     end_time = time.time()
     log(state["log_path"], f"Loaded DataAggregates in { end_time - start_time }s.", state["log_type"], this_filename)
+
+    state["aggregates"] = state["data_aggregates"].aggregates
+    state["upcoming_games"] = state["data_aggregates"].upcoming_games
+    state["prediction_set"] = state["data_aggregates"].prediction_set
     
     state["trimmed_results"] = {
         "best_results": state["best_results"],

@@ -8,8 +8,8 @@ from utils.nfl import teams
 import time
 
 class LinearRegression(PredictionModel):
-	def __init__(self, data_aggregate, target, feature_columns):
-		super().__init__(data_aggregate, target, feature_columns)
+	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
+		super().__init__(data_aggregate, target, feature_columns, prediction_set)
 		start = time.time()
 		self.model_output = { 'model_name': 'LinearRegression', 'target': target }
 		self.lr_regressor = self.__train_model(self.training_features, test = True)
@@ -50,8 +50,8 @@ class LinearRegression(PredictionModel):
 
 		# Add to dataframe for readability
 		results = prediction_set[['home_team', 'away_team']].copy()
-		results['home_team'] = results['home_team'].map(teams.lookup.pfr_team_to_odds_api_team)
-		results['away_team'] = results['away_team'].map(teams.lookup.pfr_team_to_odds_api_team)
+		results['home_team'] = results['home_team'].map(teams.pfr_team_to_odds_api_team)
+		results['away_team'] = results['away_team'].map(teams.pfr_team_to_odds_api_team)
 		results['predicted_spread'] = spread_predictions
 		results['predicted_winner'] = results.apply(
 			lambda row: f"{ row['home_team'] }"

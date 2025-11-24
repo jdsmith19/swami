@@ -29,7 +29,7 @@ class DataAggregate:
 			pbar.update(20)
 			pbar.set_description("Loading team performance")
 			self.team_performance = self.__add_opponent_stats_to_team_performance(pfr.load_team_performance_from_db())
-			pbar.update(20)
+			pbar.update(10)
 			pbar.set_description("Creating aggregates")
 			self.aggregates = self.__create_aggregates(self.game_data, self.team_performance)
 			pbar.update(20)

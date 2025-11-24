@@ -8,9 +8,9 @@ from utils.nfl import teams
 import time
 
 class RandomForest(PredictionModel):
-	def __init__(self, data_aggregate, target, feature_columns):
+	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
 		start = time.time()
-		super().__init__(data_aggregate, target, feature_columns)
+		super().__init__(data_aggregate, target, feature_columns, prediction_set)
 		self.model_output = { 'model_name': 'RandomForest', 'target': target }
 		self.rf_regressor = self.__train_model(self.training_features, test = True)
 		self.rf_regressor = self.__train_model(self.training_features)

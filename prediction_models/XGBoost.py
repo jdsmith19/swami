@@ -8,8 +8,8 @@ from utils.nfl import teams
 import time
 
 class XGBoost(PredictionModel):
-	def __init__(self, data_aggregate, target, feature_columns):
-		super().__init__(data_aggregate, target, feature_columns)
+	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
+		super().__init__(data_aggregate, target, feature_columns, prediction_set)
 		start = time.time()
 		self.model_output = { 'model_name': 'XGBoost', 'target': target }
 		self.xgb_regressor = self.__train_model(self.training_features, test = True)

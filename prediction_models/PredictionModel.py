@@ -1,10 +1,10 @@
 class PredictionModel:
-	def __init__(self, data_aggregate, target, feature_columns):
+	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
 		self.target = target
 		self.feature_columns = feature_columns
 		self.team_specific_feature_columns = self.__get_team_specific_feature_columns(self.feature_columns)
-		self.training_features = self.__prepare_features(data_aggregate.aggregates, prediction=False)
-		self.prediction_features = self.__prepare_features(data_aggregate.prediction_set, prediction=True)
+		self.training_features = self.__prepare_features(data_aggregate, prediction=False)
+		self.prediction_features = self.__prepare_features(prediction_set, prediction=True)
 
 	def __prepare_features(self, aggregate_data, prediction=False):
 		feature_columns = self.team_specific_feature_columns

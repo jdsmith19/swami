@@ -23,21 +23,21 @@ log_path = None
 log_type = None
 db_path = None
 
-def evaluate_model_with_features(da, model_name, feature_list):	
+def evaluate_model_with_features(aggregates, model_name, feature_list, prediction_set):	
 	if(model_name == 'XGBoost'):
-		model = XGBoost(da, 'point_differential', feature_list)
+		model = XGBoost(aggregates, 'point_differential', feature_list, prediction_set)
 	
 	elif(model_name == 'LinearRegression'):
-		model = LinearRegression(da, 'point_differential', feature_list)
+		model = LinearRegression(aggregates, 'point_differential', feature_list, prediction_set)
 	
 	elif(model_name == 'RandomForest'):
-		model = RandomForest(da, 'point_differential', feature_list)
+		model = RandomForest(aggregates, 'point_differential', feature_list, prediction_set)
 	
 	elif(model_name == 'LogisticRegression'):
-		model = LogisticRegression(da, 'win', feature_list)
+		model = LogisticRegression(aggregates, 'win', feature_list, prediction_set)
 	
 	elif(model_name == 'KNearest'):
-		model = KNearest(da, 'win', feature_list)
+		model = KNearest(aggregates, 'win', feature_list, prediction_set)
 	
 	return model.model_output
 
@@ -70,7 +70,7 @@ def optimize_trainer(state: OptimizeState) -> OptimizeState:
 
 	all_train_results = []
 	for experiment in state["next_experiments"]:
-		result = evaluate_model_with_features(state["data_aggregates"], experiment['model'], experiment['features'])
+		result = evaluate_model_with_features(state["aggregates"], experiment['model'], experiment['features'], state["prediction_set"])
 		result_dict = {
 			"experiment_num": state["experiment_count"] + 1,
 			"model_name": experiment['model'],

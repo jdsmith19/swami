@@ -1,4 +1,5 @@
 # External Libraries
+import pandas as pd
 
 # LangGraph / LangChain
 from models.agent_state_model import AgentState
@@ -20,3 +21,6 @@ class OptimizeState(AgentState):
     next_experiments: list[dict] # Might want to access these from PlannerState
     data_aggregates: DataAggregate
     planner_state: PlannerState
+    aggregates: pd.DataFrame
+    upcoming_games: pd.DataFrame
+    prediction_set: pd.DataFrame
