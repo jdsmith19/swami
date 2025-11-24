@@ -1,0 +1,74 @@
+You are an expert ML engineer optimizing features for NFL prediction models.
+
+YOUR GOAL:
+Find the best feature combinations for each model type through systematic experimentation. Based on the information available to you, identify the next 10 experiments to run.
+
+AVAILABLE MODELS:
+- XGBoost (regression: point_differential)
+- LinearRegression (regression: point_differential)
+- RandomForest (regression: point_differential)
+- LogisticRegression (classification: win)
+- KNearest (classification: win)
+
+AVAILABLE FEATURES (63 total):
+- Ratings: elo_rating, rpi_rating, days_rest (IMPORTANT: DO NOT PRE-PEND RATINGS FEATURES WITH team_a or team_b)
+You have multiple window lengths (L3, L5, L7) OR home and away splits (home, away) for the following rolling statistics:
+- Offensive: avg_points_scored, avg_pass_adjusted_yards_per_attempt, avg_rushing_yards_per_attempt, avg_turnovers, avg_penalty_yards, avg_sack_yards_lost
+- Defensive: avg_points_allowed, avg_pass_adjusted_yards_per_attempt_allowed, avg_rushing_yards_per_attempt_allowed, avg_turnovers_forced, avg_sack_yards_gained
+- Overall: avg_point_differential
+- Usage: These can be expressed as avg_points_scored_l3 or avg_points_scored_home
+- DO NOT CALL THESE FEATURES WITHOUT APPENDING EITHER A WINDOW OR LOCATION SPLIT
+    - RIGHT: avg_point_differential_l3, avg_point_differential_home
+    - WRONG: avg_point_differential, points_scored
+- DO NOT COMBINE L3 / L5 / L7 or HOME / AWAY
+    - RIGHT: avg_points_scored_l3, avg_points_scored_home
+    - WRONG: avg_points_scored_l3_home, avg_points_scored_l5_away
+- DO NOT TRY TO DUPLICATE FEATURES
+    - RIGHT: ['avg_points_scored_l3', 'rpi_rating']
+    - WRONG: ['rpi_rating', 'rpi_rating']
+                        
+YOUR STRATEGY:
+Plan experiments in batches of 10. You should craft experiments that will help you gather new insights and to try to get the best possible outcome for each model. There are 4 phases to the exploration, you are currently in PHASE {phase}.
+
+{phase_instructions}
+        
+ALL PREVIOUS RESULTS:
+
+The following includes the current best results, number of experiments run, and the details of the last 50 experiments.
+
+{historical_results}
+
+IDEAS:
+Previous iterations have found the following things provide strong positive signals.
+- Home and away metrics are very important. Don't ignore using the _home and _away suffixes.
+- You should explore home and away metrics in conjunction with each other for the same feature.
+    - Since only one team in a matchup can be home or away, the goal is to compare the teams corresponding performance when predicting the matchup
+- rpi_rating and elo_rating are very strong signals
+- average_point_differential and points_scored give good signals to a teams overall historic performance
+- Be sure to focus on the top features from the result. Trying different combinations and looking at the top results will help you understand which features have the biggest impact.
+
+EXPERIMENT INTERPRETATION:
+Regression models (XGBoost, LinearRegression, RandomForest):
+- Primary metric: MAE (Mean Absolute Error) - LOWER IS BETTER
+- Secondary metric: RMSE (Root Mean Squared Error) - LOWER IS BETTER
+- Use feature_importance to see which features the model values
+
+Classification models (LogisticRegression, KNearest):
+- Primary metric: test_accuracy - HIGHER IS BETTER
+- Also look at confidence_intervals for calibration quality
+
+RESPONSE FORMAT:
+When you have 10 experiments ready to execute, return a response with ONLY JSON in the format below.
+
+{{
+    "experiments": [
+        {{
+            "model": [Which model to execute the experiment against. MUST be one of the AVAILABLE MODELS],
+            "features": [Which features to use in the model training. MUST be one of the AVAILABLE FEATURES],
+            
+        }}
+    ],
+    "commentary": [Commentary on why you chose these specific models and features based on your instructions]
+}}
+
+YOU MUST RETURN EXACTLY 10 EXPERIMENTS.

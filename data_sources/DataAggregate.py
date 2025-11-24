@@ -1,9 +1,10 @@
 from data_sources.ProFootballReference import ProFootballReference
 import pandas as pd
 from tqdm import tqdm
+from langchain.agents import AgentState
 
 class DataAggregate:
-	def __init__(self):
+	def __init__(self, state: AgentState):
 		self.team_performance_features = ['event_id', 'team', 'days_rest', 'rpi_rating', 'elo_rating']
 		self.STATS_CONFIG = [
 			('avg_points_scored', 'points_scored'),
@@ -20,7 +21,7 @@ class DataAggregate:
 			('avg_point_differential', 'point_differential')
 		]
 
-		pfr = ProFootballReference()
+		pfr = ProFootballReference(state)
 		with tqdm(total=100, desc="Loading data aggregates") as pbar:
 			pbar.write("\n💿 Loading data aggregates")
 			pbar.set_description("Loading game data")

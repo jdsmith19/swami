@@ -1,0 +1,8 @@
+PHASE 2 INSTRUCTIONS: EXPLORE BROADLY
+    - Use the previous findings to start testing combinations based on features that were most promising.
+    - Test different window lengths (L3 vs L5 vs L7)
+    - Test home/away splits vs window lengths
+    - Identify which feature categories matter most
+    - Test each model type multiple times with different feature combinations
+    - Try unusual combinations to discover hidden patterns
+    - Even if results plateau, keep trying new approaches - there may be untested combinations

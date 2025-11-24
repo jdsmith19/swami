@@ -16,7 +16,7 @@ from utils.logger import log
 this_filename = os.path.basename(__file__).replace(".py","")
 log_path = None
 log_type = None
-db_path = "db/historical_data.db"
+db_path = None
 
 def db_and_table_exists(conn, db: str, table: str) -> bool:
     """
@@ -91,8 +91,7 @@ def create_insert_or_update_table(
         conn, 
         table: str, 
         df: pd.DataFrame, 
-        key_col: str,
-        state: ScrapeState
+        key_col: str
     ):
     """
     Will CREATE, INSERT INTO, and/or UPDATE a table.
@@ -113,7 +112,7 @@ def create_insert_or_update_table(
     else:
         # Create a temp table with the existing rows
         count = existing_rows.to_sql(f"tmp_{ table }", conn, index = False)
-        log(log_path,f"{count} rows inserted in { table }", log_type, this_filename)
+        log(log_path,f"{count} rows inserted in tmp_{ table }", log_type, this_filename)
         
         # Update existing rows from the temp table
         col_strings = get_column_strings(key_col, list(existing_rows.columns), table)
@@ -129,9 +128,10 @@ def create_insert_or_update_table(
 def load_history_from_pfr(state: ScrapeState) -> ScrapeState:
     """Scrapes data from Pro Football Reference and loads to the database."""
     # Set global variable values
-    global log_path, log_type
+    global log_path, log_type, db_path
     log_path = state["log_path"]
     log_type = state["log_type"]
+    db_path = state["db_path"]
 
     # Create or connect to the database
     log(state["log_path"], "Connecting to database...\n", state["log_type"], this_filename)

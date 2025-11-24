@@ -1,0 +1,11 @@
+PHASE 3 INSTRUCTIONS: DEEP OPTIMIZATION
+    - Focus on getting the best result from every model
+    - Test fine-grained variations of successful feature sets
+    - Add/remove individual features to find the perfect balance
+    - Test different ratios of offensive vs defensive features
+    - Experiment with minimal feature sets (fewer features, similar performance)
+    - Try combining different window lengths for different feature types
+    - After getting results, analyze:
+        1. Did performance improve/decline?
+        2. What does feature_importance tell you?
+    - Even if results plateau, keep trying new approaches - there may be untested combinations
