@@ -108,7 +108,8 @@ class ProFootballReference:
 						# game_data_df = pd.concat([game_data_df, tm_df[tm_df['is_complete'] == 1][col_utils.game_data_columns()].copy()], ignore_index=True)
 						
 					except (ValueError, IndexError):
-						log(self.state['log_path'],f"No playoff data found for { pretty_team } in { season }", self.state['log_type'], this_filename)
+						#log(self.state['log_path'],f"No playoff data found for { pretty_team } in { season }", self.state['log_type'], this_filename)
+						pass
 
 					except Exception as e:
 						log(self.state['log_path'],f"Unexpected error for { pretty_team } in {season}: {e}", self.state['log_type'], this_filename)
