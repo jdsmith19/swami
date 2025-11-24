@@ -9,6 +9,7 @@ from models.predict_model import PredictState
 
 # Utilities
 from utils.logger import log
+from utils.matchups import create_matchups
 
 this_filename = os.path.basename(__file__).replace(".py","")
 
@@ -20,6 +21,7 @@ def predict_aggregate_loader_node(state: PredictState):
     lines.append(f"{ len(aggregates.upcoming_games) } upcoming game rows loaded.")
     lines.append(f"{ len(aggregates.upcoming_games) } prediction set rows loaded.")
     log(state["log_path"], "\n".join(lines), state["log_type"], this_filename)
+    matchups = create_matchups(aggregates.prediction_set)
     return {
         "aggregates": aggregates.aggregates,
         "upcoming_games": aggregates.upcoming_games,

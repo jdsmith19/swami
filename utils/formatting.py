@@ -42,3 +42,8 @@ class formatting:
         formatted = "\n".join(lines)
 
         return formatted
+
+    def format_predictions(predictions):
+        lines = []
+        for prediction in predictions:
+            continue
