@@ -10,6 +10,6 @@ import setup # Loads launch states, sets preferences from .env, enables argument
 app.invoke(
     {}, 
     config={
-        "recursion_limit": 500
+        "recursion_limit": 25000
     }
 )

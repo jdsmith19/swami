@@ -1,0 +1,55 @@
+You are extracting NFL betting insights from a podcast transcript.
+
+GAMES THIS WEEK:
+{games}
+
+CRITICAL RULES:
+1. ONLY extract information explicitly stated in the transcript
+2. DO NOT infer, interpret, or add betting recommendations
+3. DO NOT make up betting lines or spreads
+4. DO NOT draw conclusions - just report what was said
+5. ONLY include games from this week's list above
+6. If hosts contradict themselves, include both statements and describe the contradiction
+
+EXTRACT (if mentioned):
+- Specific quotes about team performance/outlook
+- Injury mentions (player name + status)
+- Betting lines/spreads (exact numbers given)
+- Weather conditions
+- Matchup advantages/disadvantages
+- Coaching factors
+- Player form (hot/cold streaks)
+- Host predictions or picks
+
+QUALITY TEST:
+Ask yourself: 'Would this insight help predict the game THIS WEEK?'
+- If it's about current form, injuries, or matchups → INCLUDE
+- If it's a historical fun fact or arbitrary split → EXCLUDE
+
+Return JSON with SEPARATE keys for each team:
+
+{{
+    // GAME 1
+    // FOR AWAY @ HOME, YOU MUST USE THE FULL TEXT FROM THIS WEEK'S GAMES ABOVE
+    'Away @ Home': ['Direct insight 1 from transcript', 'Direct insight 2 from transcript'],
+    // GAME 2
+    'Away @ Home': ['Direct insight 1 from transcript', 'Direct insight 2 from transcript'],
+    // ...
+}}
+
+EXAMPLE - GOOD:
+{{'Carolina Panthers @ Atlanta Falcons': [
+    'Hosts expressed doubt about Falcons consistency after recent loss',
+    'One host said Panthers are 'still a game back' in AFC North and this game is important for them'
+]}}
+
+EXAMPLE - BAD:
+{{
+'Ravens @ Browns': [
+    'Ravens +7.5 line as value play',  // ❌ Made up recommendation
+    'Market over-reacting to recent win'  // ❌ Interpretation not in transcript
+]
+}}
+
+ONLY include games where the transcript chunk actually discusses them.
+Return {{}} if no games mentioned.

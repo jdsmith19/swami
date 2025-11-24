@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import json
-from datetime import datetime
+from utils.nfl import teams
 
 class NFLDepthChartAnalyzer:
 	"""
@@ -962,7 +962,7 @@ class NFLDepthChartAnalyzer:
 		
 		if injury_df.empty:
 			return {
-				'team': team_abbr.upper(),
+				'team': teams.espn_code_to_team_name(team_abbr.upper()),
 				'has_injuries': False,
 				'total_impact_score': 0,
 				'impact_percentage': 0,
@@ -996,9 +996,9 @@ class NFLDepthChartAnalyzer:
 		}
 		
 		return {
-			'team': team_abbr.upper(),
+			'team': teams.espn_code_to_team_name(team_abbr.lower()),
 			'has_injuries': True,
-			'total_impact_score': round(total_impact, 2),
+			'total_impact_score': float(round(total_impact, 2)),
 			'impact_percentage': round(impact_percentage, 1),
 			'injured_count': len(injury_df),
 			'injuries': injury_df.to_dict('records'),

@@ -37,7 +37,7 @@ def planner_setup_node(state: PlannerState) -> PlannerState:
     log(log_path, "\n".join(lines), log_type, this_filename)
     #print(state["trimmed_results"])
     
-    # Create a Conversation ID
+    # Get prompts ready
     state["phase_prompt"] = load_prompt(f"{ state['home_path'] }optimize/planner/phase_{ state['phase'] }.txt")
     state["system_prompt"] = load_prompt(f"{ state['home_path'] }optimize/planner/system.txt").format(
         phase = str(state["phase"]),

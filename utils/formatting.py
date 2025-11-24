@@ -43,7 +43,16 @@ class formatting:
 
         return formatted
 
-    def format_predictions(predictions):
+    def format_predictions(matchups):
         lines = []
-        for prediction in predictions:
-            continue
+        for matchup in matchups:
+            lines.append(f"\n***** { matchup } *****")
+            for prediction in matchups[matchup]["predictions"]:
+                prediction_text = (
+                    matchups[matchup]["predictions"][prediction].get("prediction_text") or 
+                    matchups[matchup]["predictions"][prediction].get("predicted_winner") +
+                    f" (Confidence: {int(matchups[matchup]["predictions"][prediction].get("confidence") * 100) }%)"
+                )
+                lines.append(f"- { prediction }: { prediction_text }")
+            lines.append(f"")
+        return "\n".join(lines)

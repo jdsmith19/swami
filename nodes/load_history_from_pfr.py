@@ -101,11 +101,12 @@ def create_insert_or_update_table(
     existing_ids = get_existing_ids(conn, table)
     mask_in = df[key_col].isin(existing_ids) # New concept, create a mask
     existing_rows = df[mask_in] # Use it
-    mask_not_in = ~mask_in
+    mask_not_in = ~mask_in # Reverse it
     new_rows = df[mask_not_in]
 
     cur = conn.cursor()
     cur.execute(f"DROP TABLE IF EXISTS tmp_{ table };")
+    conn.commit()
 
     if not db_and_table_exists(conn, db_path, table):
         df.to_sql(table, conn, index=False)
@@ -118,6 +119,7 @@ def create_insert_or_update_table(
         col_strings = get_column_strings(key_col, list(existing_rows.columns), table)
         update_query = get_update_query(table, col_strings)
         cur.execute(update_query)
+        conn.commit()
         log(log_path, f"{ cur.rowcount } rows updated in { table }", log_type, this_filename)
         
         # Then insert the new rows
@@ -157,6 +159,7 @@ def load_history_from_pfr(state: ScrapeState) -> ScrapeState:
         ON team_result(event_id, team);
     """)
     
+    conn.commit()
     cur.close() 
     
     return state

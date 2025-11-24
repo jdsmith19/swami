@@ -51,7 +51,6 @@ class XGBoost(PredictionModel):
 	def predict_spread(self, prediction_set):	
 		X_predict = prediction_set[self.team_specific_feature_columns].copy()
 		spread_predictions = self.xgb_regressor.predict(X_predict)
-
 		# Add to dataframe for readability
 		results = prediction_set[['home_team', 'away_team']].copy()
 		results['home_team'] = results['home_team'].map(teams.pfr_team_to_odds_api_team)

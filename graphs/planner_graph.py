@@ -47,3 +47,4 @@ planner.add_edge("progressor", END)
 
 # COMPILE THE GRAPH
 planner_graph = planner.compile()
+planner_graph.get_graph().draw_mermaid_png(output_file_path="graphs/images/planner_graph.png")

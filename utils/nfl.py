@@ -271,3 +271,54 @@ class teams:
             'WAS': 'was',
             'WSH': 'was',
         }
+    
+    def espn_code_to_team_name(code):
+        """
+        Map ESPN team codes to full NFL team names.
+
+        Args:
+            code: ESPN team code (e.g., 'buf')
+
+        Returns:
+            Full team name (e.g., 'Buffalo Bills')
+        """
+        team_lookup_dict = {
+            'ari': 'Arizona Cardinals',
+            'atl': 'Atlanta Falcons',
+            'bal': 'Baltimore Ravens',
+            'buf': 'Buffalo Bills',
+            'car': 'Carolina Panthers',
+            'chi': 'Chicago Bears',
+            'cin': 'Cincinnati Bengals',
+            'cle': 'Cleveland Browns',
+            'dal': 'Dallas Cowboys',
+            'den': 'Denver Broncos',
+            'det': 'Detroit Lions',
+            'gb': 'Green Bay Packers',
+            'hou': 'Houston Texans',
+            'ind': 'Indianapolis Colts',
+            'jax': 'Jacksonville Jaguars',
+            'kc': 'Kansas City Chiefs',
+            'lv': 'Las Vegas Raiders',
+            'lac': 'Los Angeles Chargers',
+            'lar': 'Los Angeles Rams',
+            'mia': 'Miami Dolphins',
+            'min': 'Minnesota Vikings',
+            'ne': 'New England Patriots',
+            'no': 'New Orleans Saints',
+            'nyg': 'New York Giants',
+            'nyj': 'New York Jets',
+            'phi': 'Philadelphia Eagles',
+            'pit': 'Pittsburgh Steelers',
+            'sf': 'San Francisco 49ers',
+            'sea': 'Seattle Seahawks',
+            'tb': 'Tampa Bay Buccaneers',
+            'ten': 'Tennessee Titans',
+            'wsh': 'Washington Commanders',
+        }
+
+
+        if code not in team_lookup_dict:
+            raise ValueError(f"Code '{code}' not found in lookup dictionary")
+
+        return team_lookup_dict[code]

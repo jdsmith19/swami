@@ -5,6 +5,7 @@ import datetime
 import uuid
 import argparse
 import sys
+from pathlib import Path
 
 # Internal Models
 from models.predict_model import PredictState
@@ -44,11 +45,20 @@ def predict_setup_node(state: PredictState) -> PredictState:
     # Getting Best Results
     rdb = ResultsDB(db_path)
     best_results = rdb.load_best_results()
+
+    home_path = str(Path.home()) + "/Desktop/swami/prompts/"
+    # LLM Details
+    llm_model = os.getenv('LLM_MODEL')
+    llm_base_url = os.getenv('LLM_BASE_URL')
+
     
     return {
         "agent_id": agent_id,
         "log_path": log_path,
         "log_type": log_type,
         "db_path": db_path,
-        "best_results": best_results
+        "best_results": best_results,
+        "home_path": home_path,
+        "llm_model": llm_model,
+        "llm_base_url": llm_base_url
     }

@@ -5,6 +5,7 @@ import datetime
 import uuid
 import argparse
 import sys
+import json
 
 # Prediction Models
 from prediction_models.XGBoost import XGBoost
@@ -21,6 +22,8 @@ from data_sources.ResultsDB import ResultsDB
 
 # Utilities
 from utils.logger import log
+from utils.matchups import get_predictions_by_matchup
+from utils.formatting import formatting
 
 load_dotenv()
 this_filename = os.path.basename(__file__).replace(".py","")
@@ -54,7 +57,13 @@ def predict_predictor_node(state: PredictState):
             kn = KNearest(state["aggregates"], best["target"], best["features_used"], state["prediction_set"])
             kn.predict_winner(state["prediction_set"])
             predictions.append(kn.model_output)
-        
+    
+    matchups = get_predictions_by_matchup(predictions, state["matchups"])
+    formatted = formatting.format_predictions(matchups)
+    
+    log(state["log_path"], formatted, state["log_type"], this_filename)
+    
     return {
-        "predictions": predictions
+        "predictions": predictions,
+        "matchups": matchups
     }

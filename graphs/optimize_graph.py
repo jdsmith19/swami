@@ -3,6 +3,8 @@ import os
 
 # LangChain + LangGraph Libraries
 from langgraph.graph import StateGraph, START, END
+from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
+
 
 # Models
 from models.optimize_model import OptimizeState
@@ -65,3 +67,4 @@ graph.add_conditional_edges(
 
 # COMPILE THE GRAPH
 app = graph.compile()
+app.get_graph().draw_mermaid_png(output_file_path="graphs/images/optimize_graph.png")

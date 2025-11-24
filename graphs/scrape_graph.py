@@ -24,3 +24,4 @@ graph.add_edge("load", END)
 
 # COMPILE THE GRAPH
 app = graph.compile()
+app.get_graph().draw_mermaid_png(output_file_path="graphs/images/scrape_graph.png")

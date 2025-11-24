@@ -20,3 +20,12 @@ class PredictState(AgentState):
     upcoming_games: pd.DataFrame
     prediction_set: pd.DataFrame
     predictions: list[dict]
+    matchups: dict
+    teams: list
+    injury_reports: list
+    transcriptions: list
+    podcast_analysis: list
+    week: int
+    season: int
+    transcription_summary_messages: Annotated[Sequence[BaseMessage], add_messages]
+    games: list

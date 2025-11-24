@@ -62,6 +62,7 @@ pure_eval==0.2.3
 pydantic==2.12.4
 pydantic_core==2.41.5
 Pygments==2.19.2
+pyparsing==3.2.5
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
 pytz==2025.2
@@ -89,6 +90,7 @@ urllib3==2.5.0
 wcwidth==0.2.14
 webencodings==0.5.1
 xgboost==3.1.2
+xmltodict==1.0.2
 xxhash==3.6.0
 yarl==1.22.0
 zstandard==0.25.0

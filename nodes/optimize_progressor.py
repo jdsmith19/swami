@@ -97,9 +97,9 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
     
     if state['experiment_count'] < state["max_experiments"]:
         # Set the phase based on the experiment count
-        move_to_phase_2 = (state["experiment_count"] >= 100 and state["phase"] == 1)
-        move_to_phase_3 = (state["experiment_count"] >= 200 and state["experiment_count"] < 400 and state["phase"] == 2)
-        move_to_phase_4 = (state["experiment_count"] >= 400 and state["phase"] == 3)
+        move_to_phase_2 = (state["experiment_count"] >= (state["max_experiments"] * .2) and state["phase"] == 1)
+        move_to_phase_3 = (state["experiment_count"] >= (state["max_experiments"] * .4) and state["experiment_count"] < (state["max_experiments"] * .8) and state["phase"] == 2)
+        move_to_phase_4 = (state["experiment_count"] >= (state["max_experiments"] * .8) and state["phase"] == 3)
         if (move_to_phase_2 or move_to_phase_3 or move_to_phase_4):
             state["phase"] = progress_to_next_phase(state["phase"], state["best_results"], state["prediction_models"])
     
