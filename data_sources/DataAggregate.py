@@ -32,13 +32,13 @@ class DataAggregate:
 			pbar.update(5)
 			pbar.set_description("Creating aggregates")
 			self.aggregates = self.__create_aggregates(self.game_data, self.team_performance)
-			pbar.update(70)
+			pbar.update(45)
 			pbar.set_description("Getting upcoming games")
 			self.upcoming_games = pfr.get_upcoming_games()
-			pbar.update(10)
+			pbar.update(5)
 			pbar.set_description("Creating prediction aggregates")
 			self.prediction_set = self.__get_prediction_set(self.upcoming_games, self.__get_rolling_aggregates(self.team_performance).groupby('team').tail(1))
-			pbar.update(10)
+			pbar.update(40)
 			pbar.set_description("DONE")
 	
 	def __create_aggregates(self, game_data, team_performance):
