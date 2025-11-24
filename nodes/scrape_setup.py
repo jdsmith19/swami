@@ -27,7 +27,6 @@ def scrape_setup_node(state: ScrapeState) -> ScrapeState:
         # Get HISTORY_START from .env and create a list from the range of seasons to load
         seasons = list(range(int(os.getenv('HISTORY_START')), (datetime.date.today().year + 1)))
         state["seasons"] = seasons
-        print(state["seasons"])
     else:
         # Get current year from datetime
         state["seasons"] = [datetime.date.today().year]

@@ -29,18 +29,14 @@ class ProFootballReference:
 		game_data_df = pd.DataFrame()
 
 		# Parent bar for overall progress
-		main_pbar = tqdm(self.state["seasons"], desc="Scraping from Pro Football Reference", position=0, leave=False)
-		main_pbar.write("\n⌨️  Scraping from Pro Football Reference")
 		for season in self.state["seasons"]:
-			main_pbar.set_description(f"{ season } season")
-
 			# Child bar for season progress
-			child_pbar = tqdm(teams.all_teams_pfr() , f"Getting team data for { season } season", position=1, leave=False)
-			child_pbar.write(f"\n🏈 Getting team data for { season } season")
-			for team in child_pbar:
+			pbar = tqdm(teams.all_teams_pfr() , f"Getting team data for { season } season", position=0, leave=True)
+			pbar.write(f"\n🏈 Getting team data for { season } season")
+			for team in pbar:
 				# Let's be sure to print the team names nicely				
 				pretty_team = teams.pfr_team_to_odds_api_team(team)
-				child_pbar.set_description(f"{ pretty_team }")
+				pbar.set_description(f"{ pretty_team }")
 				log(self.state["log_path"], f"Getting data for { pretty_team } in { season }", "file", this_filename)
 				game_data_url = f'https://www.pro-football-reference.com/teams/{team}/{str(season)}/gamelog/'
 				
