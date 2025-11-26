@@ -32,33 +32,24 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
     lines.append(f"ANALYSIS: { state["analysis"]["analysis"] }")
     lines.append(f"\n{'='*80 }\n")
     log(state["log_path"], "\n".join(lines), state["log_type"], this_filename)
-
     game_index = state["game_index"]
     game_index += 1
-    current_matchup = state["matchups"][state["games"][game_index]]
-    initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
-        matchup=current_matchup,
-        db_lookup_string=get_team_lookup_string(state["games"][game_index])
-    )
-    system_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/system.txt").format(
-        best_results=state["best_results"]
-    )
-    scratch_messages = [SystemMessage(content=system_prompt), HumanMessage(content=initial_prompt)]
-    final = {
-        "game_index": game_index,
-        "current_matchup": current_matchup,
-        "initial_prompt": initial_prompt,
-        "system_prompt": system_prompt,
-        "messages": [SystemMessage(content=system_prompt),HumanMessage(content=initial_prompt)],
-        "scratch_messages": scratch_messages
-    }
-    
-    #print(final)
-    return {
-        "game_index": game_index,
-        "current_matchup": current_matchup,
-        "initial_prompt": initial_prompt,
-        "system_prompt": system_prompt,
-        "messages": [SystemMessage(content=system_prompt),HumanMessage(content=initial_prompt)],
-        "scratch_messages": scratch_messages
-    }
+    if game_index >= len(state["games"] - 1):
+        current_matchup = state["matchups"][state["games"][game_index]]
+        initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
+            matchup=current_matchup,
+            db_lookup_string=get_team_lookup_string(state["games"][game_index])
+        )
+        system_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/system.txt").format(
+            best_results=state["best_results"]
+        )
+        scratch_messages = [SystemMessage(content=system_prompt), HumanMessage(content=initial_prompt)]
+        return {
+            "game_index": game_index,
+            "current_matchup": current_matchup,
+            "initial_prompt": initial_prompt,
+            "system_prompt": system_prompt,
+            "messages": [SystemMessage(content=system_prompt),HumanMessage(content=initial_prompt)],
+            "scratch_messages": scratch_messages
+        }
+    return {}
