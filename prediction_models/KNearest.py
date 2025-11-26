@@ -77,6 +77,8 @@ class KNearest(PredictionModel):
 			axis=1
 		)
 		results['confidence'] = probabilities.max(axis=1)
+		self.prediction_df = results
+		self.add_predictions_to_database()
 		results_obj = results.to_dict(orient="records")
 		self.model_output['results'] = results_obj
 		return results_obj

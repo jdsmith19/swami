@@ -33,15 +33,17 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
     lines.append(f"CONFIDENCE: { state["analysis"]["confidence"] }")
     lines.append(f"ANALYSIS: { state["analysis"]["analysis"] }")
     if not state['reasoning'] == []:
+        lines.append(f"{'='*80 }")
         lines.append(f"REASONING: ")
         for i, reason in enumerate(state["reasoning"]):
-            lines.append(f"Step { i + 1 }: { reason }")
+            lines.append(f"*** STEP { i + 1 } ***\n { reason }")
+    lines.append(f"{'='*80 }")
     lines.append(f"TOKENS USED: { tokens }")
-    lines.append(f"\n{'='*80 }\n")
+    lines.append(f"{'='*80 }\n")
     log(state["log_path"], "\n".join(lines), state["log_type"], this_filename)
     game_index = state["game_index"]
     game_index += 1
-    if game_index + 1 < len(state["games"]):
+    if game_index + 1 <= len(state["games"]):
         current_matchup = state["matchups"][state["games"][game_index]]
         initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
             matchup=current_matchup,
@@ -60,4 +62,7 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
             "scratch_messages": scratch_messages,
             "tokens": total_tokens
         }
-    return {}
+    return {
+        "game_index": game_index,
+        "tokens": total_tokens
+    }

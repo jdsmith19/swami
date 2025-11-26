@@ -170,8 +170,8 @@ class DataAggregate:
 				current_season = row['season']
 				# Regress all teams toward mean
 				for team in elo_dict:
-					elo_dict[team] = elo_dict[team] * 0.67 + 1500 * 0.33
-					elo_dict[opp] = elo_dict[opp] * 0.67 + 1500 * 0.33
+					elo_dict[team] = elo_dict[team] * 0.50 + 1500 * 0.50
+					elo_dict[opp] = elo_dict[opp] * 0.50 + 1500 * 0.50
 
 			
 			team_performance.at[idx, 'elo_rating'] = team_elo
@@ -198,20 +198,43 @@ class DataAggregate:
 		
 		# Process each game (both rows)
 		processed_events = set()
-		
+		current_season = None
+		lambda_prev = 0.5
+
 		for idx, row in df.iterrows():
+			season = row['season']
 			team = row['team']
 			opponent = row['opponent']
 			event_id = row['event_id']
 			
+			if current_season is None:
+				current_season = season
+			elif season != current_season:
+				current_season = season
+				# Regress to the mean
+				for stats in team_stats.values():
+					g = stats['games']
+					if g > 0:
+						# old wp
+						wp_old = stats['wins'] / g
+						# regressed wp
+						wp_reg = 0.5 + lambda_prev * (wp_old - 0.5)
+						# update wins to match regressed wp (keep same games count)
+						stats['wins'] = wp_reg * g
+						# you can optionally clear opponents if you want OWP/OOWP to restart:
+						stats['opponents'] = []
+
 			# Initialize team if first appearance
 			if team not in team_stats:
 				team_stats[team] = {'wins': 0, 'games': 0, 'opponents': []}
 			
+
 			# Calculate RPI BEFORE this game
 			team_rpi = self.__compute_rpi_value(team, team_stats)
+
 			rpi_values.append(team_rpi)
 			
+
 			# Update records AFTER this game (only once per event)
 			if event_id not in processed_events:
 				processed_events.add(event_id)

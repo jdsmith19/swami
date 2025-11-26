@@ -1,3 +1,6 @@
+import pandas as pd
+import sqlite3
+
 class PredictionModel:
 	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
 		self.target = target
@@ -5,6 +8,7 @@ class PredictionModel:
 		self.team_specific_feature_columns = self.__get_team_specific_feature_columns(self.feature_columns)
 		self.training_features = self.__prepare_features(data_aggregate, prediction=False)
 		self.prediction_features = self.__prepare_features(prediction_set, prediction=True)
+		self.prediction_df = pd.DataFrame
 
 	def __prepare_features(self, aggregate_data, prediction=False):
 		feature_columns = self.team_specific_feature_columns
@@ -18,8 +22,13 @@ class PredictionModel:
 		team_specific_feature_columns = []
 		team_specific_feature_columns.append("team_a_" + self.target)
 		for col in self.feature_columns:
-			if "_is_away" not in col:
+			if "_away" not in col:
 				team_specific_feature_columns.append("team_a_" + col)
-			if "_is_home" not in col:
+			if "_home" not in col:
 				team_specific_feature_columns.append("team_b_" + col)
 		return team_specific_feature_columns
+	
+	def add_predictions_to_database(self):
+		conn = sqlite3.connect("db/historical_data.db")
+		self.prediction_df.to_sql('predictons', conn, if_exists = "append", index=False)
+		conn.close()

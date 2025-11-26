@@ -90,7 +90,7 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     )
     
     if state["failure_count"] == 0:
-        print(f"Analyzing { state["games"][state["game_index"]] }")
+        print(f"Analyzing { state["games"][state["game_index"]] } [{ state["game_index"] + 1 } of { len(state["games"]) }]")
 
     response = agent.invoke({
         "messages": state["messages"]

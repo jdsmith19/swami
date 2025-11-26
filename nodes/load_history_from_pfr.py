@@ -57,10 +57,11 @@ def get_column_strings(key_col: str, all_cols: list, table: str):
     
     Takes a list of primary keys, a list of all columns, and the name of the table.
     """
-    update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ key_col } = { table }.{ key_col })" for col in all_cols if col not in ['event_id','team'])
     if table == "team_result": 
+        update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.event_id = { table }.event_id and tmp_{ table }.team = { table }.team)" for col in all_cols if col not in ['event_id','team'])
         where_string = f"WHERE EXISTS (SELECT 1 FROM tmp_{ table } WHERE tmp_{ table }.event_id = { table }.event_id and tmp_{ table }.team = { table }.team)"
     else:
+        update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ key_col } = { table }.{ key_col })" for col in all_cols if col not in ['event_id','team'])
         where_string = f"WHERE event_id IN (SELECT event_id FROM tmp_{ table })"
     return { 
         "update_cols_string": update_cols_string,
@@ -78,7 +79,7 @@ def get_existing_ids(conn, table: str):
         FROM sqlite_master
         WHERE type='table' AND name='{ table }';
     """
-    event_id_query = "SELECT event_id FROM event"
+    event_id_query = f"SELECT event_id FROM { table }"
     cur = conn.cursor()
     cur.execute(table_query)
     table_exists = cur.fetchone()
