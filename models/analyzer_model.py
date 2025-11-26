@@ -42,3 +42,5 @@ class AnalyzerState(AgentState):
     system_prompt: SystemMessage
     validated: bool
     failure_count: int
+    reasoning: list
+    llm_response: dict

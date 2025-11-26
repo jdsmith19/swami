@@ -63,7 +63,6 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     global db_path
     db_path = state["db_path"]
     llm = ChatNVIDIA(
-    #llm = ChatOpenAI(
         base_url = state["llm_base_url"], 
         api_key = "not-needed",
         model = state["llm_model"],
@@ -78,14 +77,13 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
         )
     else:
         initial_prompt = state["initial_prompt"]
-    
+
     if not state.get("system_prompt"):
         system_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/system.txt").format(
             best_results=state["best_results"]
         )
     else:
         system_prompt = state["system_prompt"]
-
     agent = create_agent(
         llm,
         tools=[run_select_query],
@@ -97,8 +95,9 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     response = agent.invoke({
         "messages": state["messages"]
     })
-    
+
     messages = []
+    reasoning = []
     for message in response['messages']:
         if message.type == 'system':
             messages.append(SystemMessage(content=message.content))
@@ -123,7 +122,10 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
                 tool_call_id=message.tool_call_id
                 )
             )
-    
+        if message.response_metadata.get('reasoning'):
+            reasoning.append(message.response_metadata.get('reasoning'))
     return {
-        "messages": messages
+        "messages": messages,
+        "llm_response": response,
+        "reasoning": reasoning
     }

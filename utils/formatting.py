@@ -37,7 +37,7 @@ class formatting:
                 lines.append("Test Accuracy by Confidence Interval: ")
                 for ci in result["confidence_intervals"]:
                     lines.append(f"\t{ ci }")
-            lines.append(f"Features used: { ', '.join(result["features_used"]) }\n")
+            lines.append(f"Features used: { ', '.join(result["features_used"]).replace('team_a', 'home_team').replace('team_b', 'away_team') }\n")
 
         formatted = "\n".join(lines)
 

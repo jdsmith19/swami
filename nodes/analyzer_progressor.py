@@ -24,12 +24,19 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
     log_path = state["log_path"]
     log_type = state["log_type"]
     #print(state.get("analysis"))
+    tokens = state["llm_response"]["messages"][-1].response_metadata['token_usage']['total_tokens']
+    total_tokens = state["tokens"] + tokens
     lines = []
     lines.append(f"\n{'='*80}")
     lines.append(f"MATCHUP: { state["analysis"]["matchup"] }")
     lines.append(f"PREDICTION: { state["analysis"]["final_prediction"] }")
     lines.append(f"CONFIDENCE: { state["analysis"]["confidence"] }")
     lines.append(f"ANALYSIS: { state["analysis"]["analysis"] }")
+    if not state['reasoning'] == []:
+        lines.append(f"REASONING: ")
+        for i, reason in enumerate(state["reasoning"]):
+            lines.append(f"Step { i + 1 }: { reason }")
+    lines.append(f"TOKENS USED: { tokens }")
     lines.append(f"\n{'='*80 }\n")
     log(state["log_path"], "\n".join(lines), state["log_type"], this_filename)
     game_index = state["game_index"]
@@ -50,6 +57,7 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
             "initial_prompt": initial_prompt,
             "system_prompt": system_prompt,
             "messages": [SystemMessage(content=system_prompt),HumanMessage(content=initial_prompt)],
-            "scratch_messages": scratch_messages
+            "scratch_messages": scratch_messages,
+            "tokens": total_tokens
         }
     return {}

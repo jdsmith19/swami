@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from utils.nfl import teams
 import time
+import json
 
 class KNearest(PredictionModel):
 	def __init__(self, data_aggregate, target, feature_columns, prediction_set):
@@ -66,6 +67,11 @@ class KNearest(PredictionModel):
 		results = prediction_set[['home_team', 'away_team']].copy()
 		results['home_team'] = results['home_team'].map(teams.pfr_team_to_odds_api_team)
 		results['away_team'] = results['away_team'].map(teams.pfr_team_to_odds_api_team)
+		prediction_data = prediction_set[self.team_specific_feature_columns].copy()
+		prediction_data.columns = prediction_data.columns.str.replace('team_a', 'home_team').str.replace('team_b', 'away_team')
+		results['prediction_data'] = prediction_data.apply(
+			lambda row: json.dumps(row.to_dict(), indent=2), axis=1
+		)
 		results['predicted_winner'] = results.apply(
 			lambda row: row['home_team'] if win_predictions[row.name] == 1 else row['away_team'],
 			axis=1

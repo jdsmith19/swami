@@ -61,7 +61,7 @@ def predict_predictor_node(state: PredictState):
     matchups = get_predictions_by_matchup(predictions, state["matchups"])
     formatted = formatting.format_predictions(matchups)
     
-    log(state["log_path"], formatted, state["log_type"], this_filename)
+    log(state["log_path"], formatted, "file", this_filename)
     
     return {
         "predictions": predictions,
