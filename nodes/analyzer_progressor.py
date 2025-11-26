@@ -41,7 +41,7 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
     log(state["log_path"], "\n".join(lines), state["log_type"], this_filename)
     game_index = state["game_index"]
     game_index += 1
-    if game_index + 1>= len(state["games"]):
+    if game_index + 1 < len(state["games"]):
         current_matchup = state["matchups"][state["games"][game_index]]
         initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
             matchup=current_matchup,
