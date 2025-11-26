@@ -67,9 +67,7 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     #llm = ChatOpenAI(
         base_url = state["llm_base_url"], 
         api_key = "not-needed",
-        #api_key = "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",
         model = state["llm_model"],
-        #model = "gpt-5.1",
         max_tokens = 4096,
         temperature=0.2
     )
