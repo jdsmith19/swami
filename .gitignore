@@ -6,3 +6,4 @@ logs/
 *.pyc
 __pycache/
 .DS_Store
+/graphs/images/
