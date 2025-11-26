@@ -1,4 +1,7 @@
 class teams:
+    def __init__(self):
+        pass
+
     def all_teams_pfr():
         return [
 			'crd', 'atl', 'rav', 'buf', 'car', 'chi', 'cin', 'cle', 'dal', 'den', 'det', 'gnb', 'htx', 'clt', 'jax', 'kan',

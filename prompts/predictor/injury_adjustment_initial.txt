@@ -1,0 +1,3 @@
+Here is the detailed injury report, analyze and make adjustments:
+		
+{injury_report}

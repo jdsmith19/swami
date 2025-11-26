@@ -6,6 +6,7 @@ import uuid
 import argparse
 import sys
 from pathlib import Path
+import json
 
 # Internal Models
 from models.predict_model import PredictState
@@ -47,10 +48,13 @@ def predict_setup_node(state: PredictState) -> PredictState:
     best_results = rdb.load_best_results()
 
     home_path = str(Path.home()) + "/Desktop/swami/prompts/"
+    
     # LLM Details
     llm_model = os.getenv('LLM_MODEL')
     llm_base_url = os.getenv('LLM_BASE_URL')
 
+    podcasts_raw = os.getenv("PODCASTS", "[]")
+    podcasts = json.loads(podcasts_raw)
     
     return {
         "agent_id": agent_id,
@@ -60,5 +64,6 @@ def predict_setup_node(state: PredictState) -> PredictState:
         "best_results": best_results,
         "home_path": home_path,
         "llm_model": llm_model,
-        "llm_base_url": llm_base_url
+        "llm_base_url": llm_base_url,
+        "podcasts": podcasts
     }

@@ -1,5 +1,6 @@
 # External Libraries
 import os
+import json
 
 # LangGraph / LangChain
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
@@ -38,6 +39,8 @@ def call_llm(messages, llm_base_url, llm_model):
     )
 
     response = llm.invoke(messages)
+
+    log(log_path, f"Tokens Used: { response.response_metadata["token_usage"]["total_tokens"] }", log_type, this_filename)
     
     return response
 
@@ -45,10 +48,20 @@ def predict_transcription_summarizer_node(state: PredictState):
     global log_path, log_type
     log_path = state["log_path"]
     log_type = state["log_type"]
+    podcast_summaries = {}
+    tokens = 0
     for transcript in state["transcriptions"]:
         log(log_path, f"Summarizing { transcript["name"] }", log_type, this_filename)
         messages = load_initial_messages(state["home_path"], state["games"], transcript["full_text"])
         response = call_llm(messages, state["llm_base_url"], state["llm_model"])
         log(log_path, response.content, log_type, this_filename)
-
-    return {}
+        summary = json.loads(response.content)
+        tokens += int(response.response_metadata["token_usage"]["total_tokens"])
+        for s in summary:
+            podcast_summaries[s] = summary[s]
+    print(f"Total Tokens Used: { tokens }")
+    print(podcast_summaries)
+    return {
+        "podcast_summaries": podcast_summaries,
+        "transcription_summary_tokens": tokens
+    }

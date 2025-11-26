@@ -19,23 +19,24 @@ class BillSimmonsPodcast:
         self.current_episode_duration = None
         self.debug = False
         self.job_status = "pending"
+        self.episode_type = None
     
     def __load_rss(self):
         r = requests.get(self.rss_url)
         data = xmltodict.parse(r.text)
         return data
     
-    def __get_guess_the_lines(self):
+    def __get_podcast(self, search_term):
         for item in self.rss_obj['rss']['channel']['item']:
             is_season = str(self.season) in item['pubDate']
-            is_gtl = "guess the lines" in item['title'].lower()
+            is_podcast = search_term in item['title'].lower()
             is_current_week = (f"week {self.week}" in item['title'].lower() or f"week {self.week}" in item['description'].lower())
-            if (is_season and is_gtl and is_current_week):
+            if (is_season and is_podcast and is_current_week):
                 self.current_episode_duration = item['itunes:duration']
                 episode_details = {
                     'title': item['title'],
                     'media_url': item['enclosure']['@url'],
-                    'save_filename': f'guess_the_lines_{self.season}_week_{self.week}.mp3'
+                    'save_filename': f'{ self.episode_type }_{self.season}_week_{self.week}.mp3'
                 }
                 return episode_details
         return {
@@ -60,9 +61,15 @@ class BillSimmonsPodcast:
         return data
     
     def transcribe_episode(self, episode_type):
+        self.episode_type = episode_type
         if episode_type == 'guess_the_lines':
             self.current_episode_name = "Guess the Lines with Cousin Sal"
-            episode_details = self.__get_guess_the_lines()
+            search_term = 'guess the lines'
+        if episode_type == 'picks_with_joe_house':
+            self.current_episode_name = f"Week { self.week } Picks with Joe House"
+            search_term = 'picks with joe house'
+        
+        episode_details = self.__get_podcast(search_term)
 
         r = requests.post(
             self.whisper_server_url + "/transcribe",

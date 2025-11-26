@@ -1,55 +1,26 @@
-You are extracting NFL betting insights from a podcast transcript.
+You are extracting analysis from a podcast transcript for this week's NFL games.
 
 GAMES THIS WEEK:
 {games}
 
-CRITICAL RULES:
-1. ONLY extract information explicitly stated in the transcript
-2. DO NOT infer, interpret, or add betting recommendations
-3. DO NOT make up betting lines or spreads
-4. DO NOT draw conclusions - just report what was said
-5. ONLY include games from this week's list above
-6. If hosts contradict themselves, include both statements and describe the contradiction
+ONLY extract information explicitly stated in the transcript
+ONLY include games from this week's list above
 
-EXTRACT (if mentioned):
-- Specific quotes about team performance/outlook
-- Injury mentions (player name + status)
-- Betting lines/spreads (exact numbers given)
-- Weather conditions
-- Matchup advantages/disadvantages
-- Coaching factors
-- Player form (hot/cold streaks)
-- Host predictions or picks
+EXTRACTION:
+Extract any content related to the game mentioned. Use the context of the text to determine whether commentary is relevant to any of the games above. Your job is to organize the text from the transcript by upcoming game, excluding any text that is not related to the list of games above.
 
-QUALITY TEST:
-Ask yourself: 'Would this insight help predict the game THIS WEEK?'
-- If it's about current form, injuries, or matchups → INCLUDE
-- If it's a historical fun fact or arbitrary split → EXCLUDE
+Do not summarize, provide the full conversation surrounding the mention of the teams, providing all context for the conversation of the game.
 
 Return JSON with SEPARATE keys for each team:
 
 {{
     // GAME 1
     // FOR AWAY @ HOME, YOU MUST USE THE FULL TEXT FROM THIS WEEK'S GAMES ABOVE
-    'Away @ Home': ['Direct insight 1 from transcript', 'Direct insight 2 from transcript'],
+    'Away @ Home': ['Extraction 1 from transcript', 'Extration 2 from transcript'],
     // GAME 2
-    'Away @ Home': ['Direct insight 1 from transcript', 'Direct insight 2 from transcript'],
+    'Away @ Home': ['Extraction 1 from transcript', 'Extraction 2 from transcript'],
     // ...
 }}
 
-EXAMPLE - GOOD:
-{{'Carolina Panthers @ Atlanta Falcons': [
-    'Hosts expressed doubt about Falcons consistency after recent loss',
-    'One host said Panthers are 'still a game back' in AFC North and this game is important for them'
-]}}
-
-EXAMPLE - BAD:
-{{
-'Ravens @ Browns': [
-    'Ravens +7.5 line as value play',  // ❌ Made up recommendation
-    'Market over-reacting to recent win'  // ❌ Interpretation not in transcript
-]
-}}
-
-ONLY include games where the transcript chunk actually discusses them.
+ONLY include games where the transcript actually discusses them.
 Return {{}} if no games mentioned.

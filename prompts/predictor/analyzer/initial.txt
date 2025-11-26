@@ -1,0 +1,6 @@
+Here are the prediction details. Analyze.
+		
+{matchup}
+
+If you'd like to run a SQL Query, the team IDs for the teams in this matchup are:
+{db_lookup_string}

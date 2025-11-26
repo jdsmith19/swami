@@ -31,33 +31,40 @@ class NFLDepthChartAnalyzer:
 		self.position_mapping = {
 			'PK': 'K',      # Placekicker -> Kicker
 			'H': 'P',       # Holder -> Punter
-			'NB': 'CB',     # Nickel Back -> Cornerback
-			'RDT': 'DT',    # Right DT -> DT
-			'LDT': 'DT',    # Left DT -> DT
+			'NB': 'SEC',     # Nickel Back -> Cornerback
 			'RDH': 'RB',    # Right Deep Half -> RB (rare)
 			'LDH': 'RB',    # Left Deep Half -> RB (rare)
+			'FB': 'RB',		# Fullbacks are rare enough, lumping with Running Back
+			'FS': 'SEC',	# Better secondary replacements offset secondary players
+			'SS': 'SEC',
+			'LCB': 'SEC',
+			'RCB': 'SEC',
+			'LDE': 'DL',	# Defensive Linemen can move around
+			'RDE': 'DL',
+			'NT': 'DL',
+			'EDGE': 'DL',
+			'DT': 'DL',
+			'WLB': 'LB',	# As can linebackers
+			'LILB': 'LB',
+			'RILB': 'LB',
+			'SLB': 'LB',
+			'LT': 'OL', # All positions but center can move around without too much impact
+			'LG': 'OL',
+			'RT': 'OL'
+			
 		}
 		
 		self.position_weights = {
-			'QB': 1.0, 'LT': 0.85, 'RT': 0.75, 'EDGE': 0.80,
-			'CB': 0.75, 'WR': 0.70, 'RB': 0.60, 'TE': 0.55,
-			'C': 0.70, 'LG': 0.65, 'RG': 0.65, 'DT': 0.70,
-			'LB': 0.65, 'S': 0.65, 'K': 0.40, 'P': 0.30,
-			'LDE': 0.80, 'RDE': 0.80, 'NT': 0.70, 'WLB': 0.65,
-			'SLB': 0.65, 'MLB': 0.65, 'LILB': 0.65, 'RILB': 0.65,
-			'LCB': 0.75, 'RCB': 0.75, 'SS': 0.65, 'FS': 0.65,
-			'FB': 0.45, 'LS': 0.20, 'PR': 0.30, 'KR': 0.30,
-			'NB': 0.70, 'RDT': 0.70, 'LDT': 0.70
+			'QB': 1.0, 'OL': 0.85, 'DL': 0.80,
+			'SEC': 0.75, 'WR': 0.70, 'RB': 0.80, 'TE': 0.55,
+			'C': 0.70, 'S': 0.65, 'K': 0.25, 'P': 0.10,
+			'LB': 0.65, 'LS': 0.05, 'PR': 0.10, 'KR': 0.10
 		}
 		
 		self.playing_time_thresholds = {
-			'QB': 1, 'RB': 2, 'FB': 1, 'WR': 3, 'TE': 2,
-			'LT': 1, 'LG': 1, 'C': 1, 'RG': 1, 'RT': 1,
-			'LDE': 2, 'RDE': 2, 'EDGE': 2, 'DT': 3, 'NT': 2,
-			'LB': 3, 'WLB': 2, 'SLB': 2, 'MLB': 2, 'LILB': 2, 'RILB': 2,
-			'CB': 3, 'LCB': 2, 'RCB': 2, 'S': 2, 'SS': 2, 'FS': 2,
-			'K': 1, 'P': 1, 'LS': 1, 'KR': 2, 'PR': 2,
-			'NB': 1, 'RDT': 2, 'LDT': 2
+			'QB': 1, 'RB': 1, 'WR': 3, 'TE': 1, 'OL': 4, 'C': 1, # Offense
+			'DL': 4, 'SEC': 4, 'LB': 3,  # Defense
+			'K': 1, 'P': 1, 'LS': 1, 'KR': 1, 'PR': 1 # Special Teams
 		}
 	
 	def normalize_position(self, position):
@@ -67,7 +74,7 @@ class NFLDepthChartAnalyzer:
 	def is_relevant_injury(self, position, depth):
 		"""Determine if this injury is relevant based on playing time"""
 		normalized_pos = self.normalize_position(position)
-		threshold = self.playing_time_thresholds.get(normalized_pos, 2)
+		threshold = self.playing_time_thresholds.get(normalized_pos, 0)
 		return depth <= threshold
 	
 	def get_team_depth_chart(self, team_abbr):
@@ -133,7 +140,6 @@ class NFLDepthChartAnalyzer:
 							'player_url': player_url,
 							'injury_status': injury_status
 						})
-
 		return pd.DataFrame(depth_chart)
 	
 	def get_player_stats(self, player_id, season=2024):
@@ -365,7 +371,8 @@ class NFLDepthChartAnalyzer:
 			'tackles': 0,
 			'sacks': 0,
 			'tackles_for_loss': 0,
-			'qb_hits': 0
+			'qb_hits': 0,
+			'games_played': 0
 		}
 		
 		for key in ['TOT', 'Total Tackles']:
@@ -378,6 +385,10 @@ class NFLDepthChartAnalyzer:
 				dl_metrics['sacks'] = stats[key]
 				break
 		
+		for key in ['GP', 'Games Played']:
+			for key in stats:
+				dl_metrics['games_played'] = stats[key]
+		
 		return dl_metrics
 	
 	def parse_lb_stats(self, stats):
@@ -386,7 +397,8 @@ class NFLDepthChartAnalyzer:
 			'tackles': 0,
 			'solo_tackles': 0,
 			'sacks': 0,
-			'tackles_for_loss': 0
+			'tackles_for_loss': 0,
+			'games_played': 0
 		}
 		
 		for key in ['TOT', 'Total Tackles']:
@@ -404,6 +416,10 @@ class NFLDepthChartAnalyzer:
 				lb_metrics['sacks'] = stats[key]
 				break
 		
+		for key in ['GP', 'Games Played']:
+			for key in stats:
+				lb_metrics['games_played'] = stats[key]
+
 		return lb_metrics
 	
 	def parse_db_stats(self, stats):
@@ -411,7 +427,8 @@ class NFLDepthChartAnalyzer:
 		db_metrics = {
 			'tackles': 0,
 			'interceptions': 0,
-			'passes_defended': 0
+			'passes_defended': 0,
+			'games_played': 0
 		}
 		
 		for key in ['TOT', 'Total Tackles']:
@@ -429,6 +446,10 @@ class NFLDepthChartAnalyzer:
 				db_metrics['passes_defended'] = stats[key]
 				break
 		
+		for key in ['GP', 'Games Played']:
+			for key in stats:
+				db_metrics['games_played'] = stats[key]
+
 		return db_metrics
 	
 	def get_replacement_level_player(self, position):
@@ -498,48 +519,13 @@ class NFLDepthChartAnalyzer:
 		# Try 1: Direct backup
 		direct_backup = depth_chart_df[
 			(depth_chart_df['formation'] == formation) &
-			(depth_chart_df['position'] == position) & 
-			(depth_chart_df['depth'] == depth + 1)
+			(depth_chart_df['normalized_position'] == normalized_position) & 
+			(depth_chart_df['depth'] == depth + 1) &
+			(depth_chart_df['injury_status'] == '')
 		]
 		
 		if not direct_backup.empty:
 			return direct_backup.iloc[0], 'direct'
-		
-		# Try 2: Same position, different formation
-		same_position_backup = depth_chart_df[
-			(depth_chart_df['position'] == position) & 
-			(depth_chart_df['depth'] == depth + 1) &
-			(depth_chart_df['formation'] != formation)
-		]
-		
-		if not same_position_backup.empty:
-			return same_position_backup.iloc[0], 'cross_formation'
-		
-		# Try 3: Positional flexibility (use normalized positions)
-		position_flexibility = {
-			'QB': [], 'RB': ['FB'], 'FB': ['RB', 'TE'], 'WR': ['TE'], 'TE': ['WR', 'FB'],
-			'LT': ['RT', 'LG'], 'RT': ['LT', 'RG'], 'LG': ['RG', 'C', 'LT'],
-			'RG': ['LG', 'C', 'RT'], 'C': ['LG', 'RG'],
-			'LDE': ['RDE', 'EDGE', 'DT'], 'RDE': ['LDE', 'EDGE', 'DT'],
-			'EDGE': ['LDE', 'RDE', 'LB'], 'DT': ['NT', 'LDE', 'RDE'], 'NT': ['DT'],
-			'LB': ['EDGE', 'S'], 'WLB': ['SLB', 'MLB', 'LILB', 'RILB'],
-			'SLB': ['WLB', 'MLB', 'LILB', 'RILB'], 'MLB': ['WLB', 'SLB', 'LILB', 'RILB'],
-			'LILB': ['RILB', 'MLB', 'WLB', 'SLB'], 'RILB': ['LILB', 'MLB', 'WLB', 'SLB'],
-			'CB': ['S'], 'LCB': ['RCB', 'CB', 'S'], 'RCB': ['LCB', 'CB', 'S'],
-			'S': ['CB'], 'SS': ['FS', 'CB', 'LB'], 'FS': ['SS', 'CB'],
-			'K': [], 'P': []
-		}
-		
-		flex_positions = position_flexibility.get(normalized_position, [])
-		
-		for flex_pos in flex_positions:
-			flex_backup = depth_chart_df[
-				(depth_chart_df['normalized_position'] == flex_pos) &
-				(depth_chart_df['depth'] <= 2)
-			]
-			
-			if not flex_backup.empty:
-				return flex_backup.iloc[0], 'positional_flex'
 		
 		return None, 'replacement_level'
 	
@@ -568,15 +554,14 @@ class NFLDepthChartAnalyzer:
 			backup_metrics = self.parse_qb_stats(backup_stats)
 			
 			rating_diff = starter_metrics.get('passer_rating', 0) - backup_metrics.get('passer_rating', 0)
-			ypa_diff = starter_metrics.get('yards_per_attempt', 0) - backup_metrics.get('yards_per_attempt', 0)
+						
+			rating_score = (rating_diff / 158.3) * 100 # 158.3 is the highest possible QB Rating
 			
-			rating_score = (rating_diff / 40) * 50
-			ypa_score = (ypa_diff / 2) * 25
-			
-			comparison['differential_score'] = max(0, min(100, rating_score + ypa_score))
+			comparison['differential_score'] = max(0, rating_score)
+
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'rating_diff': rating_diff, 'ypa_diff': ypa_diff
+				'rating_diff': rating_diff
 			}
 		
 		elif normalized_pos == 'RB':
@@ -584,59 +569,51 @@ class NFLDepthChartAnalyzer:
 			backup_metrics = self.parse_rb_stats(backup_stats)
 			
 			ypc_diff = starter_metrics.get('yards_per_carry', 0) - backup_metrics.get('yards_per_carry', 0)
-			td_rate_starter = (starter_metrics.get('rush_tds', 0) / max(1, starter_metrics.get('rush_attempts', 1))) * 100
-			td_rate_backup = (backup_metrics.get('rush_tds', 0) / max(1, backup_metrics.get('rush_attempts', 1))) * 100
-			td_rate_diff = td_rate_starter - td_rate_backup
 			
-			ypc_score = (ypc_diff / 2) * 50
-			td_score = (td_rate_diff / 5) * 25
-			
-			comparison['differential_score'] = max(0, min(100, ypc_score + td_score))
+			ypc_score = (ypc_diff / 8.4) * 80 # Highest ever rushing yards per attempt in a season
+			comparison['differential_score'] = max(0, min(ypc_score, 100))
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'ypc_diff': ypc_diff, 'td_rate_diff': td_rate_diff
+				'ypc_diff': ypc_diff
 			}
 		
 		elif normalized_pos in ['WR', 'TE']:
 			starter_metrics = self.parse_wr_stats(starter_stats)
 			backup_metrics = self.parse_wr_stats(backup_stats)
-			
+						
 			ypr_diff = starter_metrics.get('yards_per_reception', 0) - backup_metrics.get('yards_per_reception', 0)
-			catch_rate_diff = starter_metrics.get('catch_rate', 0) - backup_metrics.get('catch_rate', 0)
 			
-			ypr_score = (ypr_diff / 5) * 50
-			catch_score = (catch_rate_diff / 20) * 25
-			
-			comparison['differential_score'] = max(0, min(100, ypr_score + catch_score))
+			ypr_score = (ypr_diff / 32.6) * 50 # Highest ever receiving yards per catch in a season
+			comparison['differential_score'] = max(0, min(100, ypr_score))
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'ypr_diff': ypr_diff, 'catch_rate_diff': catch_rate_diff
+				'ypr_diff': ypr_diff
 			}
 		
 		elif normalized_pos in ['LT', 'LG', 'C', 'RG', 'RT']:
-			starter_metrics = self.parse_ol_stats(starter_stats)
-			backup_metrics = self.parse_ol_stats(backup_stats)
-			
-			games_diff = starter_metrics.get('games_played', 0) - backup_metrics.get('games_played', 0)
-			games_score = (games_diff / 17) * 50
-			
-			comparison['differential_score'] = max(0, min(100, games_score))
+			comparison['differential_score'] = 20
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'games_diff': games_diff
+				'games_diff': 0
 			}
 		
 		elif normalized_pos in ['LDE', 'RDE', 'EDGE', 'DT', 'NT']:
 			starter_metrics = self.parse_dl_stats(starter_stats)
 			backup_metrics = self.parse_dl_stats(backup_stats)
 			
-			sacks_diff = starter_metrics.get('sacks', 0) - backup_metrics.get('sacks', 0)
-			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
+			starter_sacks_per_game = starter_metrics.get('sacks') / max(starter_metrics.get('games_played', 1), 1)
+			starter_tackles_per_game = starter_metrics.get('tackles') / max(starter_metrics.get('games_played', 1), 1)
+			backup_sacks_per_game = backup_metrics.get('sacks') / max(backup_metrics.get('games_played', 1), 1)
+			backup_tackles_per_game = backup_metrics.get('tackles') / max(backup_metrics.get('games_played', 1), 1)
 			
-			sacks_score = (sacks_diff / 10) * 50
-			tackles_score = (tackles_diff / 50) * 25
+			sacks_diff = starter_sacks_per_game - backup_sacks_per_game
+			tackles_diff = starter_tackles_per_game - backup_tackles_per_game
+
 			
-			comparison['differential_score'] = max(0, min(100, sacks_score + tackles_score))
+			sacks_score = (sacks_diff / 9.75) * 30 # Most tackles ever per game (Ray Lewis)
+			tackles_score = (tackles_diff / 1.4) * 30 # Most sacks ever per game (Michael Strahan)
+			
+			comparison['differential_score'] = max(0, min((sacks_score + tackles_score)), 100)
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
 				'sacks_diff': sacks_diff, 'tackles_diff': tackles_diff
@@ -646,16 +623,22 @@ class NFLDepthChartAnalyzer:
 			starter_metrics = self.parse_lb_stats(starter_stats)
 			backup_metrics = self.parse_lb_stats(backup_stats)
 			
-			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
-			sacks_diff = starter_metrics.get('sacks', 0) - backup_metrics.get('sacks', 0)
+			starter_sacks_per_game = starter_metrics.get('sacks') / max(starter_metrics.get('games_played', 1), 1)
+			starter_tackles_per_game = starter_metrics.get('tackles') / max(starter_metrics.get('games_played', 1), 1)
+			backup_sacks_per_game = backup_metrics.get('sacks') / max(backup_metrics.get('games_played', 1), 1)
+			backup_tackles_per_game = backup_metrics.get('tackles') / max(backup_metrics.get('games_played', 1), 1)
 			
-			tackles_score = (tackles_diff / 80) * 60
-			sacks_score = (sacks_diff / 5) * 15
+			sacks_diff = starter_sacks_per_game - backup_sacks_per_game
+			tackles_diff = starter_tackles_per_game - backup_tackles_per_game
+
 			
-			comparison['differential_score'] = max(0, min(100, tackles_score + sacks_score))
+			sacks_score = (sacks_diff / 9.75) * 25 # Most tackles ever per game (Ray Lewis)
+			tackles_score = (tackles_diff / 1.4) * 25 # Most sacks ever per game (Michael Strahan)
+			
+			comparison['differential_score'] = max(0, min((sacks_score + tackles_score)), 100)
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'tackles_diff': tackles_diff, 'sacks_diff': sacks_diff
+				'sacks_diff': sacks_diff, 'tackles_diff': tackles_diff
 			}
 		
 		elif normalized_pos in ['CB', 'LCB', 'RCB', 'S', 'SS', 'FS']:
@@ -666,9 +649,9 @@ class NFLDepthChartAnalyzer:
 			pd_diff = starter_metrics.get('passes_defended', 0) - backup_metrics.get('passes_defended', 0)
 			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
 			
-			int_score = (int_diff / 5) * 40
-			pd_score = (pd_diff / 10) * 30
-			tackles_score = (tackles_diff / 60) * 15
+			int_score = (int_diff / 5) * 15
+			pd_score = (pd_diff / 10) * 15
+			tackles_score = (tackles_diff / 60) * 10
 			
 			comparison['differential_score'] = max(0, min(100, int_score + pd_score + tackles_score))
 			comparison['metrics'] = {
@@ -707,15 +690,13 @@ class NFLDepthChartAnalyzer:
 			backup_metrics = replacement_stats
 			
 			rating_diff = starter_metrics.get('passer_rating', 0) - backup_metrics.get('passer_rating', 0)
-			ypa_diff = starter_metrics.get('yards_per_attempt', 0) - backup_metrics.get('yards_per_attempt', 0)
 			
-			rating_score = (rating_diff / 40) * 50
-			ypa_score = (ypa_diff / 2) * 25
+			rating_score = (rating_diff / 158.3) * 100 # 158.3 is the highest possible QB Rating
 			
-			comparison['differential_score'] = max(0, min(100, rating_score + ypa_score))
+			comparison['differential_score'] = max(0, rating_score)
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'rating_diff': rating_diff, 'ypa_diff': ypa_diff
+				'rating_diff': rating_diff
 			}
 		
 		elif normalized_pos == 'RB':
@@ -724,8 +705,8 @@ class NFLDepthChartAnalyzer:
 			
 			ypc_diff = starter_metrics.get('yards_per_carry', 0) - backup_metrics.get('yards_per_carry', 0)
 			
-			ypc_score = (ypc_diff / 2) * 50
-			comparison['differential_score'] = max(0, min(100, ypc_score))
+			ypc_score = (ypc_diff / 8.4) * 80 # Highest ever rushing yards per attempt in a season
+			comparison['differential_score'] = max(0, min(ypc_score, 100))
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
 				'ypc_diff': ypc_diff
@@ -737,7 +718,7 @@ class NFLDepthChartAnalyzer:
 			
 			ypr_diff = starter_metrics.get('yards_per_reception', 0) - backup_metrics.get('yards_per_reception', 0)
 			
-			ypr_score = (ypr_diff / 5) * 50
+			ypr_score = (ypr_diff / 32.6) * 50 # Highest ever receiving yards per catch in a season
 			comparison['differential_score'] = max(0, min(100, ypr_score))
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
@@ -745,29 +726,34 @@ class NFLDepthChartAnalyzer:
 			}
 		
 		elif normalized_pos in ['LT', 'LG', 'C', 'RG', 'RT']:
-			starter_metrics = self.parse_ol_stats(starter_stats)
-			backup_metrics = replacement_stats
+			#starter_metrics = self.parse_ol_stats(starter_stats)
+			#backup_metrics = replacement_stats
 			
-			games_diff = starter_metrics.get('games_played', 0) - backup_metrics.get('games_played', 0)
-			games_score = (games_diff / 17) * 50
+			#games_diff = starter_metrics.get('games_played', 0) - backup_metrics.get('games_played', 0)
+			#games_score = (games_diff / 17) * 50
 			
-			comparison['differential_score'] = max(0, min(100, games_score))
+			comparison['differential_score'] = 20
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
-				'games_diff': games_diff
+				'games_diff': 0
 			}
 		
 		elif normalized_pos in ['LDE', 'RDE', 'EDGE', 'DT', 'NT']:
 			starter_metrics = self.parse_dl_stats(starter_stats)
 			backup_metrics = replacement_stats
+			starter_sacks_per_game = starter_metrics.get('sacks') / max(starter_metrics.get('games_played', 1), 1)
+			starter_tackles_per_game = starter_metrics.get('tackles') / max(starter_metrics.get('games_played', 1), 1)
+			backup_sacks_per_game = backup_metrics.get('sacks') / max(backup_metrics.get('games_played', 1), 1)
+			backup_tackles_per_game = backup_metrics.get('tackles') / max(backup_metrics.get('games_played', 1), 1)
 			
-			sacks_diff = starter_metrics.get('sacks', 0) - backup_metrics.get('sacks', 0)
-			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
+			sacks_diff = starter_sacks_per_game - backup_sacks_per_game
+			tackles_diff = starter_tackles_per_game - backup_tackles_per_game
+
 			
-			sacks_score = (sacks_diff / 10) * 50
-			tackles_score = (tackles_diff / 50) * 25
+			sacks_score = (sacks_diff / 9.75) * 30 # Most tackles ever per game (Ray Lewis)
+			tackles_score = (tackles_diff / 1.4) * 30 # Most sacks ever per game (Michael Strahan)
 			
-			comparison['differential_score'] = max(0, min(100, sacks_score + tackles_score))
+			comparison['differential_score'] = max(0, min((sacks_score + tackles_score)), 100)
 			comparison['metrics'] = {
 				'starter': starter_metrics, 'backup': backup_metrics,
 				'sacks_diff': sacks_diff, 'tackles_diff': tackles_diff
@@ -776,12 +762,16 @@ class NFLDepthChartAnalyzer:
 		elif normalized_pos in ['LB', 'WLB', 'SLB', 'MLB', 'LILB', 'RILB']:
 			starter_metrics = self.parse_lb_stats(starter_stats)
 			backup_metrics = replacement_stats
+			starter_sacks_per_game = starter_metrics.get('sacks') / max(starter_metrics.get('games_played', 1), 1)
+			starter_tackles_per_game = starter_metrics.get('tackles') / max(starter_metrics.get('games_played', 1), 1)
+			backup_sacks_per_game = backup_metrics.get('sacks') / max(backup_metrics.get('games_played', 1), 1)
+			backup_tackles_per_game = backup_metrics.get('tackles') / max(backup_metrics.get('games_played', 1), 1)
 			
-			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
-			sacks_diff = starter_metrics.get('sacks', 0) - backup_metrics.get('sacks', 0)
+			sacks_diff = starter_sacks_per_game - backup_sacks_per_game
+			tackles_diff = starter_tackles_per_game - backup_tackles_per_game
 			
-			tackles_score = (tackles_diff / 80) * 60
-			sacks_score = (sacks_diff / 5) * 15
+			sacks_score = (sacks_diff / 9.75) * 25 # Most tackles ever per game (Ray Lewis)
+			tackles_score = (tackles_diff / 1.4) * 25 # Most sacks ever per game (Michael Strahan)
 			
 			comparison['differential_score'] = max(0, min(100, tackles_score + sacks_score))
 			comparison['metrics'] = {
@@ -792,14 +782,20 @@ class NFLDepthChartAnalyzer:
 		elif normalized_pos in ['CB', 'LCB', 'RCB', 'S', 'SS', 'FS']:
 			starter_metrics = self.parse_db_stats(starter_stats)
 			backup_metrics = replacement_stats
+			starter_tackles_per_game = starter_metrics.get('tackles') / max(starter_metrics.get('games_played', 1), 1)
+			backup_tackles_per_game = backup_metrics.get('tackles') / max(backup_metrics.get('games_played', 1), 1)
+			starter_interceptions_per_game = starter_metrics.get('interceptions') / max(starter_metrics.get('games_played', 1), 1)
+			backup_interceptions_per_game = backup_metrics.get('interceptions') / max(backup_metrics.get('games_played', 1), 1)
+			starter_pd_per_game = starter_metrics.get('passes_defended') / max(starter_metrics.get('games_played', 1), 1)
+			backup_pd_per_game = backup_metrics.get('passes_defended') / max(backup_metrics.get('games_played', 1), 1)
+
+			int_diff = starter_interceptions_per_game - backup_interceptions_per_game
+			pd_diff = starter_pd_per_game - backup_pd_per_game
+			tackles_diff = starter_tackles_per_game - backup_tackles_per_game
 			
-			int_diff = starter_metrics.get('interceptions', 0) - backup_metrics.get('interceptions', 0)
-			pd_diff = starter_metrics.get('passes_defended', 0) - backup_metrics.get('passes_defended', 0)
-			tackles_diff = starter_metrics.get('tackles', 0) - backup_metrics.get('tackles', 0)
-			
-			int_score = (int_diff / 5) * 40
-			pd_score = (pd_diff / 10) * 30
-			tackles_score = (tackles_diff / 60) * 15
+			int_score = (int_diff / 0.875) * 15 # Most interceptions ever per game (0.875 - Night Train Lane)
+			pd_score = (pd_diff / 1.9375) * 15 # Most passes defended ever per game (Darelle Revis)
+			tackles_score = (tackles_diff / 1.4) * 10 # Most sacks ever per game (Michael Strahan)
 			
 			comparison['differential_score'] = max(0, min(100, int_score + pd_score + tackles_score))
 			comparison['metrics'] = {
@@ -883,10 +879,6 @@ class NFLDepthChartAnalyzer:
 		
 		impact_score = base_score * severity_multiplier
 		
-		# Apply minimum floor for starters to prevent 0.0 scores
-		if depth == 1 and impact_score < 5.0:
-			impact_score = 5.0
-		
 		return round(impact_score, 2)
 	
 	def analyze_injury_impact(self, team_abbr):
@@ -904,8 +896,10 @@ class NFLDepthChartAnalyzer:
 				continue
 			
 			backup_row, backup_type = self.find_backup_player(df, injured_player)
-			
-			if backup_type == 'replacement_level':
+			if backup_type == 'direct':
+				backup_name = f"{backup_row['player_name']} ({backup_row['position']})"
+				backup_id = backup_row['player_id']
+			elif backup_type == 'replacement_level':
 				backup_name = 'Replacement Level'
 				backup_id = None
 			elif backup_type == 'positional_flex':
@@ -980,7 +974,7 @@ class NFLDepthChartAnalyzer:
 		
 		offensive_positions = ['QB', 'RB', 'WR', 'TE', 'LT', 'LG', 'C', 'RG', 'RT']
 		
-		total_impact = injury_df['impact_score'].sum()
+		total_impact = (injury_df['impact_score'] * injury_df['position_weight']).sum() / 22
 		
 		# Calculate impact percentage (normalized to 0-100 scale)
 		# Using 100 as baseline max, but can exceed for severe compound injuries
@@ -991,8 +985,8 @@ class NFLDepthChartAnalyzer:
 			'high_count': len(injury_df[injury_df['impact_level'] == 'HIGH']),
 			'starter_injuries': len(injury_df[injury_df['is_starter'] == True]),
 			'key_positions_affected': injury_df[injury_df['is_starter'] == True]['position'].tolist(),
-			'offensive_impact': float(injury_df[injury_df['position'].isin(offensive_positions)]['impact_score'].sum()),
-			'defensive_impact': float(injury_df[~injury_df['position'].isin(offensive_positions + ['K', 'P', 'LS', 'KR', 'PR'])]['impact_score'].sum())
+			'offensive_impact': round(float((injury_df[injury_df['position'].isin(offensive_positions)]['impact_score'] * injury_df[injury_df['position'].isin(offensive_positions)]['position_weight']).sum()) / 11, 1),
+			'defensive_impact': round(float((injury_df[~injury_df['position'].isin(offensive_positions + ['K', 'P', 'LS', 'KR', 'PR'])]['impact_score'] * injury_df[~injury_df['position'].isin(offensive_positions + ['K', 'P', 'LS', 'KR', 'PR'])]['position_weight']).sum()) / 11, 1)
 		}
 		
 		return {
