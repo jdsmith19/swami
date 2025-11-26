@@ -20,7 +20,7 @@ analyzer = StateGraph(AnalyzerState)
 
 # CONDITIONAL EDGE DEFINITIONS
 def analyzed_all_games(state: AnalyzerState) -> AnalyzerState:
-    if state["game_index"] >= len(state["games"]):
+    if state["game_index"] >= len(state["games"] - 1):
         print("ANALYSIS COMPLETE")
         print(f"Tokens Used: { state["tokens"] }")
         return "end"
