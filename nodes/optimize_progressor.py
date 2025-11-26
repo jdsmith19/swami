@@ -103,7 +103,7 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
         if (move_to_phase_2 or move_to_phase_3 or move_to_phase_4):
             state["phase"] = progress_to_next_phase(state["phase"], state["best_results"], state["prediction_models"])
     
-    state["trimmed_results"] = state["historical_results"][-75:]
+    state["trimmed_results"] = state["historical_results"][-100:]
     
     return state
     
