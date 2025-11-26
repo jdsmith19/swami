@@ -33,7 +33,10 @@ class ProFootballReference:
 			# Child bar for season progress
 			pbar = tqdm(teams.all_teams_pfr() , f"Getting team data for { season } season", position=0, leave=True)
 			pbar.write(f"\n🏈 Getting team data for { season } season")
+			i = 0
 			for team in pbar:
+				#if i >= 2:
+					#break
 				# Let's be sure to print the team names nicely				
 				pretty_team = teams.pfr_team_to_odds_api_team(team)
 				pbar.set_description(f"{ pretty_team }")
@@ -111,6 +114,7 @@ class ProFootballReference:
 						log(self.state['log_path'],f"Unexpected error for { pretty_team } in {season}: {e}", self.state['log_type'], this_filename)
 						log(self.state['log_path'],f"{ traceback.format_exc() }", self.state['log_type'], this_filename)
 					
+					i += 1
 					time.sleep(random.randint(4,5))
 				
 				# Data Cleanup -- have to drop duplicates because there will be one for each team page				

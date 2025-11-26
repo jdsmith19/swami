@@ -57,8 +57,11 @@ def get_column_strings(key_col: str, all_cols: list, table: str):
     
     Takes a list of primary keys, a list of all columns, and the name of the table.
     """
-    update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ key_col } = { table }.{ key_col })" for col in all_cols if col not in [key_col])
-    where_string = "\n".join(f"WHERE { key_col } IN (SELECT { key_col } FROM tmp_{ table })" for key_col in [key_col])
+    update_cols_string = ",\n".join(f"{ col } = (SELECT { col } FROM tmp_{ table } WHERE tmp_{ table }.{ key_col } = { table }.{ key_col })" for col in all_cols if col not in ['event_id','team'])
+    if table == "team_result": 
+        where_string = f"WHERE EXISTS (SELECT 1 FROM tmp_{ table } WHERE tmp_{ table }.event_id = { table }.event_id and tmp_{ table }.team = { table }.team)"
+    else:
+        where_string = f"WHERE event_id IN (SELECT event_id FROM tmp_{ table })"
     return { 
         "update_cols_string": update_cols_string,
         "where_string": where_string
@@ -115,18 +118,19 @@ def create_insert_or_update_table(
         count = existing_rows.to_sql(f"tmp_{ table }", conn, index = False)
         log(log_path,f"{count} rows inserted in tmp_{ table }", log_type, this_filename)
         
-        # Update existing rows from the temp table
-        col_strings = get_column_strings(key_col, list(existing_rows.columns), table)
-        update_query = get_update_query(table, col_strings)
-        cur.execute(update_query)
-        conn.commit()
-        log(log_path, f"{ cur.rowcount } rows updated in { table }", log_type, this_filename)
-        
-        # Then insert the new rows
+        # Insert the new rows
         count = new_rows.to_sql(table, conn, if_exists = "append", index = False)
         log(log_path,f"{count} rows inserted in { table }", log_type, this_filename)
+
+        # Then update existing rows from the temp table
+        col_strings = get_column_strings(key_col, list(existing_rows.columns), table)
+        update_query = get_update_query(table, col_strings)
+        #print(update_query)
+        cur.execute(update_query)
+        conn.commit()
         cur.close()
-                               
+        log(log_path, f"{ cur.rowcount } rows updated in { table }", log_type, this_filename)
+                                       
 def load_history_from_pfr(state: ScrapeState) -> ScrapeState:
     """Scrapes data from Pro Football Reference and loads to the database."""
     # Set global variable values
