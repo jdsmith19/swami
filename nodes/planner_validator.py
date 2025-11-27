@@ -42,7 +42,8 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
     except json.JSONDecodeError as e:
         error_response = f"VALIDATION ERROR: The output is not valid JSON. You must enclose keys in double quotes and ensure all syntax is correct. Error details: { e }"
         messages.append(HumanMessage(content = error_response))
-        log(log_path, error_response, log_type, this_filename)
+        log(log_path, error_response, "file", this_filename)
+        log(log_path, "Failed JSON Decode Validation", log_type, this_filename)
         return {
             "validated": validated,
             "messages": messages,
@@ -55,7 +56,8 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
     except ValidationError as e:
         error_response = f"VALIDATION ERROR. Review the following error details carefully and try again by generating corrected JSON. DO NOT call this tool again until you have fixed the JSON. Details: \n{e}"
         messages.append(HumanMessage(content = error_response))
-        log(log_path, error_response, log_type, this_filename)
+        log(log_path, error_response, "file", this_filename)
+        log(log_path, "Failed ExperimentPlan validation", log_type, this_filename)
         return {
             "validated": validated,
             "messages": messages,
@@ -79,7 +81,8 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
             error_response = f"DUPLICATE EXPERIMENT ERROR: Exact experiments have already been run. Results were: { duplication_errors }"
             messages = state["messages"]
             messages.append(HumanMessage(content = error_response))
-            log(log_path, error_response, log_type, this_filename)
+            log(log_path, error_response, "file", this_filename)
+            log(log_path, "Failed Duplicate Experiment validation", log_type, this_filename)
             return {
                 "validated": validated,
                 "messages": messages,

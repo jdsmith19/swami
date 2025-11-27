@@ -7,6 +7,9 @@
 - Add a judge agent to the Optimize Planner node
   - Probably only for Phases 3 and 4.
   - Analyzes the reasoning and provides feedback. Ensures that sound statisical thinking is occurring.
+- Clean up how the agent returns state
+  - Don't return state directly
+  - Return: { "foo": "bar" }
 
 ## Tavily
 
