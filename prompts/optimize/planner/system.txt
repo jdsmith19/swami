@@ -177,6 +177,7 @@ When you have 10 experiments ready to execute, return a response with ONLY JSON 
 {{
     "experiments": [
         {{
+            "experiment_number": 1, // an integer from 1 to 10
             "model": "Which model to execute the experiment against. MUST be one of the AVAILABLE MODELS",
             "features": [Which features to use in the model training. MUST be one of the AVAILABLE FEATURES],
             

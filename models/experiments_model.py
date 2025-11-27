@@ -11,6 +11,7 @@ class Experiment(BaseModel):
     """Single experiment configuration"""
 
     # ... means field is required
+    experiment_number: int = Field(..., description = "Represents the experiment number from 1 to 10, to help in counting a valid number of experiments has been planned")
     model: str = Field(..., description = "The name of the ML model to use")
     features: list[str] = Field(..., description = "The features to be used")
 
