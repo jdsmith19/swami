@@ -1,5 +1,27 @@
 # TODO AND IDEAS
 
+## General Outputs
+
+- Add more detail for logging and the database
+  - Add team_id to predictions
+  - Add agent_id to predictions
+  - Add was_best_result to results
+  - Add day / date to games
+  - Order the results
+
+## Token Counts
+
+- Use a reducer for total_tokens
+  - Apply to all agents
+
+## Final Report
+
+- Create the final report generation agent
+
+## More Stability
+
+- Either add empty confidence to results that don't have confidence OR create the tables if they don't exist on setup
+
 ## Optimize
 
 - Add a validation agent to the Optimize Planner node
@@ -10,6 +32,12 @@
 - Clean up how the agent returns state
   - Don't return state directly
   - Return: { "foo": "bar" }
+- Send back to judge after resetting messages because of multiple validation failures
+  - Set judged = state["judged"] at start
+  - Set judged = False if resetting messages
+  - return { "judged": judged }
+- Be smarter about context window
+  - Dynamically set state["trimmed_results"] based on token count
 
 ## Tavily
 
@@ -44,3 +72,10 @@
   - See what works for Expert Analysis and see if it can be adapted for podcasts
   - Consider RAG retrieval (e.g. Chroma?) so the agent can look up player / team associations for gaining context
   - Consider chunking
+
+## Web UI
+
+- Create Web UI for agents
+  - Kick off agent run
+  - Show progress
+  - See historical results

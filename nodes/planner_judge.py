@@ -17,11 +17,16 @@ this_filename = os.path.basename(__file__).replace(".py","")
 
 def planner_judge_node(state: PlannerState) -> PlannerState:
     log(state["log_path"], "Judging the agent's response", state["log_type"], this_filename)
+
+    temperature = 0.2
+
     llm = ChatNVIDIA(
         base_url = state["llm_base_url"], 
         api_key = "not-needed",
         model = state["llm_model"],
-        max_tokens = 4096
+        max_tokens = 4096,
+        temperature = temperature,
+        top_p = 1.0
     )
 
     phase_judge_instructions = [
