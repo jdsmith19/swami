@@ -32,3 +32,27 @@ class PredictionModel:
 		conn = sqlite3.connect("db/historical_data.db")
 		self.prediction_df.to_sql('predictons', conn, if_exists = "append", index=False)
 		conn.close()
+
+	def sanitize_features(self, df, model):
+		"""
+		Ensure columns are unique and log any duplicates the moment they appear.
+		Keeps the first occurrence of each column.
+		"""
+		cols = pd.Index(df.columns)
+		dup_mask = cols.duplicated()
+
+		if not dup_mask.any():
+			return df
+		
+		dupes = cols[dup_mask].tolist()
+
+		# 🔎 Log everything you'd ever want to inspect later
+		print("⚠️ Duplicate feature columns detected")
+		print(f"Model: { model }")
+		print(f"Total columns: { df.shape[1] }")
+		print(f"Duplicate columns: { dupes }")
+
+		# Canonical fix: keep first occurrence of each name
+		df = df.loc[:, ~dup_mask].copy()
+
+		return df

@@ -22,7 +22,10 @@ class LogisticRegression(PredictionModel):
 		
 		if(test):
 			X, X_test, y, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-				
+
+		# 🔒 Always sanitize before giving to XGBoost
+		X = self.sanitize_features(X, context=self.model_output["model_name"])
+
 		# Scale
 		scaler = StandardScaler()
 		X = scaler.fit_transform(X)
