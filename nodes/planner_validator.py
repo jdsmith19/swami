@@ -40,6 +40,8 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
         obj = json.loads(state["last_message"])
 
     except json.JSONDecodeError as e:
+        error_count = state["total_error_count"]
+        error_count += 1
         error_response = f"VALIDATION ERROR: The output is not valid JSON. You must enclose keys in double quotes and ensure all syntax is correct. Error details: { e }"
         messages.append(HumanMessage(content = error_response))
         log(log_path, error_response, "file", this_filename)
@@ -47,13 +49,16 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
         return {
             "validated": validated,
             "messages": messages,
-            "failed_validation_count": state["failed_validation_count"] + 1
+            "failed_validation_count": state["failed_validation_count"] + 1,
+            "total_error_count": error_count
         }
         
     try:
         validated_plan = ExperimentPlan.model_validate(obj)
     
     except ValidationError as e:
+        error_count = state["total_error_count"]
+        error_count += 1        
         error_response = f"VALIDATION ERROR. Review the following error details carefully and try again by generating corrected JSON. DO NOT call this tool again until you have fixed the JSON. Details: \n{e}"
         messages.append(HumanMessage(content = error_response))
         log(log_path, error_response, "file", this_filename)
@@ -61,7 +66,8 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
         return {
             "validated": validated,
             "messages": messages,
-            "failed_validation_count": state["failed_validation_count"] + 1
+            "failed_validation_count": state["failed_validation_count"] + 1,
+            "total_error_count": error_count
         }
     
     conn = sqlite3.connect(state["db_path"])
@@ -83,10 +89,13 @@ def planner_validator_node(state: PlannerState) -> PlannerState:
             messages.append(HumanMessage(content = error_response))
             log(log_path, error_response, "file", this_filename)
             log(log_path, "Failed Duplicate Experiment validation", log_type, this_filename)
+            error_count = state["total_error_count"]
+            error_count += 1
             return {
                 "validated": validated,
                 "messages": messages,
-                "failed_validatino_count": state["failed_validation_count"] + 1
+                "failed_validatino_count": state["failed_validation_count"] + 1,
+                "total_error_count": error_count
             }
 
 

@@ -35,3 +35,5 @@ class PlannerState(AgentState):
     # DEBUG
     confirmed_append: bool
     total_tokens: int
+    best_results_found: list[dict] # List of all Best Results that have been identified in this run
+    total_error_count: int

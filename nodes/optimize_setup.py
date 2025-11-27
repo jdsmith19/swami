@@ -133,6 +133,8 @@ def optimize_setup_node(state: OptimizeState) -> OptimizeState:
         "historical_results": {}
     }
     
+    state["best_results_found"] = []
+    state["total_error_count"] = 0
     state["total_tokens"] = 0
-    
+
     return state

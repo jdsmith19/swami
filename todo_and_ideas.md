@@ -1,5 +1,9 @@
 # TODO AND IDEAS
 
+## Data Aggregates
+
+- MUST start calculating trends, not just averages
+
 ## General Outputs
 
 - Add more detail for logging and the database
@@ -21,6 +25,7 @@
 ## More Stability
 
 - Either add empty confidence to results that don't have confidence OR create the tables if they don't exist on setup
+- Move all feature definitions into utils.features so I only have to update in one place
 
 ## Optimize
 
@@ -38,6 +43,9 @@
   - return { "judged": judged }
 - Be smarter about context window
   - Dynamically set state["trimmed_results"] based on token count
+- Log total number of Best Results found and total number of errors
+  - Print at the end for an overall summary
+  - Think about logging them with the model_name and the improvement amount
 
 ## Tavily
 

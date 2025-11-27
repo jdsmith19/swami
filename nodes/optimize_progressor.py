@@ -39,7 +39,7 @@ def is_best_result(result, best_results):
             differential = round(best[metric] - result[metric], 3)
             if result[metric] > best[metric]:
                 is_best = True
-        
+            
         log(log_path, f"Result differential for { result["model_name"] }: { differential }", log_type, this_filename)
     
     return is_best
@@ -77,6 +77,7 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
         rdb.save_result(result["result"], result["features_used"])
         if is_best_result(result["result"], state["best_results"]):
             print(f"🥳 Best result for { result["result"]["model_name"] }")
+            state["best_results_found"].append(result["result"])
             state["best_results"] = set_best_result(result["result"], state["best_results"], result["features_used"], state["db_path"])
 
 
@@ -90,6 +91,8 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
     lines = []
     lines.append(f"\n{'='*80}")
     lines.append(f"{ state["experiment_count"] } of { state["max_experiments"] } experiments completed.")
+    lines.append(f"Best results updated { len(state["best_results_found"]) } times")
+    lines.append(f"{ state["total_error_count"] } validation errors identified")
     lines.append(f"Total tokens so far: { state["total_tokens"]}")
     lines.append(f"{'='*80}\n")
 

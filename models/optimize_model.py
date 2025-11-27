@@ -13,6 +13,8 @@ class OptimizeState(AgentState):
     experiment_history: list[dict] # List of all experiments run by the agent
     phase: int # The current phase of the optimizer
     best_results: dict # The current set of best results from the optimizer
+    best_results_found: list[dict] # List of all Best Results that have been identified in this run
+    total_error_count: int
     prediction_models: list[dict] # List of all available models with name and type
     extended_features: list[str] # List of all extended features including both base and windowed features that can be used for predictions
     historical_results: list

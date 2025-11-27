@@ -16,7 +16,9 @@ this_filename = os.path.basename(__file__).replace(".py","")
 
 def planner_caller_node(state: PlannerState) -> PlannerState:
     log(state["log_path"], "Planning experiments", state["log_type"], this_filename)
-    
+    judged = state["judged"]
+    failed_validation_count = state["failed_validation_count"]
+
     if state["phase"] in [1,2]:
         temperature = 0.2
     else:
@@ -45,9 +47,10 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
             ai_responses += 1
 
     if ai_responses >= 4:
-        log(state["log_path"], f"Validation has failed { state["failed_validation_count"] } times.", state["log_type"], this_filename)
+        log(state["log_path"], f"Validation has failed { ai_responses } times. Resetting state.", state["log_type"], this_filename)
         state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
-        state["failed_validation_count"] = 0
+        failed_validation_count = 0
+        judged = False
 
     response = llm.invoke(
         state["messages"]
@@ -66,5 +69,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
         "messages": messages,
         "tokens": response.response_metadata["token_usage"]["total_tokens"],
         "reasoning": response.response_metadata["reasoning"],
-        "total_tokens": total_tokens
+        "total_tokens": total_tokens,
+        "failed_validation_count": failed_validation_count,
+        "judged": judged
     }

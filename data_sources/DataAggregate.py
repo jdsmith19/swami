@@ -1,5 +1,6 @@
 from data_sources.ProFootballReference import ProFootballReference
 import pandas as pd
+import numpy as np
 from tqdm import tqdm
 from langchain.agents import AgentState
 
@@ -19,6 +20,21 @@ class DataAggregate:
 			('avg_turnovers_forced', 'opp_turnovers'),
 			('avg_sack_yards_gained', 'opp_sack_yards_lost'),
 			('avg_point_differential', 'point_differential')
+		]
+		self.TREND_CONFIG = [
+			('trend_points_scored', 'points_scored'),
+			('trend_pass_adjusted_yards_per_attempt', 'pass_adjusted_yards_per_attempt'),
+			('trend_rushing_yards_per_attempt', 'rushing_yards_per_attempt'),
+			('trend_turnovers', 'turnovers'),
+			('trend_penalty_yards', 'penalty_yards'),
+			('trend_sack_yards_lost', 'sack_yards_lost'),
+			('trend_points_allowed', 'opp_points_scored'),
+			('trend_pass_adjusted_yards_per_attempt_allowed', 'opp_pass_adjusted_yards_per_attempt'),
+			('trend_rushing_yards_per_attempt_allowed', 'opp_rushing_yards_per_attempt'),
+			('trend_turnovers_forced', 'opp_turnovers'),
+			('trend_sack_yards_gained', 'opp_sack_yards_lost'),
+			('trend_point_differential', 'point_differential'),
+			('trend_elo_rating', 'elo_rating')
 		]
 
 		pfr = ProFootballReference(state)
@@ -76,7 +92,10 @@ class DataAggregate:
 		
 		for interval in [3, 5, 7]:
 			team_performance = self.__calculate_stats(team_performance, ['team'], interval, f'l{interval}')
-				
+		
+		for interval in [5, 7]:
+			team_performance = self.__calculate_trend(team_performance, ['team'], interval, f'l{interval}')
+
 		for location in ['home','away']:
 			if location == 'home':
 				mask = team_performance['is_home'] == 1
@@ -103,6 +122,36 @@ class DataAggregate:
 						
 		return team_performance
 	
+	def __rolling_slope(self, values):
+		"""
+		Compute slope of `values` against their index (0..n-1).
+		Expects a 1D array-like passed from rolling(...).apply(..., raw=True).
+		"""
+		y = np.asarray(values, dtype=float)
+		n = len(y)
+		if n < 5:
+			return np.nan
+
+		x = np.arange(n, dtype=float)
+		x_mean = x.mean()
+		y_mean = y.mean()
+
+		denom = ((x - x_mean) ** 2).sum()
+		if denom == 0:
+			return np.nan
+
+		return ((x - x_mean) * (y - y_mean)).sum() / denom
+	
+	def __calculate_trend(self, team_performance, group_cols, interval, suffix):
+		for stat_name, source_col in self.TREND_CONFIG:
+			col_name = f"{stat_name}_{suffix}"
+			if col_name not in self.team_performance_features:
+				self.team_performance_features.append(col_name)
+			team_performance[col_name] = team_performance.groupby(group_cols)[source_col].transform(
+				lambda x: x.rolling(interval, min_periods=interval).apply(self.__rolling_slope, raw=True).shift(1)
+			)
+		return team_performance
+
 	def __calculate_stats(self, team_performance, group_cols, interval, suffix):
 		
 		for stat_name, source_col in self.STATS_CONFIG:

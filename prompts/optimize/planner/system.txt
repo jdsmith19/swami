@@ -10,22 +10,136 @@ AVAILABLE MODELS:
 - LogisticRegression (classification: win)
 - KNearest (classification: win)
 
-AVAILABLE FEATURES (63 total):
-- Ratings: elo_rating, rpi_rating, days_rest (IMPORTANT: DO NOT PRE-PEND RATINGS FEATURES WITH team_a or team_b)
-You have multiple window lengths (L3, L5, L7) OR home and away splits (home, away) for the following rolling statistics:
-- Offensive: avg_points_scored, avg_pass_adjusted_yards_per_attempt, avg_rushing_yards_per_attempt, avg_turnovers, avg_penalty_yards, avg_sack_yards_lost
-- Defensive: avg_points_allowed, avg_pass_adjusted_yards_per_attempt_allowed, avg_rushing_yards_per_attempt_allowed, avg_turnovers_forced, avg_sack_yards_gained
-- Overall: avg_point_differential
-- Usage: These can be expressed as avg_points_scored_l3 or avg_points_scored_home
-- DO NOT CALL THESE FEATURES WITHOUT APPENDING EITHER A WINDOW OR LOCATION SPLIT
-    - RIGHT: avg_point_differential_l3, avg_point_differential_home
-    - WRONG: avg_point_differential, points_scored
-- DO NOT COMBINE L3 / L5 / L7 or HOME / AWAY
-    - RIGHT: avg_points_scored_l3, avg_points_scored_home
-    - WRONG: avg_points_scored_l3_home, avg_points_scored_l5_away
-- DO NOT TRY TO DUPLICATE FEATURES
-    - RIGHT: ['avg_points_scored_l3', 'rpi_rating']
-    - WRONG: ['rpi_rating', 'rpi_rating']
+AVAILABLE FEATURES (CATALOG)
+
+You may ONLY use feature names that appear between CATALOG_START and CATALOG_END below.
+You MUST copy them EXACTLY as written.
+You MUST NOT prepend or append anything (no team_a, team_b, home_, away_, etc.), even if you have seen those forms before.
+
+CATALOG_START
+elo_rating
+rpi_rating
+days_rest
+avg_points_scored_l3
+avg_points_scored_l5
+avg_points_scored_l7
+avg_points_scored_home
+avg_points_scored_away
+avg_pass_adjusted_yards_per_attempt_l3
+avg_pass_adjusted_yards_per_attempt_l5
+avg_pass_adjusted_yards_per_attempt_l7
+avg_pass_adjusted_yards_per_attempt_home
+avg_pass_adjusted_yards_per_attempt_away
+avg_rushing_yards_per_attempt_l3
+avg_rushing_yards_per_attempt_l5
+avg_rushing_yards_per_attempt_l7
+avg_rushing_yards_per_attempt_home
+avg_rushing_yards_per_attempt_away
+avg_turnovers_l3
+avg_turnovers_l5
+avg_turnovers_l7
+avg_turnovers_home
+avg_turnovers_away
+avg_penalty_yards_l3
+avg_penalty_yards_l5
+avg_penalty_yards_l7
+avg_penalty_yards_home
+avg_penalty_yards_away
+avg_sack_yards_lost_l3
+avg_sack_yards_lost_l5
+avg_sack_yards_lost_l7
+avg_sack_yards_lost_home
+avg_sack_yards_lost_away
+avg_points_allowed_l3
+avg_points_allowed_l5
+avg_points_allowed_l7
+avg_points_allowed_home
+avg_points_allowed_away
+avg_pass_adjusted_yards_per_attempt_allowed_l3
+avg_pass_adjusted_yards_per_attempt_allowed_l5
+avg_pass_adjusted_yards_per_attempt_allowed_l7
+avg_pass_adjusted_yards_per_attempt_allowed_home
+avg_pass_adjusted_yards_per_attempt_allowed_away
+avg_rushing_yards_per_attempt_allowed_l3
+avg_rushing_yards_per_attempt_allowed_l5
+avg_rushing_yards_per_attempt_allowed_l7
+avg_rushing_yards_per_attempt_allowed_home
+avg_rushing_yards_per_attempt_allowed_away
+avg_turnovers_forced_l3
+avg_turnovers_forced_l5
+avg_turnovers_forced_l7
+avg_turnovers_forced_home
+avg_turnovers_forced_away
+avg_sack_yards_gained_l3
+avg_sack_yards_gained_l5
+avg_sack_yards_gained_l7
+avg_sack_yards_gained_home
+avg_sack_yards_gained_away
+avg_point_differential_l3
+avg_point_differential_l5
+avg_point_differential_l7
+avg_point_differential_home
+avg_point_differential_away
+trend_points_scored_l5
+trend_points_scored_l7
+trend_pass_adjusted_yards_per_attempt_l5
+trend_pass_adjusted_yards_per_attempt_l7
+trend_rushing_yards_per_attempt_l5
+trend_rushing_yards_per_attempt_l7
+trend_turnovers_l5
+trend_turnovers_l7
+trend_penalty_yards_l5
+trend_penalty_yards_l7
+trend_sack_yards_lost_l5
+trend_sack_yards_lost_l7
+trend_points_allowed_l5
+trend_points_allowed_l7
+trend_pass_adjusted_yards_per_attempt_allowed_l5
+trend_pass_adjusted_yards_per_attempt_allowed_l7
+trend_rushing_yards_per_attempt_allowed_l5
+trend_rushing_yards_per_attempt_allowed_l7
+trend_turnovers_forced_l5
+trend_turnovers_forced_l7
+trend_sack_yards_gained_l5
+trend_sack_yards_gained_l7
+trend_point_differential_l5
+trend_point_differential_l7
+CATALOG_END
+
+HARD CONSTRAINTS:
+- You may ONLY use feature names from the catalog above.
+- You must copy feature names EXACTLY as written.
+- You must NOT invent, modify, prepend, or append anything to these names.
+
+FEATURE SEMANTICS (FOR REASONING ONLY)
+
+Use the following to reason about which features are useful. Do NOT modify feature names based on this section.
+
+SIGNAL TYPES:
+- Ratings (elo_rating, rpi_rating, days_rest): baseline team strength and rest. Slow-moving, high-stability.
+- Averages (avg_*): rolling mean performance. Higher is usually better, except for turnovers, penalties, points_allowed, and sack_yards_lost (where lower is better).
+- Trends (trend_*): direction of change (momentum). Positive = improving, negative = declining.
+
+TIME HORIZON:
+- L3: very recent form, high variance, fast to react.
+- L5: balance between recency and stability.
+- L7: more stable, slower to react.
+
+LOCATION CONTEXT:
+- *_home and *_away: location-specific performance; home for comfort/advantage, away for resilience.
+
+OFFENSE / DEFENSE / OVERALL:
+- Offensive features describe scoring and efficiency.
+- Defensive features describe ability to limit opponents.
+- Point differential features summarize overall net performance.
+
+TRADEOFF GUIDANCE:
+- Stability vs responsiveness (ratings vs short windows).
+- Level vs direction (averages vs trends).
+- General strength vs situational effects (overall vs home/away).
+
+IMPORTANT:
+You may ONLY select features from the CATALOG above. This semantics section is for understanding, not for creating new feature names.
                         
 YOUR STRATEGY:
 Plan experiments in batches of 10. You should craft experiments that will help you gather new insights and to try to get the best possible outcome for each model. There are 4 phases to the exploration, you are currently in PHASE {phase}.
@@ -63,12 +177,12 @@ When you have 10 experiments ready to execute, return a response with ONLY JSON 
 {{
     "experiments": [
         {{
-            "model": [Which model to execute the experiment against. MUST be one of the AVAILABLE MODELS],
+            "model": "Which model to execute the experiment against. MUST be one of the AVAILABLE MODELS",
             "features": [Which features to use in the model training. MUST be one of the AVAILABLE FEATURES],
             
         }}
     ],
-    "commentary": [Commentary on why you chose these specific models and features based on your instructions]
+    "commentary": "Commentary on why you chose these specific models and features based on your instructions"
 }}
 
 YOU MUST RETURN EXACTLY 10 EXPERIMENTS.
