@@ -10,6 +10,7 @@ from models.planner_model import PlannerState
 
 # Utilities
 from utils.logger import log
+from utils.messages import get_message_from_llm_response
 
 this_filename = os.path.basename(__file__).replace(".py","")
 
@@ -21,7 +22,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
         max_tokens = 4096
     )
 
-    if (len(state["messages"]) - 2 >= 1) and (state["tokens"] > 45000):
+    if (len(state["messages"]) - 2 >= 1) and (state["tokens"] > 50000):
         lines = []
         lines.append(f"Token usage is high! ({ state["tokens"] })")
         lines.append(f"Resetting to system and initial prompt.")
@@ -34,7 +35,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
         if isinstance(message, AIMessage):
             ai_responses += 1
 
-    if ai_responses >= 2:
+    if ai_responses >= 4:
         log(state["log_path"], f"Validation has failed { state["failed_validation_count"] } times.", state["log_type"], this_filename)
         state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
         state["failed_validation_count"] = 0
@@ -42,12 +43,15 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     response = llm.invoke(
         state["messages"]
     )
-    
-    #print(response.response_metadata)
+
+    messages = state["messages"]
+    #message = get_message_from_llm_response(response)
+    messages.append(AIMessage(content=response.content))
+
     return {
         "llm_response": response,
         "last_message": response.content,
-        "messages": [response],
+        "messages": messages,
         "tokens": response.response_metadata["token_usage"]["total_tokens"],
         "reasoning": response.response_metadata["reasoning"]
     }

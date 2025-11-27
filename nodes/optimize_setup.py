@@ -29,7 +29,7 @@ this_filename = os.path.basename(__file__).replace(".py","")
 def optimize_setup_node(state: OptimizeState) -> OptimizeState:
     state["start"] = time.time()
     # Set the agent ID
-    state["agent_id"] = uuid.uuid4()
+    state["agent_id"] = str(uuid.uuid4())
 
     # Set up the DB Path
     state["db_path"] = os.getenv("DB_PATH")

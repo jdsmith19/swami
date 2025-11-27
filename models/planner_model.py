@@ -12,7 +12,7 @@ from langchain_nvidia_ai_endpoints import ChatNVIDIA
 class PlannerState(AgentState):
     planner_agent_id: str
     # annotates the 'messages' list with the 'add_messages' reducer.
-    messages: Annotated[Sequence[BaseMessage], add_messages]
+    messages: list[BaseMessage]
     last_message: BaseMessage
     llm_response: BaseMessage
     validated: bool
@@ -31,5 +31,6 @@ class PlannerState(AgentState):
     tokens: int
     reasoning: str
     skip_validation: bool
+    judged: bool
     # DEBUG
     confirmed_append: bool

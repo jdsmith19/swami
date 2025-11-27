@@ -19,7 +19,7 @@ def planner_progressor_node(state: PlannerState) -> PlannerState:
     global log_path, log_type
     log_path = state["log_path"]
     log_type = state["log_type"]
-
+    state["judged"] = False
     state["end"] = time.time()
     lines = []
     lines.append("\n\n*** REASONING ***")

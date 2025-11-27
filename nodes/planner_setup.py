@@ -35,8 +35,7 @@ def planner_setup_node(state: PlannerState) -> PlannerState:
     lines.append(f"ID: { state["planner_agent_id"] }")
     lines.append(f"{'='*80}")
     log(log_path, "\n".join(lines), log_type, this_filename)
-    #print(state["trimmed_results"])
-    
+
     # Get prompts ready
     state["phase_prompt"] = load_prompt(f"{ state['home_path'] }optimize/planner/phase_{ state['phase'] }.txt")
     state["system_prompt"] = load_prompt(f"{ state['home_path'] }optimize/planner/system.txt").format(
@@ -52,6 +51,7 @@ def planner_setup_node(state: PlannerState) -> PlannerState:
     state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
     state["failed_validation_count"] = 0
     state["skip_validation"] = False
+    state["judged"] = False
     # DEBUG
     state["confirmed_append"] = False
     return state
