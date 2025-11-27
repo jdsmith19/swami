@@ -34,3 +34,4 @@ class PlannerState(AgentState):
     judged: bool
     # DEBUG
     confirmed_append: bool
+    total_tokens: int

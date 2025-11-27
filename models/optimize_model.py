@@ -24,3 +24,4 @@ class OptimizeState(AgentState):
     aggregates: pd.DataFrame
     upcoming_games: pd.DataFrame
     prediction_set: pd.DataFrame
+    total_tokens: int

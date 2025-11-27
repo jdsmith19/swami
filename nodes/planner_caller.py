@@ -47,11 +47,13 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     messages = state["messages"]
     #message = get_message_from_llm_response(response)
     messages.append(AIMessage(content=response.content))
+    total_tokens = response.response_metadata["token_usage"]["total_tokens"] + state["tokens"]
 
     return {
         "llm_response": response,
         "last_message": response.content,
         "messages": messages,
         "tokens": response.response_metadata["token_usage"]["total_tokens"],
-        "reasoning": response.response_metadata["reasoning"]
+        "reasoning": response.response_metadata["reasoning"],
+        "total_tokens": total_tokens
     }

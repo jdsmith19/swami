@@ -49,6 +49,7 @@ def planner_judge_node(state: PlannerState) -> PlannerState:
     caller_messages.append(HumanMessage(content = response.content))
     log(state["log_path"], f"CONTENT:\n{ response.content }", "file", this_filename)
     log(state["log_path"], f"REASONING:\n{ response.response_metadata.get("reasoning") }", "file", this_filename)
+    total_tokens = response.response_metadata["token_usage"]["total_tokens"] + state["tokens"]
 
     return {
         "llm_response": response,
@@ -56,5 +57,6 @@ def planner_judge_node(state: PlannerState) -> PlannerState:
         "messages": caller_messages,
         "tokens": response.response_metadata["token_usage"]["total_tokens"],
         "reasoning": response.response_metadata.get("reasoning"),
-        "judged": True
+        "judged": True,
+        "total_tokens": total_tokens
     }

@@ -90,6 +90,7 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
     lines = []
     lines.append(f"\n{'='*80}")
     lines.append(f"{ state["experiment_count"] } of { state["max_experiments"] } experiments completed.")
+    lines.append(log_path, f"Total tokens so far: { state["total_tokens"]}", log_type, this_filename)
     lines.append(f"{'='*80}\n")
 
     log(log_path, "\n".join(lines), log_type, this_filename)

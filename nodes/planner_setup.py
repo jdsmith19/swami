@@ -54,4 +54,7 @@ def planner_setup_node(state: PlannerState) -> PlannerState:
     state["judged"] = False
     # DEBUG
     state["confirmed_append"] = False
+
+    state["tokens"] = 0
+    
     return state
