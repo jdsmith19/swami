@@ -90,7 +90,7 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
     lines = []
     lines.append(f"\n{'='*80}")
     lines.append(f"{ state["experiment_count"] } of { state["max_experiments"] } experiments completed.")
-    lines.append(log_path, f"Total tokens so far: { state["total_tokens"]}", log_type, this_filename)
+    lines.append(f"Total tokens so far: { state["total_tokens"]}")
     lines.append(f"{'='*80}\n")
 
     log(log_path, "\n".join(lines), log_type, this_filename)
@@ -111,5 +111,5 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
 def progress_to_next_phase(current_phase, best_results, prediction_models):
     log(log_path, f"Phase { current_phase } complete", log_type, this_filename)
     formatted = formatting.format_best_results(best_results, prediction_models)
-    log(log_path, formatted, log_type, this_filename)
+    log(log_path, formatted, "file", this_filename)
     return current_phase + 1

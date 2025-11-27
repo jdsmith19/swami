@@ -22,13 +22,17 @@ def planner_progressor_node(state: PlannerState) -> PlannerState:
     state["judged"] = False
     state["end"] = time.time()
     lines = []
-    lines.append("\n\n*** REASONING ***")
+    lines.append("\n*** REASONING ***")
     lines.append(state["reasoning"])
-    lines.append("\n\n*** COMMENTARY ***")
+    lines.append("\n*** COMMENTARY ***")
     lines.append(state["commentary"])
-    lines.append(f"\nPlanner Agent { state["planner_agent_id"] } finished in { round(state["end"] - state["start"], 2) }s")
-    lines.append(f"\nTokens Used: { state["tokens"] }")
-    lines.append(f"\n{'='*80}")
+    #lines.append(f"\nTokens Used: { state["tokens"] }")
+    lines.append(f"{'='*80}")
+    log(log_path, "\n".join(lines), "file", this_filename)
+    
+    lines = []
+    lines.append(f"Planner Agent { state["planner_agent_id"] } finished in { round(state["end"] - state["start"], 2) }s")
+    lines.append(f"{'='*80}")
     log(log_path, "\n".join(lines), log_type, this_filename)
 
     return state

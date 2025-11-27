@@ -15,6 +15,8 @@ from utils.messages import get_message_from_llm_response
 this_filename = os.path.basename(__file__).replace(".py","")
 
 def planner_caller_node(state: PlannerState) -> PlannerState:
+    log(state["log_path"], "Planning experiments", state["log_type"], this_filename)
+
     llm = ChatNVIDIA(
         base_url = state["llm_base_url"], 
         api_key = "not-needed",
@@ -47,7 +49,9 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     messages = state["messages"]
     #message = get_message_from_llm_response(response)
     messages.append(AIMessage(content=response.content))
-    total_tokens = response.response_metadata["token_usage"]["total_tokens"] + state["tokens"]
+    tokens = response.response_metadata["token_usage"]["total_tokens"]
+    log(state["log_path"], f"Tokens used: { tokens }", state["log_type"], this_filename)
+    total_tokens = tokens + state["total_tokens"]
 
     return {
         "llm_response": response,
