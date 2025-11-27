@@ -32,7 +32,7 @@ class KNearest(PredictionModel):
 		kn.fit(X, y)
 		
 		# 🔒 Always sanitize before giving to XGBoost
-		X = self.sanitize_features(X, context=self.model_output["model_name"])
+		X = self.sanitize_features(X, model = self.model_output["model_name"])
 
 		if(test):
 			X_test = scaler.fit_transform(X_test)
