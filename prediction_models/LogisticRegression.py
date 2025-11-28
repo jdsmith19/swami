@@ -19,12 +19,21 @@ class LogisticRegression(PredictionModel):
 		# Prep data
 		X = features.drop(['team_a_' + self.target], axis=1)
 		y = features['team_a_' + self.target]
-		
-		if(test):
-			X, X_test, y, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 		# 🔒 Always sanitize before giving to XGBoost
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
+
+		sample_weight = self.get_sample_weights(features, X)
+
+		if(test):
+			X, X_test, y, y_test, w, w_test = train_test_split(
+				X, 
+				y,
+				sample_weight,
+				test_size = 0.2, 
+				random_state = 42
+			)
+			sample_weight = w
 
 		# Scale
 		scaler = StandardScaler()
@@ -32,7 +41,7 @@ class LogisticRegression(PredictionModel):
 
 		# Train the model
 		lg = LogisticRegressor()
-		lg.fit(X, y)
+		lg.fit(X, y, sample_weight = sample_weight)
 		
 		if(test):
 			X_test = scaler.fit_transform(X_test)

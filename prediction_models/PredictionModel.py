@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import sqlite3
 
 class PredictionModel:
@@ -11,7 +12,8 @@ class PredictionModel:
 		self.prediction_df = pd.DataFrame
 
 	def __prepare_features(self, aggregate_data, prediction=False):
-		feature_columns = self.team_specific_feature_columns
+		feature_columns = self.team_specific_feature_columns.copy()
+		feature_columns.append("season")
 		if(prediction):
 			feature_columns.remove("team_a_" + self.target)
 		features = aggregate_data[feature_columns].copy()
@@ -54,5 +56,20 @@ class PredictionModel:
 
 		# Canonical fix: keep first occurrence of each name
 		df = df.loc[:, ~dup_mask].copy()
-
 		return df
+	
+	def get_sample_weights(self, features, X):
+		# RECENCY DECAY
+		current_season = features['season'].max()
+		age_years = current_season - features['season']
+
+		half_life = 6.0 # tweak this (in seasons)
+		lam = np.log(2) / half_life
+		sample_weight = np.exp(-lam * age_years)
+		sample_weight = sample_weight.loc[X.index]
+		
+		# ✅ Drop season so model never sees it
+		X = X.drop(["season"], axis=1, errors="ignore")
+		self.team_specific_feature_columns = list(X.columns)
+
+		return sample_weight

@@ -25,19 +25,28 @@ class LinearRegression(PredictionModel):
 		# 🔒 Always sanitize before giving to XGBoost
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
 
+		sample_weight = self.get_sample_weights(features, X)
+
 		if(test):
-			X, X_test, y, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+			X, X_test, y, y_test, w, w_test = train_test_split(
+				X, 
+				y,
+				sample_weight,
+				test_size = 0.2, 
+				random_state = 42
+			)
+			sample_weight = w
 		
 		# Train the model
 		lr = LinearRegressor()
-		lr.fit(X, y)
+		lr.fit(X, y, sample_weight = sample_weight)
 		
 		if test:
 			predictions = lr.predict(X_test)
 			self.model_output['mean_absolute_error'] = round(mean_absolute_error(y_test, predictions), 4)
 			self.model_output['root_mean_squared_error'] = round(float(np.sqrt(mean_squared_error(y_test, predictions))), 4)
 			importance = pd.DataFrame({
-				'feature': self.team_specific_feature_columns,
+				'feature': list(X.columns),
 				'coefficient': lr.coef_
 			}).sort_values('coefficient', ascending=False)
 			self.model_output['feature_coefficients']  = {

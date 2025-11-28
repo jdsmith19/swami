@@ -25,8 +25,19 @@ class XGBoost(PredictionModel):
 		# 🔒 Always sanitize before giving to XGBoost
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
 		
+		sample_weight = self.get_sample_weights(features, X)
+		
 		if(test):
-			X, X_test, y, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+			X, X_test, y, y_test, w, w_test = train_test_split(
+				X, 
+				y,
+				sample_weight,
+				test_size=0.2, 
+				random_state=42
+			)
+		else:
+			w = sample_weight
+			X_test = y_test = w_test = None
 		
 		# Train the model
 		xgb = XGBRegressor(
@@ -35,21 +46,22 @@ class XGBoost(PredictionModel):
 			learning_rate = 0.1,
 			random_state = 42
 		)
-		xgb.fit(X, y)
+		
+		xgb.fit(X, y, sample_weight=w)
 		
 		if(test):
 			predictions = xgb.predict(X_test)
 			self.model_output['mean_absolute_error'] = round(mean_absolute_error(y_test, predictions), 4)
 			self.model_output['root_mean_squared_error'] = round(float(np.sqrt(mean_squared_error(y_test, predictions))), 4)
 			importance = pd.DataFrame({
-				'feature': self.team_specific_feature_columns,
+				'feature': list(X.columns),
 				'importance': xgb.feature_importances_
 			}).sort_values('importance', ascending=False)
 			self.model_output['feature_importance']  = {
 				feature: round(imp, 4)
 				for feature, imp in zip(importance["feature"], importance["importance"])
 			}
-		
+				
 		return xgb
 	
 	def predict_spread(self, prediction_set):	
