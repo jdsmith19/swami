@@ -40,8 +40,7 @@ def is_best_result(result, best_results):
             if result[metric] > best[metric]:
                 is_best = True
     if is_best:
-        log(log_path, f"🥳 Best result for { ["model_name"] }: { result[metric] } ({ result["target"]})", log_type, this_filename)
-            
+        log(log_path, f"🥳 NEW BEST FOR {result["model_name"] }: { result[metric] } ({ result["target"]})", log_type, this_filename)            
         log(log_path, f"Result differential for { result["model_name"] }: { differential }", log_type, this_filename)
     
     return is_best
