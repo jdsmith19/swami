@@ -24,6 +24,7 @@ def predict_aggregate_loader_node(state: PredictState):
     matchups = create_matchups(aggregates.upcoming_games)
     teams = get_unique_teams(aggregates.upcoming_games)
     games = get_unique_games(matchups)
+    print(games)
     
     week = aggregates.upcoming_games['season_week_number'].unique()[0]
     season = aggregates.upcoming_games['season'].unique()[0]

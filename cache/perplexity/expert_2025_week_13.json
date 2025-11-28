@@ -1,0 +1,1511 @@
+[
+  {
+    "matchup": "Arizona Cardinals @ Tampa Bay Buccaneers",
+    "key_injuries": {
+      "Tampa Bay Buccaneers": [
+        "Baker Mayfield (QB) has a low-grade AC joint sprain in his left (non-throwing) shoulder sustained in Week 12 vs Rams. His availability depends on pain management. MRI showed no fracture or structural damage. Teddy Bridgewater is backup if Mayfield cannot play."
+      ],
+      "Arizona Cardinals": [
+        "Multiple players missed Wednesday practice: Kelvin Beachum (OT, groin), Baron Browning (LB, concussion), Kei'Trel Clark (CB, personal), Emari Demercado (RB, ankle), Will Hernandez (G, hip/knee), Walter Nolen (DT, knee), Josh Sweat (OLB, eye), Dadrion Taylor-Demerson (S, ankle)",
+        "Limited participants: Trey Benson (RB, knee), Marvin Harrison Jr. (WR, illness), Will Johnson (CB, back/hip)"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Tampa Bay's three-game losing streak ends this week regardless of who starts at quarterback."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bucs need this game after dropping four of their last five. They need to be merciless in order to prove they are still contenders."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bucs have to bounce back eventually. If Baker Mayfield plays, this is a great spot with a west coast team playing a noon kickoff on the east coast."
+      },
+      {
+        "name": "Jordan Mendoza (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Arizona Cardinals",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Tampa Bay hasn't really looked like the team it was to start the season. Don't sleep on the Cardinals being able to pull off this one."
+      },
+      {
+        "name": "Lorenzo Reyes (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bucs have been struggling to win games. They are getting healthy, however, and the Cardinals have been even worse, covering just one of their last four against the spread."
+      },
+      {
+        "name": "Richard Morin (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Buccaneers received a beatdown last week, but they are still a playoff team so long as Baker Mayfield can take the punishment. The Cardinals are not on that level."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Arizona Cardinals",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Baker Mayfield's availability is a significant factor. If Mayfield is unable to play, can Teddy Bridgewater guide the Buccaneers to victory? Jacoby Brissett is expected to lead Arizona to a surprise win on the road."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": {
+          "Tampa Bay Buccaneers": 27,
+          "Arizona Cardinals": 20
+        },
+        "predicted_winning_margin": 7,
+        "commentary": "Bucs quarterback Baker Mayfield suffered a shoulder sprain that puts his status in doubt. That means it could be Teddy Bridgewater. He is more than capable. The Cardinals have had success with Jacoby Brissett throwing it, but they are one-dimensional. The Tampa Bay defense wasn't good against the Rams, but I think they bounce back here."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Arizona Cardinals",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Arizona Cardinals",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Tampa Bay Buccaneers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Buccaneers -2.5. Current line: Buccaneers -3. Total: 44.5. Moneyline: Tampa Bay -135, Arizona +115. The line has stayed relatively flat. The Buccaneers have hit the Game Total Over in 8 of their last 10 games at home.",
+    "matchup_breakdown": "Cardinals have best 1st quarter third-down efficiency in NFL (avoiding three-and-outs 96% of time). Buccaneers averaged -0.72 EPA per play on contested throws (2nd-worst in NFL). Bucs ran successful plays on only 21% of pass attempts in Week 12 (worst in NFL). Cardinals run the ball on only 35% of plays this season (3rd-lowest in NFL).",
+    "quarterback_outlook": {
+      "Tampa Bay Buccaneers": "Baker Mayfield's status uncertain with low-grade AC joint sprain in left (non-throwing) shoulder. MRI showed no fracture or structural damage. His ability to play tied to pain management. Teddy Bridgewater will take majority of first-team snaps while team monitors Mayfield's condition. Mayfield said 'it's about pain tolerance and management at this point.'",
+      "Arizona Cardinals": "Expected to start backup quarterback with starting QB situation unclear from sources. The Cardinals offense has struggled this season with only 3 wins in 11 games."
+    },
+    "coaching_and_strategy": {
+      "Tampa Bay Buccaneers": "Coach Todd Bowles managing Mayfield's injury situation. Team needs to bounce back from 34-7 loss to Rams and protect their position atop NFC South. Bowles said Bridgewater will get majority of first-team practice reps.",
+      "Arizona Cardinals": "Cardinals have been competitive despite 3-8 record. They've covered the spread in 8 of their last 8 games as underdogs on the East Coast."
+    },
+    "miscellaneous": [
+      "West coast team (Arizona) traveling for noon ET kickoff could face disadvantage",
+      "BetMGM model predicts Buccaneers win with 58.8% confidence",
+      "ESPN gives Buccaneers 64.1% chance to win",
+      "Buccaneers are 6-5 and need wins to stay atop competitive NFC South"
+    ]
+  },
+  {
+    "matchup": "Atlanta Falcons @ New York Jets",
+    "key_injuries": {
+      "Atlanta Falcons": [
+        "Drake London (WR, knee) is questionable for Sunday's matchup",
+        "Josh Woods (LB, hamstring) is questionable"
+      ],
+      "New York Jets": [
+        "Boyd (CB, abdomen) has been on IR"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Kirk Cousins played decent in last week's win versus the Saints. The Jets defense will present a better challenge, but the Falcons should win this one."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "I know the Falcons have underperformed, but this is still the Jets we're talking about."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "This matchup is like a slow-motion car crash you can't look away from. Take the points."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Falcons snapped a five-game losing streak in Week 12. They're poised to start a winning streak in Week 13, with Bijan Robinson and Tyler Allgeier poised to dominate New York on their home turf."
+      },
+      {
+        "name": "Dave Rivera (NorthJersey.com)",
+        "expert_track_record": null,
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": {
+          "New York Jets": 20,
+          "Atlanta Falcons": 17
+        },
+        "predicted_winning_margin": 3,
+        "commentary": "The potential absence of Drake London may further hinder the Falcons. The outcome will likely hinge on which team can establish a stronger running game, and I believe Breece Hall will be eager to bounce back. I'm giving the Jets the edge for an upset win."
+      },
+      {
+        "name": "Chris Iseman (NorthJersey.com)",
+        "expert_track_record": null,
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": {
+          "New York Jets": 23,
+          "Atlanta Falcons": 20
+        },
+        "predicted_winning_margin": 3,
+        "commentary": "The potential absence of Drake London may further hinder the Falcons. I believe Breece Hall will be eager to bounce back."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": {
+          "New York Jets": 19,
+          "Atlanta Falcons": 16
+        },
+        "predicted_winning_margin": 3,
+        "commentary": "The Falcons are out on the road for a second straight week. The Jets defense will play well here too. It's a low-scoring game with the Jets pulling off the upset at home."
+      },
+      {
+        "name": "Nick Gennaro (NFL.com)",
+        "expert_track_record": null,
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Kirk Cousins and Tyrod Taylor both became full-time starters for the first time back in 2015. Both are past-their-prime veterans essentially serving mop-up duty on lost seasons. Atlanta's defense has been superior over the course of the season, but New York has surprisingly shown more life on that side of the ball. Aaron Glenn's D is seriously due for some turnover luck, with one takeaway on the season. The Jets don't have a single interception. That's about to change, facing an immobile quarterback with diminished arm strength. New York forces TWO turnovers to squeak out a low-wattage win at home."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "New York Jets",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Atlanta Falcons",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Falcons -2.5. Current line: Falcons -2.5. Total: 39.5. Moneyline: Falcons -142, Jets +120. Line has remained stable. Falcons have lost last 3 games as favorite and have not covered spread in 5 of their last 6 games when favored. Falcons are 5-5-1 ATS this season, Jets are 6-4-1 ATS.",
+    "matchup_breakdown": "The Jets have yet to record an interception this season (NFL record through 11 games). Bijan Robinson averages over 126 combined yards per game. With Drake London's status uncertain, Robinson's performance will be crucial. The Falcons have averaged 21.8 points per game in their last 5 but have conceded 25.8 points. Jets average 19.2 points per game while allowing 24.2 points.",
+    "quarterback_outlook": {
+      "Atlanta Falcons": "Kirk Cousins threw two touchdown passes in Week 12 win over Saints, going 16-for-23 for 199 yards with 2 TDs and 1 INT. He was sacked 3 times. Season stats: 48-75, 449 yards, 2 TDs, 1 INT. Cousins is an immobile quarterback with diminished arm strength.",
+      "New York Jets": "Tyrod Taylor started Week 12 vs Baltimore, going 17-28 for 222 yards, 1 TD, 1 INT, and was sacked 3 times. Season stats: 60-97, 601 yards, 4 TDs, 4 INTs."
+    },
+    "coaching_and_strategy": {
+      "Atlanta Falcons": "Need to establish running game with Robinson and Allgeier. Defense must prevent turnovers, which have been an issue.",
+      "New York Jets": "Defensive coordinator Aaron Glenn must focus on stopping Bijan Robinson. With struggling offense, defense needs to create turnovers (though they have 0 interceptions this season). Aaron Glenn's defense is due for turnover luck."
+    },
+    "miscellaneous": [
+      "NBC Sports Bet model suggests play on Falcons -2.5",
+      "Average total in Jets' last 5 games (43.4) exceeds current total (39.5)",
+      "Both teams have 219 points scored (19.9 per game, ranking 26th)"
+    ]
+  },
+  {
+    "matchup": "Buffalo Bills @ Pittsburgh Steelers",
+    "key_injuries": {
+      "Buffalo Bills": [
+        "Josh Allen (QB) had a concerning injury scare but has been announced as ready to play",
+        "Dion Dawkins (OT, concussion) status unclear",
+        "Spencer Brown (OT, shoulder) status unclear"
+      ],
+      "Pittsburgh Steelers": [
+        "Aaron Rodgers (QB) has been dealing with injury. Returned to practice as full participant on Thursday. His injury update emerged before Bills game and he is expected to be available."
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Buffalo Bills",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "This feels like a trap game for the Bills after they lost to the Titans last week. But the Steelers offense has its own issues. Bills take it."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Buffalo Bills",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bills are the better team and should win this game. But I'm not laying four points on the road in the AFC."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Pittsburgh Steelers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bills are coming off a short week and traveling. The Steelers might have Aaron Rodgers back. Take the points at home."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Buffalo Bills",
+        "predicted_final_score": {
+          "Buffalo Bills": 31,
+          "Pittsburgh Steelers": 22
+        },
+        "predicted_winning_margin": 9,
+        "commentary": "This is a have-to for both these teams. Both are coming off road losses. The Steelers might have Aaron Rodgers back in this one, which they need. The Bills will have extra rest after playing last Thursday. That will give them time to get back on track. I think the Bills passing game will light up the Steelers pass defense."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Pittsburgh Steelers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Buffalo Bills",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Pittsburgh Steelers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Buffalo Bills",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire - Best Bet)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Pittsburgh Steelers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Steelers' offense is messy regardless of who's at quarterback, but their dependency on the run is almost a blessing against the Buffalo defense, while the Buffalo offensive line could be vulnerable if both Dion Dawkins (concussion) and Spencer Brown (shoulder) are out."
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Bills -4. Current line: Bills -4. Moneyline: Bills -210, Steelers +170.",
+    "matchup_breakdown": "Bills will have extra rest after playing last Thursday. Steelers coming off road loss. Bills passing game expected to challenge Steelers pass defense. Steelers depend heavily on run game. Buffalo offensive line could be vulnerable if both Dawkins and Brown are out.",
+    "quarterback_outlook": {
+      "Buffalo Bills": "Josh Allen had a concerning injury scare but has been announced as ready to play. Bills passing game expected to be key factor.",
+      "Pittsburgh Steelers": "Aaron Rodgers returned to practice as full participant on Thursday after dealing with injury. Expected to be available for Bills game. Steelers offense has been messy regardless of QB."
+    },
+    "coaching_and_strategy": {
+      "Buffalo Bills": "Mike McDermott will look to use extra rest to get team back on track after road loss. Passing game expected to be featured heavily.",
+      "Pittsburgh Steelers": "Mike Tomlin's Steelers depend heavily on run game. Team needs Rodgers back to have best chance against Bills."
+    },
+    "miscellaneous": [
+      "Both teams coming off road losses and need this game",
+      "Bills played last Thursday so have extra rest",
+      "Crucial AFC matchup with playoff implications"
+    ]
+  },
+  {
+    "matchup": "Los Angeles Rams @ Carolina Panthers",
+    "key_injuries": {
+      "Los Angeles Rams": [],
+      "Carolina Panthers": [
+        "Multiple injuries from West Coast Monday night game week before"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Rams are rolling and the Panthers are not. This should be an easy cover for L.A."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "I'm not laying double digits on the road, but the Rams should win this game easily."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Rams just demolished the Bucs. They should keep rolling here."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "After a solid victory over the Buccaneers, the Rams appear poised for another commanding performance. The Panthers, on the other hand, are still struggling to find their rhythm. Los Angeles will dominate in this matchup."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": {
+          "Los Angeles Rams": 24,
+          "Carolina Panthers": 16
+        },
+        "predicted_winning_margin": 8,
+        "commentary": "This is a long trip for the Rams, but they get a Panthers team coming off a West Coast Monday night game. That evens it out. The Rams have an MVP leader in Matt Stafford on offense and a defense playing at a high level. Bryce Young wasn't good Monday night and he will struggle here too. Rams take it but the Panthers hang around behind their defense."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Carolina Panthers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Los Angeles Rams",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Carolina Panthers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Rams -10.5. Current line: Rams -10.5. Moneyline: Rams -500, Panthers +380.",
+    "matchup_breakdown": "Rams coming off 34-7 demolition of Buccaneers. Rams have MVP candidate Matt Stafford on offense and defense playing at high level. Panthers coming off West Coast Monday night game. Bryce Young struggled Monday night. Panthers defense expected to keep game somewhat competitive.",
+    "quarterback_outlook": {
+      "Los Angeles Rams": "Matt Stafford is playing at MVP level. Leading high-powered Rams offense.",
+      "Carolina Panthers": "Bryce Young wasn't good Monday night and expected to struggle again. Panthers offense has been anemic."
+    },
+    "coaching_and_strategy": {
+      "Los Angeles Rams": "Sean McVay's offense clicking at high level. Defense also playing well.",
+      "Carolina Panthers": "Team still searching for rhythm. Defense will try to keep game competitive but offense struggles."
+    },
+    "miscellaneous": [
+      "Long cross-country trip for Rams but Panthers coming off West Coast Monday game evens it out",
+      "Rams riding momentum from dominant win over Bucs",
+      "Panthers have struggled all season"
+    ]
+  },
+  {
+    "matchup": "Chicago Bears @ Philadelphia Eagles",
+    "key_injuries": {
+      "Chicago Bears": [
+        "Luke Newman (OL, foot) is OUT",
+        "Dominique Robinson (DL, concussion) is OUT",
+        "T.J. Edwards (LB, hand/hamstring) is OUT",
+        "Elijah Hicks (LB, shoulder) is OUT",
+        "Noah Sewell (LB, elbow) is OUT",
+        "Tyrique Stevenson (DB, hip) is OUT",
+        "Kyler Gordon (DB, calf) is questionable",
+        "Jaylon Johnson (DB, groin) is questionable - activated for Week 13"
+      ],
+      "Philadelphia Eagles": [
+        "Andrew Mukuba (S) has injury status",
+        "DeVonta Smith (WR) on injury report",
+        "Tremaine Edmunds (LB) on injury report"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Eagles bounced back nicely last week. They should take care of business here on Black Friday."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Bears have been better lately, but the Eagles at home is a tough task."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winning_margin": null,
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "commentary": "The Eagles should win, but seven points feels like a lot for this Bears team that has been competitive."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": {
+          "Philadelphia Eagles": 30,
+          "Chicago Bears": 21
+        },
+        "predicted_winning_margin": 9,
+        "commentary": "This is a big prove-it game in front of the national audience for the Bears. For the Eagles, it's a chance to get back on track after losing to the Cowboys. I think they will. Their defense will force some Caleb Williams turnovers that lead to short fields. And Saquon Barkley will actually get the ball. Eagles win it."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Chicago Bears",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Chicago Bears",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Philadelphia Eagles",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Eagles -7. Current line: Eagles -7. Total: 44.5. This is a Black Friday primetime game on Amazon Prime Video at 3 PM ET.",
+    "matchup_breakdown": "Eagles defense expected to force turnovers against Caleb Williams. Saquon Barkley key factor for Eagles offense. Bears have been more competitive recently with improved play. None of Chicago's seven wins this season had come against teams with winning records until Week 12 victory over Steelers.",
+    "quarterback_outlook": {
+      "Philadelphia Eagles": "Eagles QB looking to bounce back after loss to Cowboys. Offense expected to feature Saquon Barkley more heavily.",
+      "Chicago Bears": "Caleb Williams completed 19 of 35 pass attempts for 239 yards and three touchdowns in Week 12. He did give up an awful touchdown by fumbling in his own end zone. Eagles defense expected to force turnovers."
+    },
+    "coaching_and_strategy": {
+      "Philadelphia Eagles": "Nick Sirianni looking to get back on track after Cowboys loss. Defense will focus on pressuring Caleb Williams and forcing mistakes. Need to get Saquon Barkley more involved.",
+      "Chicago Bears": "Big prove-it game in front of national audience. Bears activated Jaylon Johnson and Kyler Gordon for Week 13. Team has been more competitive recently."
+    },
+    "miscellaneous": [
+      "Black Friday primetime game on Amazon Prime Video",
+      "Bears' first win against team with winning record came in Week 12 vs Steelers",
+      "Eagles bounced back from Cowboys loss and looking to build momentum"
+    ]
+  },
+  {
+    "matchup": "San Francisco 49ers @ Cleveland Browns",
+    "key_injuries": {
+      "San Francisco 49ers": [
+        "Brock Purdy (QB, shoulder) dealing with injury that held him out week prior. Coming off disappointing 2.16 fantasy point performance with 94 passing yards in Week 12.",
+        "Christian McCaffrey (RB) suffered season-ending knee injury in Week 12"
+      ],
+      "Cleveland Browns": [
+        "Nick Chubb (RB) has been ineffective since returning from 2023 knee injury. Averaging only 3.8 yards per carry, 45 rushing yards per game, and career-low 22.2% success rate. Sharing workload with Jerome Ford."
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "San Francisco 49ers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The 49ers offense has struggled, but they should be able to handle the Browns."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "San Francisco 49ers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Browns are a mess. The 49ers should win this one."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Cleveland Browns",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The 49ers are banged up and the Browns defense can be nasty. I'll take the points at home."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "San Francisco 49ers",
+        "predicted_final_score": {
+          "San Francisco 49ers": 21,
+          "Cleveland Browns": 20
+        },
+        "predicted_winning_margin": 1,
+        "commentary": "This will be Shedeur Sanders making his first home start for the Browns. He was solid last week in the victory over the Raiders. But it's the Browns defense that will be the difference here. They are suffocating. Look for Brock Purdy to have troubles against them, yet he will find a way to win a close one late."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Cleveland Browns",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Cleveland Browns",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Cleveland Browns",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "San Francisco 49ers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Cleveland Browns",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: 49ers -4.5. Current line: 49ers -5. Game at 1 PM ET on CBS.",
+    "matchup_breakdown": "Browns defense is suffocating and can cause problems for Purdy. 49ers dealing with multiple key injuries including McCaffrey's season-ending injury. Browns would benefit from Shedeur Sanders' first home start. Nick Chubb has been ineffective, averaging career-low numbers since returning from injury.",
+    "quarterback_outlook": {
+      "San Francisco 49ers": "Brock Purdy coming off disappointing performance (2.16 fantasy points, 94 passing yards). Dealing with shoulder injury from week prior. Will face tough Browns defense. Expected to struggle but find way to win late.",
+      "Cleveland Browns": "Shedeur Sanders making first home start. Was solid in Week 12 victory over Raiders. Browns offense has been inconsistent."
+    },
+    "coaching_and_strategy": {
+      "San Francisco 49ers": "Kyle Shanahan may exploit Browns' vulnerability against run rather than focus on passing with less-than-100% Purdy. Team dealing with loss of Christian McCaffrey for season.",
+      "Cleveland Browns": "Browns defense is key to victory. Suffocating unit can make life difficult for injured Purdy. Offense needs to capitalize on opportunities."
+    },
+    "miscellaneous": [
+      "49ers dealing with multiple key injuries including CMC season-ending injury",
+      "Browns won last week against Raiders",
+      "Nick Chubb has not looked like former self since returning from 2023 injury"
+    ]
+  },
+  {
+    "matchup": "Houston Texans @ Indianapolis Colts",
+    "key_injuries": {
+      "Houston Texans": [
+        "C.J. Stroud (QB, concussion) has been out since Nov. 2 and remains in concussion protocol. Practiced Wednesday on limited basis. Listed as questionable for Sunday's game. Backup Davis Mills has led Houston to three straight wins.",
+        "Jalen Pitre (S, concussion) also practiced Wednesday but remains in concussion protocol. Questionable.",
+        "Jamal Hill (LB, hamstring) is questionable",
+        "Ajani Carter (CB, hamstring) is questionable",
+        "Jimmie Ward (S, foot) is OUT"
+      ],
+      "Indianapolis Colts": [
+        "Daniel Jones (QB, fibula fracture) - has fractured fibula but participated fully in practice and intends to continue playing through injury. Both Shane Steichen and Jones downplayed severity. Steichen says Jones is 'good to go'.",
+        "Anthony Richardson (QB, orbital fracture/eye) is eligible for reinstatement from IR but has not been activated. Still not healthy enough to return.",
+        "Ashton Dulin (WR/ST, hamstring) placed on injured reserve, will miss at least 4 games",
+        "Neville Gallimore (DT, knee) limited",
+        "Sauce Gardner (CB, back) limited",
+        "Jaylon Carlies (LB, ankle) is eligible for reinstatement from IR"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Indianapolis is going to want to get back on track after last week, but Houston's defense has been elite. The Colts find a way to get it done."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Texans defense is elite. I'll take the points here."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Houston's defense is too good. Take the points."
+      },
+      {
+        "name": "Lorenzo Reyes (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Indy has been solid offensively, and the Colts will need to bounce back after a letdown against the Chiefs. But with CJ Stroud's availability still in question, I'm backing the Colts. Still, I'd monitor Stroud as it gets closer to game time."
+      },
+      {
+        "name": "Richard Morin (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Houston's defense is championship-caliber. The Colts offense will struggle against them."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Colts aim to solidify their position as the leading team in the division and deal a significant setback to the Texans' playoff ambitions."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": {
+          "Indianapolis Colts": 23,
+          "Houston Texans": 21
+        },
+        "predicted_winning_margin": 2,
+        "commentary": "Texans quarterback C.J. Stroud remains in the concussion protocol, which means he might not play. That would mean another start for Davis Mills, who has played well. It's the Texans defense that has keyed the team's resurgence. The Colts lost to the Chiefs last week, but they will do something here that they needed to do more of in that game: Give it to Jonathan Taylor. Look for the Colts to win a tough, close one."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire - Best Bet)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Daniel Jones still struggles against teams with good pass rushes, the Texans are the epitome of that. There's a reasonable chance that they win outright."
+      },
+      {
+        "name": "Scott Pianowski (RotoWire - Best Bet)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Houston's defense is a horrible draw for a Colts offense starting to regress."
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire - Best Bet)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Houston Texans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "In what should be a close game, give me the better defense. That's the Texans in the Houston-Indy matchup."
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Indianapolis Colts",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Colts -4.5. Current line: Colts -4.5. Total: 44.5. Colts are 8-3, Texans are 6-5. Huge AFC South divisional game. Colts hold 2-game lead with 2 more games against Texans in final 6 weeks.",
+    "matchup_breakdown": "Texans defense has been elite and keyed team's three-game winning streak. Pass rushers Will Anderson Jr. (7.0 sacks) and Danielle Hunter (4.5 sacks) have been disruptive in those wins. Colts have been better at home (33.6 PPG) vs away (27.8 PPG). Daniel Jones struggles against teams with good pass rushes. Jonathan Taylor key for Colts to establish run game.",
+    "quarterback_outlook": {
+      "Houston Texans": "C.J. Stroud (concussion) has been out since Nov. 2 and remains in protocol. Practiced limited Wednesday. If unavailable, Davis Mills would start again after leading team to three straight wins. Season stats for Stroud: 8 GP, 161-242, 1702 yards, 11 TDs, 5 INTs.",
+      "Indianapolis Colts": "Daniel Jones has fractured fibula but practiced fully and intends to play through injury. Both coach and QB downplayed severity. Steichen doesn't believe they'll need to 'manage' injury substantially. Backup Riley Leonard available if needed. Anthony Richardson still not healthy enough to return from IR."
+    },
+    "coaching_and_strategy": {
+      "Houston Texans": "DeMeco Ryans' defense has been championship-caliber. Three straight wins without Stroud. Will look to pressure Jones with elite pass rush duo of Anderson and Hunter.",
+      "Indianapolis Colts": "Shane Steichen shifted to Wednesday walk-through instead of practice (Week 13 routine). Need to establish Jonathan Taylor in run game. Hold 2-game division lead but Texans have won last three meetings in rivalry."
+    },
+    "miscellaneous": [
+      "Massive AFC South implications - Colts win gives them essential distance, Texans win narrows gap to 1 game",
+      "Colts playing first home game in a month",
+      "Texans have won three straight and four of last five",
+      "Media discussing Jones' fractured fibula - where will Texans try to hit him?"
+    ]
+  },
+  {
+    "matchup": "Jacksonville Jaguars @ Tennessee Titans",
+    "key_injuries": {
+      "Jacksonville Jaguars": [
+        "Christian Kirk (WR) out for season",
+        "Gabe Davis (WR) out for season",
+        "Trevor Lawrence (QB) placed on injured reserve, will need shoulder surgery. Out for rest of season. Mac Jones will start at QB."
+      ],
+      "Tennessee Titans": []
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Jacksonville Jaguars",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Jaguars are a mess, but they should be able to handle the Titans."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tennessee Titans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Jaguars have lost Trevor Lawrence for the season. I'll take the Titans at home."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Tennessee Titans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Mac Jones at quarterback for the Jags? I'll take the Titans and the points."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Jacksonville Jaguars",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Jacksonville aims to move past a challenging season marked by disappointments, whereas Tennessee is eager to find a rhythm and secure a victory to build on."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Jacksonville Jaguars",
+        "predicted_final_score": {
+          "Jacksonville Jaguars": 21,
+          "Tennessee Titans": 17
+        },
+        "predicted_winning_margin": 4,
+        "commentary": "This is a be-careful game for the Jaguars with the Colts on deck next week. It's also a second-consecutive road game at a place they haven't played well in their history. Look for the Titans to hang around in this one, but the Jaguars will pull it out late."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Tennessee Titans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Tennessee Titans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Tennessee Titans",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Jacksonville Jaguars",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Jacksonville Jaguars",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Jaguars -6.5. Current line: Jaguars -6.5. Game at 1 PM ET on CBS.",
+    "matchup_breakdown": "Jaguars dealing with catastrophic injuries - lost Trevor Lawrence (QB) for season to shoulder injury requiring surgery, plus both Christian Kirk and Gabe Davis (WRs) out for season. Mac Jones will start at QB. Be-careful game for Jags with Colts on deck next week. Jaguars historically haven't played well in Tennessee. Titans will try to hang around.",
+    "quarterback_outlook": {
+      "Jacksonville Jaguars": "Mac Jones will start after Trevor Lawrence placed on IR with shoulder injury requiring surgery. Jones' presence poses challenges for fantasy lineups and real game production. Jags offense decimated by injuries.",
+      "Tennessee Titans": "Titans QB situation not detailed in sources but team looking to build momentum with win."
+    },
+    "coaching_and_strategy": {
+      "Jacksonville Jaguars": "Team trying to salvage disappointing season. Need to avoid looking ahead to Colts game next week. Historic struggles in Tennessee are concern.",
+      "Tennessee Titans": "Home team looking to take advantage of Jaguars' injury woes. Will try to hang around and potentially pull upset."
+    },
+    "miscellaneous": [
+      "Jaguars have lost two of three starting wide receivers to season-ending injuries",
+      "Trevor Lawrence out for rest of season with shoulder surgery needed",
+      "Second consecutive road game for Jaguars",
+      "Jaguars haven't played well historically in Tennessee"
+    ]
+  },
+  {
+    "matchup": "Las Vegas Raiders @ Los Angeles Chargers",
+    "key_injuries": {
+      "Las Vegas Raiders": [
+        "Ashton Jeanty (RB) is questionable",
+        "Michael Mayer (TE) is questionable",
+        "Jackson Powers-Johnson (C) is on IR",
+        "Brennan Jackson (LB) is on IR",
+        "Kolton Miller (OT) is on IR",
+        "Bobby Hart (OT) is questionable"
+      ],
+      "Los Angeles Chargers": [
+        "Justin Herbert (QB) dealing with injury concerns. Has been pressured 182 times this season. Had multiple injury scares. Went to blue medical tent for concussion check in Week 11, then locker room early for halftime. After bye week, Herbert said he's 'better' and thinks 'with every day you get better. It was good for everyone to have that week off.'",
+        "Omarion Hampton (RB) on IR but expected to return in Week 13",
+        "Joe Alt (OT) on IR",
+        "Rick Lovato (LS) on Reserve-Ret",
+        "Hassan Haskins (RB) on IR",
+        "JK Dobbins (RB) placed on IR with foot injury, ruled out for remainder of season"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Chargers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Chargers are coming off a bye and should take care of business against the Raiders."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Los Angeles Chargers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "I'm not laying double digits, but the Chargers should win this one."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Las Vegas Raiders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Raiders are bad, but double digits is a lot. I'll take the points."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Los Angeles Chargers",
+        "predicted_final_score": {
+          "Los Angeles Chargers": 24,
+          "Las Vegas Raiders": 10
+        },
+        "predicted_winning_margin": 14,
+        "commentary": "The Chargers are coming off a bye, while the Raiders are coming off a horrible showing in a loss to the Browns. That offensive showing led to the firing of coordinator Chip Kelly. It won't matter. The offense is lifeless because the line is awful. The Chargers don't have a great line either, but give me Justin Herbert over Geno Smith. Chargers take it."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Las Vegas Raiders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Los Angeles Chargers",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Las Vegas Raiders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Las Vegas Raiders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Las Vegas Raiders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Chargers -9.5. Current line: Chargers -10. Total: 41. Moneyline: Chargers -590, Raiders +425. Raiders are 3-7 ATS in last 10 games. UNDER is 5-2 in Raiders' last 7 games. Chargers are 4-1 SU and ATS in last 5 games vs Raiders. UNDER is 7-1 in Raiders' last 8 road games. Raiders have lost 9 straight games vs AFC West opponents. Chargers are 2-6 ATS in last 8 games. OVER is 8-3 in Chargers' last 11 home games. Chargers are 7-0 ATS in last 7 games vs AFC West opponents.",
+    "matchup_breakdown": "Chargers coming off bye week, should be rested. Raiders coming off horrible offensive showing in loss to Browns, leading to firing of OC Chip Kelly. Raiders offense lifeless due to awful offensive line. Chargers will roll out new-look offensive line (lineup change No. 20-something this year). Chargers won first meeting 20-9 on road. Chargers need QB Herbert to start playing at elite level to make playoffs.",
+    "quarterback_outlook": {
+      "Los Angeles Chargers": "Justin Herbert has been on injury watch but said he's 'better' after bye week. Has been pressured 182 times this season. Multiple injury scares including Week 10 when he limped off field and Week 11 when he went to medical tent for concussion check. Averaging 244.6 passing yards per game for 19 TDs and 9 INTs. Needs to limit turnovers.",
+      "Las Vegas Raiders": "Raiders QB situation mentioned as Geno Smith in one source (likely error - Smith plays for Seahawks). Raiders offense has been lifeless with awful offensive line."
+    },
+    "coaching_and_strategy": {
+      "Los Angeles Chargers": "Jim Harbaugh's Chargers rolling out new-look offensive line in Week 13. Run-heavy Greg Roman offense. Gus Edwards primary RB with JK Dobbins on IR. Omarion Hampton expected to return from IR to help balance offense.",
+      "Las Vegas Raiders": "Fired OC Chip Kelly after horrible offensive showing vs Browns. Antonio Pierce said 'We keep working. We want to bring effort every week.' Team on 5-game losing streak."
+    },
+    "miscellaneous": [
+      "AFC West divisional game at SoFi Stadium",
+      "Raiders are 2-9, Chargers are 7-4",
+      "Chargers lost bye week as Chiefs and Jaguars both won in OT",
+      "Game time: 4:25 PM ET on CBS",
+      "Tickets starting at $117"
+    ]
+  },
+  {
+    "matchup": "New Orleans Saints @ Miami Dolphins",
+    "key_injuries": {
+      "New Orleans Saints": [],
+      "Miami Dolphins": []
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Dolphins are rolling and coming off a bye. They should take care of business here."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Saints offense is anemic. The Dolphins should win this one easily."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Dolphins are getting healthy and the Saints are not. Miami wins."
+      },
+      {
+        "name": "Jeremy Cluff (Arizona Republic)",
+        "expert_track_record": null,
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Coming off a bye week, Miami is well-prepared to capitalize on New Orleans' ongoing challenges. The Saints continue to struggle offensively, and the Dolphins' defense will undoubtedly take advantage of that."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": {
+          "Miami Dolphins": 28,
+          "New Orleans Saints": 16
+        },
+        "predicted_winning_margin": 12,
+        "commentary": "The Dolphins are coming off a bye and won two straight before that. They've done it with a good running game with De'Von Achane and better defense. The Saints have offensive issues that will come into play here. Miami has seemed to right things and that will show up. Miami takes it."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "New Orleans Saints",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "New Orleans Saints",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "New Orleans Saints",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Miami Dolphins",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "New Orleans Saints",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Dolphins -6. Current line: Dolphins -6. Total: 42.5. Game at 1 PM ET on FOX.",
+    "matchup_breakdown": "Dolphins coming off bye week and won two straight before that. Running game with De'Von Achane has been strong. Defense playing better. Saints have significant offensive issues. Dolphins appear to have righted the ship after early season struggles.",
+    "quarterback_outlook": {
+      "Miami Dolphins": "Dolphins QB play has improved with better protection and run game support from De'Von Achane.",
+      "New Orleans Saints": "Saints QB and offense have been anemic with significant struggles throughout season."
+    },
+    "coaching_and_strategy": {
+      "Miami Dolphins": "Mike McDaniel's offense clicking better with strong running game from Achane. Defense has improved significantly. Team well-rested after bye.",
+      "New Orleans Saints": "Saints continue to struggle with offensive issues. Team appears to have given up on season in many ways."
+    },
+    "miscellaneous": [
+      "Dolphins won two straight before bye",
+      "Saints have been one of worst offenses in NFL",
+      "Dolphins trying to make playoff push after slow start"
+    ]
+  },
+  {
+    "matchup": "Minnesota Vikings @ Seattle Seahawks",
+    "key_injuries": {
+      "Minnesota Vikings": [
+        "J.J. McCarthy (QB, concussion) remains in concussion protocol. Reported concussion symptoms during flight back after 23-6 defeat to Packers in Week 12. May force Vikings to turn to rookie QB Max Brosmer.",
+        "Christian Darrisaw (OT) hurt in Green Bay, missed Wednesday practice",
+        "Donovan Jackson (OG) hurt in Green Bay, missed Wednesday practice"
+      ],
+      "Seattle Seahawks": [
+        "Sam Darnold (QB) dealing with issues in 4th quarter. Seahawks offense has struggled to score in 4th quarter of games."
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Vikings are a mess right now. The Seahawks should take care of business at home."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Double digits is a lot, but the Vikings can't stop anyone. Seahawks win big."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Minnesota Vikings",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Vikings are getting too many points here. I'll take them and the points."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": {
+          "Seattle Seahawks": 30,
+          "Minnesota Vikings": 9
+        },
+        "predicted_winning_margin": 21,
+        "commentary": "This is the revenge game for Sam Darnold against the team he played with in 2025. He led that Vikings team to the playoffs and they didn't want him back. Now he's playing at a high level, while the Vikings have quarterback issues. With struggling J.J. McCarthy in the concussion protocol, this could be rookie Max Brosmer making his first start. That's tough enough on the road, but in Seattle it's brutal. Seahawks big."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Minnesota Vikings",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Minnesota Vikings",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Seattle Seahawks",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Seahawks -11.5. Current line: Seahawks -11.5. Total: 44.5. Game at 4:05 PM ET on FOX.",
+    "matchup_breakdown": "Sam Darnold revenge game against team that didn't re-sign him. Vikings are minus-12 in turnover ratio for season (second-worst in league) with 21 giveaways (most in NFL). Vikings were plus-2 in turnovers in Seattle win last year. Seahawks have turnover issues too (minus-7 with 20 giveaways, second-most behind Vikings). Seahawks have 36 sacks (4th-most in NFL), led by DE Leonard Williams and DT Byron Murphy II with 6 each. Vikings need healthy O-line but Darrisaw and Jackson hurt. Vikings sacked Geno Smith twice last year. Seahawks WR Jaxon Smith-Njigba had 8 catches for 95 yards and 1 TD in last year's game vs Vikings.",
+    "quarterback_outlook": {
+      "Minnesota Vikings": "J.J. McCarthy remains in concussion protocol after reporting symptoms on flight back from Green Bay. Could force Vikings to start rookie Max Brosmer in his first NFL start on road in Seattle, which would be brutal. Vikings are minus-8 in turnover ratio over last 3 losses.",
+      "Seattle Seahawks": "Sam Darnold playing revenge game against Vikings who let him go after he led them to playoffs. Darnold has been playing at high level with Seahawks. Darnold and offense struggle to score in 4th quarter. Darnold has been well protected with only 11 sacks (fewest in league). DC Brian Flores said 'We will blitz him.'"
+    },
+    "coaching_and_strategy": {
+      "Minnesota Vikings": "Vikings DC Brian Flores praised Darnold and their good relationship from last season, but said 'We will blitz him.' Need return of Jonathan Greenard (shoulder, missed last 2 games). Vikings need to force turnovers - Seahawks have 20 giveaways this season.",
+      "Seattle Seahawks": "Seahawks must capitalize on Vikings' turnover issues and QB uncertainty. Jaxon Smith-Njigba key weapon. Cooper Kupp is chain-mover, Rashid Shaheed is deep threat, AJ Barner is red-zone target with 4 TDs."
+    },
+    "miscellaneous": [
+      "Sam Darnold led Vikings to 27-24 win in Seattle in Week 16 last year",
+      "Justin Jefferson scored TDs in both games vs Seahawks including 39-yard game-winner last year",
+      "Vikings are 4-7 and season hanging by thread. Loss would drop them to 4-8 and likely end playoff hopes.",
+      "If Vikings somehow win and run table (6 straight wins to 10-7), they might have playoff shot"
+    ]
+  },
+  {
+    "matchup": "Denver Broncos @ Washington Commanders",
+    "key_injuries": {
+      "Denver Broncos": [],
+      "Washington Commanders": [
+        "Jayden Daniels (QB, dislocated elbow) suffered injury few weeks ago vs Seahawks. Will return to practice this week but considered 'unlikely' to play Sunday night vs Broncos. Has been limited to just 6 games this season, leading Washington to 2-4 record. Completed 62.5% of passes for 1,184 yards, 8 scores, 2 picks, plus 54 carries for 262 yards and 2 scores. Elbow did not sustain structural damage or require surgery. Marcus Mariota expected to start.",
+        "Bobby Wagner (LB) aging veteran who should have fewer snaps next season but still valuable leader"
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Broncos defense is nasty. Without Jayden Daniels, the Commanders don't have much of a chance."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Broncos are the better team and should win this one on the road."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "Washington Commanders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Commanders are getting points at home. I'll take them."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": {
+          "Denver Broncos": 22,
+          "Washington Commanders": 10
+        },
+        "predicted_winning_margin": 12,
+        "commentary": "The Commanders will again be without Jayden Daniels against a Broncos team coming off a bye. The Broncos defense is nasty, while the Commanders is not. That defense will be the difference in this game. They will shut down Marcus Mariota and the Commanders offense."
+      },
+      {
+        "name": "Nick Whalen (RotoWire - Best Bet)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "Trusting the Broncos' offense to win a game convincingly is certainly in the back of my mind, but there's such a massive gap between the Broncos' and Commanders' defenses."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "Washington Commanders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "Washington Commanders",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "Denver Broncos",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Broncos -6.5. Current line: Broncos -6. Total: 43.5. Sunday Night Football at 8:20 PM ET on NBC. Commanders opened as 6.5-point home underdog and line remained there initially. Betting market was bracing for Daniels to miss more time.",
+    "matchup_breakdown": "Massive gap between Broncos defense (nasty, one of strongest in NFL) and Commanders defense (not good). Broncos coming off bye week. Commanders coming off bye but without Daniels. Marcus Mariota will start at QB for Washington. Commanders season hanging in balance at 3-8, way out of playoff spot. Loss could lead to potential elimination with other results.",
+    "quarterback_outlook": {
+      "Denver Broncos": "Bo Nix playing well for Broncos. Leading 9-2 team. Broncos offense not explosive but efficient enough with strong defense. Nix had hilarious response about facing Marcus Mariota.",
+      "Washington Commanders": "Jayden Daniels will return to practice but unlikely to play. Has been limited to 6 games with 2-4 record due to multiple injuries. Marcus Mariota will start. Mariota is 11th-year veteran making 6th start of season. With Daniels banged up and multiple injuries this season, Commanders may play it safe to avoid injury lingering into next season."
+    },
+    "coaching_and_strategy": {
+      "Denver Broncos": "Sean Payton's Broncos well-rested after bye. Defense is key to success. Need to shut down Mariota and Commanders offense.",
+      "Washington Commanders": "Dan Quinn confirmed Daniels unlikely to play. Need to figure out if season worth risking Daniels' long-term health. At 3-8, playoff hopes essentially over. Focus may shift to 2026 and protecting franchise QB."
+    },
+    "miscellaneous": [
+      "Commanders at 3-8 with season hanging by thread",
+      "Potential elimination game for Washington with other results",
+      "Broncos are 9-2 and in strong playoff position",
+      "Sunday Night Football showcase game",
+      "ESPN's Adam Schefter reported Daniels unlikely to play on Monday"
+    ]
+  },
+  {
+    "matchup": "New York Giants @ New England Patriots",
+    "key_injuries": {
+      "New York Giants": [
+        "Jason Dart (QB) nearing return. Fully participated in Wednesday practice. Has been sidelined for last two games due to concussion protocol from injury sustained in Week 10 vs Bears. Jameis Winston started in his absence with two losses.",
+        "Multiple Giants on injury report"
+      ],
+      "New England Patriots": [
+        "Will Campbell (OT, rookie) placed on injured reserve for next four games due to knee injury sustained during Week 12 victory over Bengals. Injury not expected to be season-ending."
+      ]
+    },
+    "expert_picks": [
+      {
+        "name": "Tyler Dragon (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Patriots are rolling with Drake Maye. They should handle the Giants on Monday night."
+      },
+      {
+        "name": "Jon Hoefling (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Giants are eliminated from playoff contention. The Patriots should win this one."
+      },
+      {
+        "name": "Blake Schuster (USA Today)",
+        "expert_track_record": null,
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": "The Patriots are on a roll. They cover here."
+      },
+      {
+        "name": "Pete Prisco (CBS Sports)",
+        "expert_track_record": "91-87 ATS, 122-55-1 straight up in 2025",
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": {
+          "New England Patriots": 31,
+          "New York Giants": 21
+        },
+        "predicted_winning_margin": 10,
+        "commentary": "The Patriots are riding a nine-game winning streak, while the Giants have been eliminated from playoff contention. Where is the motivation for the Giants, especially playing on the road for consecutive weeks? Patriots and Drake Maye will head to their bye after this one on a 10-game winning streak as they take care of the Giants."
+      },
+      {
+        "name": "Jeff Erickson (RotoWire)",
+        "expert_track_record": "81-91-6 in 2025",
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Scott Pianowski (RotoWire)",
+        "expert_track_record": "79-93-6 in 2025",
+        "predicted_winner": "New York Giants",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Nick Whalen (RotoWire)",
+        "expert_track_record": "80-92-6 in 2025",
+        "predicted_winner": "New York Giants",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Kevin Payne (RotoWire)",
+        "expert_track_record": "66-106-6 in 2025",
+        "predicted_winner": "New York Giants",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      },
+      {
+        "name": "Mario Puig (RotoWire)",
+        "expert_track_record": "70-102-6 in 2025",
+        "predicted_winner": "New England Patriots",
+        "predicted_final_score": null,
+        "predicted_winning_margin": null,
+        "commentary": null
+      }
+    ],
+    "weather": null,
+    "market_context": "Opening line: Patriots -7.5. Current line: Patriots -7.5. Monday Night Football at 8:15 PM ET on ESPN/ABC.",
+    "matchup_breakdown": "Patriots riding nine-game winning streak. Giants eliminated from playoff contention. Giants playing on road for consecutive weeks with no motivation. Patriots and Drake Maye looking to extend winning streak to 10 before bye week. Jason Dart may return from concussion for Giants.",
+    "quarterback_outlook": {
+      "New York Giants": "Jason Dart nearing return after missing two games in concussion protocol. Fully participated in Wednesday practice. Jameis Winston started in his absence with two seven-point losses. Both QBs received first-team snaps in preparation for Monday night.",
+      "New England Patriots": "Drake Maye has been outstanding for Patriots during nine-game winning streak. Leading impressive Patriots resurgence. Team will head to bye after this game."
+    },
+    "coaching_and_strategy": {
+      "New York Giants": "Motivation is major question with team eliminated from playoffs and playing second consecutive road game. Jason Dart may return which could provide spark.",
+      "New England Patriots": "Jerod Mayo has Patriots rolling. Looking for 10th straight win before bye week. Drake Maye has energized entire team."
+    },
+    "miscellaneous": [
+      "Monday Night Football showcase",
+      "Patriots on nine-game winning streak",
+      "Giants eliminated from playoff contention",
+      "Patriots will head to bye week after game",
+      "Giants playing consecutive road games"
+    ]
+  }
+]

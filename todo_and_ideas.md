@@ -29,23 +29,24 @@
 
 ## Optimize
 
-- ✅ Add a validation agent to the Optimize Planner node
-  - Validates that the specific combination has not been tried before. Useful for large max_experiments.
-- ✅ Add a judge agent to the Optimize Planner node
-  - Probably only for Phases 3 and 4.
-  - Analyzes the reasoning and provides feedback. Ensures that sound statisical thinking is occurring.
+- Add validation for duplicate feature requests
 - Clean up how the agent returns state
   - Don't return state directly
   - Return: { "foo": "bar" }
-- ✅ Send back to judge after resetting messages because of multiple validation failures
-  - Set judged = state["judged"] at start
-  - Set judged = False if resetting messages
-  - return { "judged": judged }
 - Be smarter about context window
   - Dynamically set state["trimmed_results"] based on token count
 - ✅ Log total number of Best Results found and total number of errors
   - Print at the end for an overall summary
   - Think about logging them with the model_name and the improvement amount
+- ✅ Add a validation agent to the Optimize Planner node
+  - Validates that the specific combination has not been tried before. Useful for large max_experiments.
+- ✅ Add a judge agent to the Optimize Planner node
+  - Probably only for Phases 3 and 4.
+  - Analyzes the reasoning and provides feedback. Ensures that sound statisical thinking is occurring.
+- ✅ Send back to judge after resetting messages because of multiple validation failures
+  - Set judged = state["judged"] at start
+  - Set judged = False if resetting messages
+  - return { "judged": judged }
 
 ## Tavily
 

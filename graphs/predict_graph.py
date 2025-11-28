@@ -18,6 +18,7 @@ from nodes.predict_predictor import predict_predictor_node as predictor
 
 # Graphs
 from graphs.analyzer_graph import analyzer_graph as analyzer
+from graphs.researcher_graph import researcher_graph as researcher
 
 print("Starting Predictor app...\n")
 
@@ -30,6 +31,7 @@ predict.add_node("setup", setup)
 predict.add_node("aggregate_loader", aggregate_loader)
 predict.add_node("predictor", predictor)
 predict.add_node("analyzer", analyzer)
+predict.add_node("researcher", researcher)
 #predict.add_node("injury_reporter", injury_reporter)
 #predict.add_node("injury_adjuster", injury_adjuster)
 #predict.add_node("transcriber", transcriber)
@@ -42,7 +44,8 @@ predict.add_edge(START, "setup")
 # LEVEL 1
 predict.add_edge("setup", "aggregate_loader")
 
-# LEVEL 3
+# LEVEL 2
+predict.add_edge("aggregate_loader", "researcher")
 predict.add_edge("aggregate_loader", "predictor")
 #predict.add_edge("aggregate_loader", "injury_reporter")
 #predict.add_edge("aggregate_loader", "transcriber")
@@ -52,6 +55,7 @@ predict.add_edge("aggregate_loader", "predictor")
 # predict.add_edge("transcriber", "transcription_summarizer")
 
 # LEVEL 5
+predict.add_edge("researcher", "analyzer")
 predict.add_edge("predictor", "analyzer")
 
 # END
