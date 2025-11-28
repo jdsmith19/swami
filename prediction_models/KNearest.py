@@ -17,11 +17,12 @@ class KNearest(PredictionModel):
 			
 	def __train_model(self, features, test = False):
 		# Prep data
-		X = features.drop(['team_a_' + self.target], axis=1)
-		y = features['team_a_' + self.target]
+		X = features.drop(['team_a_' + self.target], axis=1).copy()
+		y = features['team_a_' + self.target].copy()
 		
 		# 🔒 Always sanitize before giving to XGBoost
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
+		X = X.drop(["season"], axis=1, errors="ignore")
 
 		if(test):
 			X, X_test, y, y_test = train_test_split(
@@ -66,8 +67,9 @@ class KNearest(PredictionModel):
 					})
 		return {'model': kn, 'scaler': scaler}
 	
-	def predict_winner(self, prediction_set):	
+	def predict_winner(self, prediction_set):
 		X_predict = prediction_set[self.team_specific_feature_columns].copy()
+		X_predict = X_predict.drop("team_a_" + self.target, axis=1)
 		X_predict = self.kn_classifier['scaler'].transform(X_predict)
 		win_predictions = self.kn_classifier['model'].predict(X_predict)
 		probabilities = self.kn_classifier['model'].predict_proba(X_predict)

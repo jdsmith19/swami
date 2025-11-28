@@ -14,15 +14,16 @@ class PredictionModel:
 	def __prepare_features(self, aggregate_data, prediction=False):
 		feature_columns = self.team_specific_feature_columns.copy()
 		feature_columns.append("season")
-		if(prediction):
-			feature_columns.remove("team_a_" + self.target)
+		#if(prediction):
+		#	feature_columns.remove(["team_a_" + self.target])
 		features = aggregate_data[feature_columns].copy()
 		features = features.dropna()
 		return features
 	
 	def __get_team_specific_feature_columns(self, prediction_columns=False):
 		team_specific_feature_columns = []
-		team_specific_feature_columns.append("team_a_" + self.target)
+		if prediction_columns:
+			team_specific_feature_columns.append("team_a_" + self.target)
 		for col in self.feature_columns:
 			if "_away" not in col:
 				team_specific_feature_columns.append("team_a_" + col)

@@ -26,7 +26,9 @@ class RandomForest(PredictionModel):
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
 
 		sample_weight = self.get_sample_weights(features, X)
-		
+
+		X = X.drop(["season"], axis=1, errors="ignore")		
+
 		if(test):
 			X, X_test, y, y_test, w, w_test = train_test_split(
 				X, 
@@ -59,6 +61,7 @@ class RandomForest(PredictionModel):
 	
 	def predict_spread(self, prediction_set):	
 		X_predict = prediction_set[self.team_specific_feature_columns].copy()
+		
 		spread_predictions = self.rf_regressor.predict(X_predict)
 
 		# Add to dataframe for readability
