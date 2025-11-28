@@ -68,7 +68,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
         "last_message": response.content,
         "messages": messages,
         "tokens": response.response_metadata["token_usage"]["total_tokens"],
-        "reasoning": response.response_metadata["reasoning"],
+        "reasoning": response.response_metadata.get("reasoning"),
         "total_tokens": total_tokens,
         "failed_validation_count": failed_validation_count,
         "judged": judged

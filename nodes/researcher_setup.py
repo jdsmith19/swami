@@ -28,9 +28,11 @@ def researcher_setup_node(state: ResearcherState):
     path = Path(file_path)
     expert_analysis = []
     if path.exists:
+        log(log_path, f"Cached file found: { file_path }", log_type, this_filename)
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 expert_analysis = json.load(f)
+            log(log_path, "Expert Analysis loaded from cache", log_type, this_filename)
         except:
             log(log_path, "Cached research file is not valid JSON", log_type, this_filename)
     
