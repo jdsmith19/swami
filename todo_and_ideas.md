@@ -87,3 +87,8 @@
   - Kick off agent run
   - Show progress
   - See historical results
+
+## Models
+
+- Add more models: XGBoostClassifer? CVClassifer? Others?
+- Make halflife a paramater the agent is able to pass during optimization

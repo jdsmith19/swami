@@ -39,6 +39,8 @@ def is_best_result(result, best_results):
             differential = round(best[metric] - result[metric], 3)
             if result[metric] > best[metric]:
                 is_best = True
+        if is_best:
+            print(f"🥳 Best result for { result["result"]["model_name"] }: { result[metric] } ({ result["target"]})")
             
         log(log_path, f"Result differential for { result["model_name"] }: { differential }", log_type, this_filename)
     
@@ -76,7 +78,6 @@ def optimize_progressor(state: OptimizeState) -> OptimizeState:
         result["result"]["agent_id"] = state["agent_id"]
         rdb.save_result(result["result"], result["features_used"])
         if is_best_result(result["result"], state["best_results"]):
-            print(f"🥳 Best result for { result["result"]["model_name"] }")
             state["best_results_found"].append(result["result"])
             state["best_results"] = set_best_result(result["result"], state["best_results"], result["features_used"], state["db_path"])
 
