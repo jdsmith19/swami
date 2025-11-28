@@ -25,6 +25,8 @@ class LogisticRegression(PredictionModel):
 
 		sample_weight = self.get_sample_weights(features, X)
 
+		X = X.drop(["season"], axis=1, errors="ignore")		
+
 		if(test):
 			X, X_test, y, y_test, w, w_test = train_test_split(
 				X, 
@@ -71,6 +73,7 @@ class LogisticRegression(PredictionModel):
 	
 	def predict_winner(self, prediction_set):	
 		X_predict = prediction_set[self.team_specific_feature_columns].copy()
+
 		X_predict = self.lg_classifier['scaler'].transform(X_predict)
 		win_predictions = self.lg_classifier['model'].predict(X_predict)
 		probabilities = self.lg_classifier['model'].predict_proba(X_predict)

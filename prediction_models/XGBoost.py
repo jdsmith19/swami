@@ -26,6 +26,9 @@ class XGBoost(PredictionModel):
 		X = self.sanitize_features(X, model = self.model_output["model_name"])
 		
 		sample_weight = self.get_sample_weights(features, X)
+
+		X = X.drop(["season"], axis=1, errors="ignore")
+
 		
 		if(test):
 			X, X_test, y, y_test, w, w_test = train_test_split(
