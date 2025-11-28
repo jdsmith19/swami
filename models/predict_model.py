@@ -32,3 +32,4 @@ class PredictState(AgentState):
     transcription_summary_tokens: int
     final_analysis: list
     game_index: int
+    expert_analysis: list[dict]

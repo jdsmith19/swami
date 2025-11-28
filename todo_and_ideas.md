@@ -3,6 +3,16 @@
 ## Data Aggregates
 
 - ✅ MUST start calculating trends, not just averages
+- Need to incoprorate vegas lines, but not sure where
+  - Leaning towards not providing this data to the ML Models (don't want them to be biased by it)
+
+## Analyzer
+
+- Split the analyzer into multiple agents with a Judge Agent at the end
+  - Consensus Agent
+  - Upset Hunter Agent
+  - Agent Performance Agent
+  - Others?
 
 ## General Outputs
 
@@ -48,9 +58,9 @@
   - Set judged = False if resetting messages
   - return { "judged": judged }
 
-## Tavily
+## Deep Research
 
-- Integrate Tavily for Expert Analysis.
+- Integrate Deep Research for Expert Analysis.
   - Find 3 - 5 sources of NFL Expert Analysis of upcoming games.
   - Consolidate and categorize the information.
     - Key injuries

@@ -24,12 +24,13 @@ def researcher_setup_node(state: ResearcherState):
     researcher_agent_id = str(uuid.uuid4())
     season = state["season"]
     season_week = state["week"]
-    file_path = f"cache/perplexity/expert_{ season }_week_{ season_week }.json"
+    file_path = f"cache/openai/expert_{ season }_week_{ season_week }.json"
     path = Path(file_path)
     expert_analysis = []
     if path.exists:
         try:
-            expert_analysis = json.load(file_path)
+            with open(file_path, "r", encoding="utf-8") as f:
+                expert_analysis = json.load(f)
         except:
             log(log_path, "Cached research file is not valid JSON", log_type, this_filename)
     

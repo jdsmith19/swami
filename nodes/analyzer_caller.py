@@ -71,8 +71,10 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     )
 
     if not state.get("initial_prompt"):
+        current_matchup = state["current_matchup"]
+        current_matchup = json.dumps(current_matchup, indent = 2)
         initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
-            matchup=state["current_matchup"],
+            matchup=json.dumps(current_matchup),
             db_lookup_string=get_team_lookup_string(state["games"][state["game_index"]])
         )
     else:
@@ -90,11 +92,12 @@ def analyzer_caller_node(state: AnalyzerState) -> AnalyzerState:
     )
     
     if state["failure_count"] == 0:
-        print(f"Analyzing { state["games"][state["game_index"]] } [{ state["game_index"] + 1 } of { len(state["games"]) }]")
+        log(state["log_path"], f"Analyzing { state["games"][state["game_index"]] } [{ state["game_index"] + 1 } of { len(state["games"]) }]", state["log_type"], this_filename)
 
     response = agent.invoke({
         "messages": state["messages"]
     })
+
 
     messages = []
     reasoning = []

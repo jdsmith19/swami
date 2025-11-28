@@ -11,6 +11,7 @@ from models.predict_model import PredictState
 from nodes.predict_aggregate_loader import predict_aggregate_loader_node as aggregate_loader
 from nodes.predict_setup import predict_setup_node as setup
 from nodes.predict_predictor import predict_predictor_node as predictor
+from nodes.predict_progressor import predictor_progressor_node as progressor
 # from nodes.predict_injury_reporter import predict_injury_reporter_node as injury_reporter
 # from nodes.predict_transcriber import predict_transcriber_node as transcriber
 # from nodes.predict_transcription_summarizer import predict_transcription_summarizer_node as transcription_summarizer
@@ -30,8 +31,9 @@ predict = StateGraph(PredictState)
 predict.add_node("setup", setup)
 predict.add_node("aggregate_loader", aggregate_loader)
 predict.add_node("predictor", predictor)
-predict.add_node("analyzer", analyzer)
 predict.add_node("researcher", researcher)
+predict.add_node("analyzer", analyzer)
+predict.add_node("progressor", progressor)
 #predict.add_node("injury_reporter", injury_reporter)
 #predict.add_node("injury_adjuster", injury_adjuster)
 #predict.add_node("transcriber", transcriber)
@@ -54,9 +56,14 @@ predict.add_edge("aggregate_loader", "predictor")
 # predict.add_edge("injury_reporter", "injury_adjuster")
 # predict.add_edge("transcriber", "transcription_summarizer")
 
+# LEVEL $
+
 # LEVEL 5
-predict.add_edge("researcher", "analyzer")
-predict.add_edge("predictor", "analyzer")
+predict.add_edge("researcher", "progressor")
+predict.add_edge("predictor", "progressor")
+
+# LEVEL 6
+predict.add_edge("progressor", "analyzer")
 
 # END
 #predict.add_edge("injury_adjuster", END)
@@ -66,4 +73,4 @@ predict.add_edge("analyzer", END)
 
 # COMPILE THE GRAPH
 predict_graph = predict.compile()
-predict_graph.get_graph().draw_mermaid_png(output_file_path="graphs/images/predict_graph.png")
+predict_graph.get_graph(xray=True).draw_mermaid_png(output_file_path="graphs/images/predict_graph.png")

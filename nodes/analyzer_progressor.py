@@ -31,7 +31,8 @@ def analyzer_progressor_node(state: AnalyzerState) -> AnalyzerState:
     lines.append(f"MATCHUP: { state["analysis"]["matchup"] }")
     lines.append(f"PREDICTION: { state["analysis"]["final_prediction"] }")
     lines.append(f"CONFIDENCE: { state["analysis"]["confidence"] }")
-    lines.append(f"ANALYSIS: { state["analysis"]["analysis"] }")
+    lines.append(f"DEVIATION ANALYSIS: { state["analysis"]["deviation"] }")
+    lines.append(f"FINAL ANALYSIS: { state["analysis"]["analysis"] }")
     if not state['reasoning'] == []:
         lines.append(f"{'='*80 }")
         lines.append(f"REASONING: ")

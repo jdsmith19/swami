@@ -64,6 +64,5 @@ def predict_predictor_node(state: PredictState):
     log(state["log_path"], formatted, "file", this_filename)
     
     return {
-        "predictions": predictions,
-        "matchups": matchups
+        "predictions": matchups
     }

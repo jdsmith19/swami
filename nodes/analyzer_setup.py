@@ -37,6 +37,7 @@ def analyzer_setup_node(state: AnalyzerState):
     game_index = 0
     tokens = 0
     current_matchup = state["matchups"][state["games"][game_index]]
+    current_matchup = json.dumps(current_matchup)
     db_lookup_string = get_team_lookup_string(state["games"][game_index])
     initial_prompt = load_prompt(f"{ state['home_path'] }predictor/analyzer/initial.txt").format(
         matchup=current_matchup,

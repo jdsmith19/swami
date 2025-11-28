@@ -1,0 +1,112 @@
+I'm researching upcoming NFL games to help predict winners. As a result, I need a breakdown of expert analysis for the following upcoming games of Week [season_week] of the [season] NFL season:
+
+Arizona Cardinals @ Tampa Bay Buccaneers (date)
+Atlanta Falcons @ New York Jets (date)
+Cincinnati Bengals @ Baltimore Ravens
+Buffalo Bills @ Pittsburgh Steelers
+Los Angeles Rams @ Carolina Panthers
+Chicago Bears @ Philadelphia Eagles
+San Francisco 49ers @ Cleveland Browns
+Kansas City Chiefs @ Dallas Cowboys
+Denver Broncos @ Washington Commanders
+Green Bay Packers @ Detroit Lions
+Houston Texans @ Indianapolis Colts
+Jacksonville Jaguars @ Tennessee Titans
+Las Vegas Raiders @ Los Angeles Chargers
+New Orleans Saints @ Miami Dolphins
+Minnesota Vikings @ Seattle Seahawks
+New York Giants @ New England Patriots
+
+Group your response by game and for each game provide the following details. Do not come to your own conclusions, only summarize or quote information from experts. If you find the game has already been completed, do not include summaries from the game in your output.
+
+Key Injuries
+- Identify and describe any key injuries for the team
+- Explain their possible impact to the outcome of the game
+- Include information about the replacement player, if available to determine the impact. If a replacement player has played well, the impact may not be as high.
+- Note if this injury is new or if it has been impacting the team for some time (and how long)
+
+Expert Picks
+- Picks for the game including winner and, if available, final predicted score and winning margin
+- List each pick individually, do not summarize or consolidate the picks
+- If available, provide the name of the expert who made the pick and their track record
+- Include any commentary they have provided for their pick -- why they have chosen this predicted outcome
+
+Weather
+- Are there any significant weather events that might impact the game?
+- How might that weather impact the game? For example, will it make it low-scoring? Potentially impact the passing game and make it more of a running contest?
+- Don't look up weather data on your own and infer, only include if it's mentioned in expert analysis.
+
+Market Context
+- Opening line (spread and total) vs current line
+- Direction and size of line movement
+- Public vs sharp betting indicators if available
+
+Matchup Breakdown
+- Key on-field advantages or disadvantages
+- Scheme matchups that could swing the game
+- Units most likely to decide the outcome
+
+Quarterback Outlook
+- Current form and recent trend
+- Pressure performance and decision-making
+- Any system or matchup concerns
+
+Coaching & Strategy
+- Notable coaching tendencies
+- Past performance in similar situations
+- Late-game decision tendencies
+
+Miscellaneous
+- Any other factors you can find that could have an impact on the outcome of the game
+
+Provide your results in valid JSON AND ONLY JSON using the following structure as an example:
+
+[
+	{
+		"matchup": "Arizona Cardinals @ Tampa Bay Buccaneers",
+		"key_injuries": {
+			"Tampa Bay Buccaneers": ["Chris Godwin (WR) is questionable and has been hurt for most of the season. His absence severely impacts the productivity of Tampa Bay's passing game"], // provide as many impactful injuries as you find as a separate item in the list
+			"Arizona Cardinals": ["Kyler Murray (QB) continues to be unavailable for the Cardinals. Jacoby Brissett has played well in Kyler Murray's absence, so the impact to the offense will be minimal."] // provide as many impactful injuries as you find as a separate item in the list
+		},
+		"expert_picks": [
+			{
+				"name": "John Doe",
+				"expert_track_record": "122 - 33",
+				"predicted_winner": "Tampa Bay Buccaneers",
+				"predicted_final_score": {
+					"Arizona Cardinals": 17,
+					"Tampa Bay Buccaneers": 33
+				},
+				"predicted_winnning_margin": 16,
+				"commentary": "Tampa Bay will continue their ecent dominance with this win, relying on their defense to keep Arizona at bay."
+			},
+			{
+				"name": "Jane Doe",
+				"expert_track_record": "96 - 45",
+				"predicted_winner": "Arizona Cardinals",
+				"predicted_final_score": null,
+				"predicted_winnning_margin": null,
+				"commentary": null
+			} // provide as many expert picks as you find
+		],
+		"weather": "High winds expected in Tampa Bay, will impact the passing game. Both teams will need to rely on the run.",
+		"market_context": "This line has stayed flat with Tampa Bay a 3 point favorite.",
+		"matchup_breakdown": "Tampa Bay's high scoring offense is a bad matchup for Arizona's defense. Arizona's offensive line will have difficulty keeping Vita Vae from the quarterback.",
+		"quarterback_outlook": {
+			"Tampa Bay Buccaneers": "Baker Mayfield has been stellar over the last three weeks, throwing 10 touchdowns and only 1 interception.",
+			"Arizona Cardinals": "Jacoby Brissett has relished his chance to start with 83 yards rushing in his last game. He's looking to upset the Buccaneers to solidify a potential start job next season."
+		},
+		"coaching_and_strategy": {
+			"Tampa Bay Buccaneers": "Despite Tampa leading the division, Todd Bowles has made some questionable calls on offense. If this is a close game, his time management could hurt the Bucs down the stretch.",
+			"Arizona Cardinals": "Jonathan Gannon is aggressive with the defensive play calls. Expect the team to blitz on every opportunity to get to Baker Mayfield before he can get a pass off."
+		},
+		"miscellaneous": [
+			"Despite being a home game for Tampa Bay, this game is being played on a neutral field in Orlando. Expect Cardinals fans to be out in droves.",
+			"Arizona has yet to lose a game this season coming off a loss in their previous outing -- which they did last week versus the 49ers."
+		]
+	}, // PROVIDE ONE RESULT FOR EACH GAME IN THE LIST ABOVE
+	{
+		"matchup": "Atlanta Falcons @ New York Jets",
+		// etc. for each game
+	}
+]
