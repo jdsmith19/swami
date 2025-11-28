@@ -39,8 +39,8 @@ def is_best_result(result, best_results):
             differential = round(best[metric] - result[metric], 3)
             if result[metric] > best[metric]:
                 is_best = True
-        if is_best:
-            print(f"🥳 Best result for { result["result"]["model_name"] }: { result[metric] } ({ result["target"]})")
+    if is_best:
+        log(log_path, f"🥳 Best result for { ["model_name"] }: { result[metric] } ({ result["target"]})", log_type, this_filename)
             
         log(log_path, f"Result differential for { result["model_name"] }: { differential }", log_type, this_filename)
     
