@@ -170,9 +170,9 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     failed_validation_count = state["failed_validation_count"]
 
     if state["phase"] == 1:
-        temperature = 0.6
-    elif state["phase"] == 2:
         temperature = 0.4
+    elif state["phase"] == 2:
+        temperature = 0.3
     elif state["phase"] == 3:
         temperature = 0.2
     else:

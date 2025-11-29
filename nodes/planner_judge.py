@@ -165,7 +165,7 @@ def planner_judge_node(state: PlannerState) -> PlannerState:
 
     log(state["log_path"], "Judging the agent's response", state["log_type"], this_filename)
 
-    temperature = 0.2
+    temperature = 0.1
 
     llm = ChatNVIDIA(
         base_url = state["llm_base_url"], 
