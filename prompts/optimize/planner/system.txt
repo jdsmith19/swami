@@ -145,21 +145,18 @@ YOUR STRATEGY:
 Plan experiments in batches of 10. You should craft experiments that will help you gather new insights and to try to get the best possible outcome for each model. There are 4 phases to the exploration, you are currently in PHASE {phase}.
 
 {phase_instructions}
-        
-ALL PREVIOUS RESULTS:
 
-The following includes the current best results, number of experiments run, and the details of the last 50 experiments.
+TOOLS:
+You have access to tools to see the history of experiments.
 
-{historical_results}
+You should use these tools to understand what experiments have been run before and what experiments have been successful.
 
-IDEAS:
-Previous iterations have found the following things provide strong positive signals.
-- Home and away metrics are very important. Don't ignore using the _home and _away suffixes.
-- You should explore home and away metrics in conjunction with each other for the same feature.
-    - Since only one team in a matchup can be home or away, the goal is to compare the teams corresponding performance when predicting the matchup
-- rpi_rating and elo_rating are very strong signals
-- average_point_differential and points_scored give good signals to a teams overall historic performance
-- Be sure to focus on the top features from the result. Trying different combinations and looking at the top results will help you understand which features have the biggest impact.
+- tools.get_best_experiments -> Returns the top n experiments for each model_type
+- tools.get_recent_experiments -> Returns the n most recent experiments run
+- tools.get_feature_usage -> Returns each feature and the number of times it has been used in an experiment by model
+- tools.summarize_feature_effects -> Gives count and average target values (Mean Absolute Error or Test Accuracy) for when a feature is or is not in an experiment
+- tools.get_experiments_with_feature -> Returns the last 25 experiments that contain a specific feature
+- tools.get_experiments_without_feature -> Returns the last 25 experiments that do NOT contain a specific feature
 
 EXPERIMENT INTERPRETATION:
 Regression models (XGBoost, LinearRegression, RandomForest):

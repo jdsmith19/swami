@@ -45,3 +45,35 @@ def get_extended_features():
         for interval in [5, 7]:
             ef.append(f"{ feature }_l{ interval }")
     return ef
+
+def calculate_feature_effects(data_with, data_without):
+        effects = {}
+        for model in ['XGBoost', 'LinearRegression', 'RandomForest', 'LogisticRegression', 'KNearest']:
+            effects[model] = { 
+                'with': { 'total': 0.0, 'count': 0, 'average': 0.0 },
+                'without': { 'total': 0.0, 'count': 0, 'average': 0.0 },
+            }
+        for item in data_with:
+            model = item['model_name']
+            effects[model]['with']['count'] += 1
+            if model in ['XGBoost', 'LinearRegression', 'RandomForest']:
+                effects[model]['with']['total'] += float(item['mean_absolute_error'])
+            else:
+                effects[model]['with']['total'] += float(item['test_accuracy'])
+            if effects[model]['with']['count'] > 0:
+                effects[model]['with']['average'] = round(effects[model]['with']['total'] / float(effects[model]['with']['count']), 2)
+
+        for item in data_without:
+            model = item['model_name']
+            effects[model]['without']['count'] += 1
+            if model in ['XGBoost', 'LinearRegression', 'RandomForest']:
+                effects[model]['without']['total'] += float(item['mean_absolute_error'])
+            else:
+                effects[model]['without']['total'] += float(item['test_accuracy'])
+            effects[model]['without']['average'] = round(effects[model]['without']['total'] / (float(effects[model]['without']['count'])), 2)
+
+        for model in effects:
+            effects[model]['with'].pop('total')
+            effects[model]['without'].pop('total')        
+
+        return effects

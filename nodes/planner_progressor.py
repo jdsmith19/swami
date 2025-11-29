@@ -22,8 +22,10 @@ def planner_progressor_node(state: PlannerState) -> PlannerState:
     state["judged"] = False
     state["end"] = time.time()
     lines = []
-    lines.append("\n*** REASONING ***")
-    lines.append(state["reasoning"])
+    if state.get("reasoning"):
+        lines.append("\n*** REASONING ***")
+        for reason in state['reasoning']:
+            lines.append(state["reasoning"])
     lines.append("\n*** COMMENTARY ***")
     lines.append(state["commentary"])
     #lines.append(f"\nTokens Used: { state["tokens"] }")
