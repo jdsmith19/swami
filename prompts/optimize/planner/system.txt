@@ -158,6 +158,11 @@ You should use these tools to understand what experiments have been run before a
 - tools.get_experiments_with_feature -> Returns the last 25 experiments that contain a specific feature
 - tools.get_experiments_without_feature -> Returns the last 25 experiments that do NOT contain a specific feature
 
+TOOL USAGE:
+Before responding, evaluate available tools.
+If any tool can advance the task, call it immediately.
+Call as many tools as necessary to complete the task.
+
 EXPERIMENT INTERPRETATION:
 Regression models (XGBoost, LinearRegression, RandomForest):
 - Primary metric: MAE (Mean Absolute Error) - LOWER IS BETTER
