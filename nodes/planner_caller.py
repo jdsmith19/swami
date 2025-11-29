@@ -233,7 +233,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
             if getattr(message, "tool_calls", None) and not message.content:
                 messages.append(
                     AIMessage(
-                        content=message.content,
+                        content="",
                         tool_calls=message.tool_calls,
                     )
                 )
