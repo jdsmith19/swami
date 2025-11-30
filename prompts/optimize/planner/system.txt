@@ -151,7 +151,7 @@ You have access to tools to see the history of experiments. These can help you u
 
 If the tool response tells you that no experiments have been run, that means you're just starting. Just follow the instructions in the prompt!
 
-DON'T CALL TOOLS MORE THAN 10 TIMES!
+The tool "summarize_feature_effects" should be called at most once per run. Use the existing summary in your reasoning.
 
 - get_best_experiments -> Returns the top n experiments for each model_type
 - get_recent_experiments -> Returns the n most recent experiments run
