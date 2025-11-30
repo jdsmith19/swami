@@ -199,20 +199,15 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
             ],
     )
 
-    if (len(state["messages"]) - 2 >= 1) and (state["tokens"] > 50000):
-        lines = []
-        lines.append(f"Token usage is high! ({ state["tokens"] })")
-        lines.append(f"Resetting to system and initial prompt.")
-        log(state["log_path"], "\n".join(lines), state["log_path"], this_filename)
-        state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
+#    if (len(state["messages"]) - 2 >= 1) and (state["tokens"] > 50000):
+#        lines = []
+#        lines.append(f"Token usage is high! ({ state["tokens"] })")
+#        lines.append(f"Resetting to system and initial prompt.")
+#        log(state["log_path"], "\n".join(lines), state["log_path"], this_filename)
+#        state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
 
-    ai_responses = 0
-    for message in state["messages"]:
-        if isinstance(message, AIMessage):
-            ai_responses += 1
-
-    if ai_responses >= 4:
-        log(state["log_path"], f"Validation has failed { ai_responses } times. Resetting state.", state["log_type"], this_filename)
+    if failed_validation_count >= 4:
+        log(state["log_path"], f"Validation has failed { failed_validation_count } times. Resetting state.", state["log_type"], this_filename)
         state["messages"] = [SystemMessage(content=state["system_prompt"]), HumanMessage(content=state["initial_prompt"])]
         failed_validation_count = 0
         judged = False
@@ -220,6 +215,7 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     response = agent.invoke({
         "messages": state["messages"]
     })
+    #print(response['messages'][-1])
     messages = []
     reasoning = []
     tokens = 0
@@ -239,10 +235,11 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
                     )
                 )
             else:
-                messages.append(AIMessage(
-                    content=message.content
-                    )
-                )
+                messages.append(message)
+                #messages.append(AIMessage(
+                #    content=message.content
+                #    )
+                #)
         elif message.type == 'tool':
             messages.append(ToolMessage(
                 content=message.content,

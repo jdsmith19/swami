@@ -151,17 +151,12 @@ You have access to tools to see the history of experiments.
 
 You should use these tools to understand what experiments have been run before and what experiments have been successful.
 
-- tools.get_best_experiments -> Returns the top n experiments for each model_type
-- tools.get_recent_experiments -> Returns the n most recent experiments run
-- tools.get_feature_usage -> Returns each feature and the number of times it has been used in an experiment by model
-- tools.summarize_feature_effects -> Gives count and average target values (Mean Absolute Error or Test Accuracy) for when a feature is or is not in an experiment
-- tools.get_experiments_with_feature -> Returns the last 25 experiments that contain a specific feature
-- tools.get_experiments_without_feature -> Returns the last 25 experiments that do NOT contain a specific feature
-
-TOOL USAGE:
-Before responding, evaluate available tools.
-If any tool can advance the task, call it immediately.
-Call as many tools as necessary to complete the task.
+- get_best_experiments -> Returns the top n experiments for each model_type
+- get_recent_experiments -> Returns the n most recent experiments run
+- get_feature_usage -> Returns each feature and the number of times it has been used in an experiment by model
+- summarize_feature_effects -> Gives count and average target values (Mean Absolute Error or Test Accuracy) for when a feature is or is not in an experiment
+- get_experiments_with_feature -> Returns the last 25 experiments that contain a specific feature
+- get_experiments_without_feature -> Returns the last 25 experiments that do NOT contain a specific feature
 
 EXPERIMENT INTERPRETATION:
 Regression models (XGBoost, LinearRegression, RandomForest):

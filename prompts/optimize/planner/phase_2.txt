@@ -6,3 +6,4 @@ PHASE 2 INSTRUCTIONS: EXPLORE BROADLY
     - Test each model type multiple times with different feature combinations
     - Try unusual combinations to discover hidden patterns
     - Even if results plateau, keep trying new approaches - there may be untested combinations
+    - You can use the summarize_feature_effects tool during this phase to understand how well features are performing

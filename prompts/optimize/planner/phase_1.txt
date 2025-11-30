@@ -2,5 +2,6 @@ PHASE 1 INSTRUCTIONS: SEEMINGLY RANDOM
     - Test all different types of combinations of features.
     - Use random combinations, don't try to correlate findings yet. That will happen in the next Phase.
     - You can have as many features in a single tool call as you want.
-    - Experiment with both very small and very large feature sets. Try an experiment with all 61 features in a tool call.
-    - You MUST call at least the get_feature_usage tool during Phase 1 to understand that all features are being tested.
+    - Experiment with both very small and very large feature sets. Try an experiment with all 63 features in a tool call.
+    - The get_feature_usage tool is important during Phase 1 to help prioritize which features to test
+        - This tool will give you a list of each feature and how many times that feature has been used against each model.
