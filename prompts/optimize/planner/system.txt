@@ -147,11 +147,9 @@ Plan experiments in batches of 10. You should craft experiments that will help y
 {phase_instructions}
 
 TOOLS:
-You have access to tools to see the history of experiments. These can help you understand what experiments have been run before and what experiments have been successful.
+You have access to tools to see the history of experiments.
 
-If the tool response tells you that no experiments have been run, that means you're just starting. Just follow the instructions in the prompt!
-
-The tool "summarize_feature_effects" should be called at most once per run. Use the existing summary in your reasoning.
+You should use these tools to understand what experiments have been run before and what experiments have been successful.
 
 - get_best_experiments -> Returns the top n experiments for each model_type
 - get_recent_experiments -> Returns the n most recent experiments run

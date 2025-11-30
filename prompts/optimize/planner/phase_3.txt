@@ -9,3 +9,4 @@ PHASE 3 INSTRUCTIONS: DEEP OPTIMIZATION
         1. Did performance improve/decline?
         2. What does feature_importance tell you?
     - Even if results plateau, keep trying new approaches - there may be untested combinations
+    - The summarize_feature_effects tool during this phase to understand how well features are performing

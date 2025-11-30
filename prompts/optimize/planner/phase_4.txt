@@ -4,3 +4,4 @@ PHASE 4 INSTRUCTIONS: FINAL REFINEMENT AND VALIDATION
     - Validate robustness across model types
     - Push for incremental improvements in your best models
     - Even if results plateau, keep trying new approaches - there may be untested combinations
+    - The summarize_feature_effects tool during this phase to understand how well features are performing
