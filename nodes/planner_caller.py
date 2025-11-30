@@ -224,16 +224,17 @@ def planner_caller_node(state: PlannerState) -> PlannerState:
     reasoning = []
     tokens = 0
     total_tokens = state["total_tokens"]
+    messages.append(SystemMessage(content=response['messages'][0].content))
     for message in response['messages']:
-        if message.type == 'system':
-            messages.append(SystemMessage(content=message.content))
-        elif message.type == 'human':
+        #if message.type == 'system':
+            #messages.append(SystemMessage(content=message.content))
+        if message.type == 'human':
             messages.append(HumanMessage(content=message.content))
         elif message.type == 'ai':
             if getattr(message, "tool_calls", None) and not message.content:
                 messages.append(
                     AIMessage(
-                        content="",
+                        content='Agent called a tool',
                         tool_calls=message.tool_calls,
                     )
                 )
